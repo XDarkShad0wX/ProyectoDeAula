@@ -17,6 +17,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     public VentanaPrincipal() {
         initComponents();
+        jLabel1.requestFocusInWindow();
         
         Estudiante estudiante = new Estudiante();
         estudiante.setSize(590, 410);

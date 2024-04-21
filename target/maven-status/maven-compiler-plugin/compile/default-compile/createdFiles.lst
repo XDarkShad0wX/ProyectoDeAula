@@ -1,6 +1,7 @@
 co\clb\ude\pb\Proyecto_De_Aula\vistas\gui\VentanaPrincipal.class
 co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\ExamenOtrosCrud.class
 co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\ProfesorCrud.class
+co\clb\ude\pb\Proyecto_De_Aula\vistas\componentes\Estudiante$7.class
 co\clb\ude\pb\Proyecto_De_Aula\entidades\ActividadPracticaGrupal.class
 co\clb\ude\pb\Proyecto_De_Aula\entidades\Evaluacion.class
 co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\main\ICrudModel.class
@@ -12,11 +13,13 @@ co\clb\ude\pb\Proyecto_De_Aula\entidades\Grupo.class
 co\clb\ude\pb\Proyecto_De_Aula\entidades\OperacionNota.class
 co\clb\ude\pb\Proyecto_De_Aula\Principal.class
 co\clb\ude\pb\Proyecto_De_Aula\vistas\componentes\Estudiante$3.class
+co\clb\ude\pb\Proyecto_De_Aula\vistas\componentes\Estudiante$5.class
 co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\ActividadPracticaGrupalCrud.class
 co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\OperacionNotaCrud.class
 co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\DiseñoColaborativoPracticaCrud.class
 co\clb\ude\pb\Proyecto_De_Aula\vistas\gui\VentanaPrincipal$1.class
 co\clb\ude\pb\Proyecto_De_Aula\vistas\componentes\Estudiante.class
+co\clb\ude\pb\Proyecto_De_Aula\vistas\componentes\Estudiante$6.class
 co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\GrupoCrud.class
 co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\AsignaturaCrud.class
 co\clb\ude\pb\Proyecto_De_Aula\vistas\componentes\Estudiante$1.class
@@ -36,4 +39,5 @@ co\clb\ude\pb\Proyecto_De_Aula\entidades\Practica.class
 co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\AlumnosDestacadosCrud.class
 co\clb\ude\pb\Proyecto_De_Aula\entidades\ExamenPractico.class
 co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\UsuarioCrud.class
+co\clb\ude\pb\Proyecto_De_Aula\vistas\componentes\Estudiante$4.class
 co\clb\ude\pb\Proyecto_De_Aula\entidades\Tema.class

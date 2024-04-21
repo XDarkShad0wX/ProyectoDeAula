@@ -4,7 +4,10 @@
  */
 package co.clb.ude.pb.Proyecto_De_Aula.vistas.componentes;
 
+import javax.swing.JOptionPane;
 import java.awt.Color;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 /**
  *
@@ -17,7 +20,8 @@ public class Estudiante extends javax.swing.JPanel {
      */
     public Estudiante() {
         initComponents();
-        
+        // Configuración de los campos de texto
+        configurarCamposTexto();
     }
 
     /**
@@ -32,14 +36,14 @@ public class Estudiante extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        codigoTxt = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        jTextField2 = new javax.swing.JTextField();
+        correoTxt = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        contraseñaTxt = new javax.swing.JPasswordField();
         loginBoton = new javax.swing.JPanel();
         loginTxt = new javax.swing.JLabel();
 
@@ -56,23 +60,33 @@ public class Estudiante extends javax.swing.JPanel {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel2.setText("CODIGO ESTUDIANTE");
 
-        jTextField1.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField1.setText("Ingrese su nombre");
-        jTextField1.setBorder(null);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        codigoTxt.setForeground(new java.awt.Color(204, 204, 204));
+        codigoTxt.setText("Ingrese su codigo estudiante");
+        codigoTxt.setBorder(null);
+        codigoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                codigoTxtMousePressed(evt);
+            }
+        });
+        codigoTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                codigoTxtActionPerformed(evt);
             }
         });
 
         jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTextField2.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField2.setText("Ingrese su apellido");
-        jTextField2.setBorder(null);
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        correoTxt.setForeground(new java.awt.Color(204, 204, 204));
+        correoTxt.setText("Ingrese su correo");
+        correoTxt.setBorder(null);
+        correoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                correoTxtMousePressed(evt);
+            }
+        });
+        correoTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                correoTxtActionPerformed(evt);
             }
         });
 
@@ -88,9 +102,19 @@ public class Estudiante extends javax.swing.JPanel {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel4.setText("CONTRASEÑA");
 
-        jPasswordField1.setForeground(new java.awt.Color(204, 204, 204));
-        jPasswordField1.setText("jPasswordField1");
-        jPasswordField1.setBorder(null);
+        contraseñaTxt.setForeground(new java.awt.Color(204, 204, 204));
+        contraseñaTxt.setText("jPasswordField1");
+        contraseñaTxt.setBorder(null);
+        contraseñaTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                contraseñaTxtMousePressed(evt);
+            }
+        });
+        contraseñaTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contraseñaTxtActionPerformed(evt);
+            }
+        });
 
         loginBoton.setBackground(new java.awt.Color(1, 174, 250));
 
@@ -101,6 +125,9 @@ public class Estudiante extends javax.swing.JPanel {
         loginTxt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         loginTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         loginTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loginTxtMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 loginTxtMouseEntered(evt);
             }
@@ -128,17 +155,17 @@ public class Estudiante extends javax.swing.JPanel {
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(contraseñaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jSeparator2)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(correoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jSeparator1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE)
+                            .addComponent(codigoTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(loginBoton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -152,19 +179,19 @@ public class Estudiante extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(codigoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(correoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(contraseñaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
@@ -175,13 +202,13 @@ public class Estudiante extends javax.swing.JPanel {
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 410));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void correoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_correoTxtActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void codigoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigoTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_codigoTxtActionPerformed
 
     private void loginTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginTxtMouseEntered
         loginBoton.setBackground(new Color(1, 105, 150));
@@ -191,19 +218,60 @@ public class Estudiante extends javax.swing.JPanel {
         loginBoton.setBackground(new Color(1, 174, 250));
     }//GEN-LAST:event_loginTxtMouseExited
 
+    private void configurarCamposTexto() {
+        codigoTxt.setForeground(Color.gray);
+        codigoTxt.setText("Ingrese su codigo estudiante");
+        correoTxt.setForeground(Color.gray);
+        correoTxt.setText("Ingrese su correo");
+        contraseñaTxt.setForeground(Color.gray);
+        contraseñaTxt.setText("•••••••••••••••");
+    }
+    
+    
+    private void codigoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_codigoTxtMousePressed
+        if (codigoTxt.getText().equals("Ingrese su codigo estudiante")) {
+            codigoTxt.setText("");
+            codigoTxt.setForeground(Color.black);
+        }
+        
+    }//GEN-LAST:event_codigoTxtMousePressed
+
+    private void contraseñaTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contraseñaTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_contraseñaTxtActionPerformed
+
+    private void correoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_correoTxtMousePressed
+        if (correoTxt.getText().equals("Ingrese su correo")) {
+            correoTxt.setText("");
+            correoTxt.setForeground(Color.black);
+        }
+
+    }//GEN-LAST:event_correoTxtMousePressed
+
+    private void contraseñaTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contraseñaTxtMousePressed
+        if (contraseñaTxt.getText().equals("•••••••••••••••")) {
+            contraseñaTxt.setText("");
+            contraseñaTxt.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_contraseñaTxtMousePressed
+
+    private void loginTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginTxtMouseClicked
+        javax.swing.JOptionPane.showMessageDialog(loginBoton, "Hola puto");
+    }//GEN-LAST:event_loginTxtMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField codigoTxt;
+    private javax.swing.JPasswordField contraseñaTxt;
+    private javax.swing.JTextField correoTxt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JPanel loginBoton;
     private javax.swing.JLabel loginTxt;
     // End of variables declaration//GEN-END:variables
