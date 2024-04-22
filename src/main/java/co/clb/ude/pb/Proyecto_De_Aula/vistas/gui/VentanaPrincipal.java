@@ -126,10 +126,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         bg.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, 50));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\daniel\\OneDrive\\Escritorio\\Proyecto_de_aula\\src\\main\\java\\co\\clb\\ude\\pb\\Proyecto_De_Aula\\vistas\\iconos\\usuario3.png")); // NOI18N
-        jLabel3.setText("Usuario");
-        bg.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 70, 40));
+        jLabel3.setText("Plataforma Estudiantil");
+        bg.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 140, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
