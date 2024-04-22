@@ -6,6 +6,7 @@ package co.clb.ude.pb.Proyecto_De_Aula.vistas.gui;
 import co.clb.ude.pb.Proyecto_De_Aula.vistas.componentes.Estudiante;
 import co.clb.ude.pb.Proyecto_De_Aula.vistas.componentes.Profesor;
 import java.awt.BorderLayout;
+import javax.swing.JLabel;
 
 /**
  *
@@ -18,7 +19,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     public VentanaPrincipal() {
         initComponents();
-        jLabel1.requestFocusInWindow();
+        content.requestFocusInWindow();
         
         Estudiante estudiante = new Estudiante();
         estudiante.setSize(590, 410);
@@ -28,7 +29,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         content.add(estudiante, BorderLayout.CENTER);
         content.revalidate();
         content.repaint();
-        
     }
 
     /**
@@ -143,9 +143,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void profesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profesorActionPerformed
-        initComponents();
-        jLabel1.requestFocusInWindow();
-        
         Profesor profesor = new Profesor();
         profesor.setSize(590, 410);
         profesor.setLocation(0, 0);
@@ -157,9 +154,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_profesorActionPerformed
 
     private void estudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estudianteActionPerformed
-        initComponents();
-        jLabel1.requestFocusInWindow();
-        
         Estudiante estudiante = new Estudiante();
         estudiante.setSize(590, 410);
         estudiante.setLocation(0, 0);
@@ -203,6 +197,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 new VentanaPrincipal().setVisible(true);
             }
         });
+        
+        
+    }
+    
+    public JLabel getFondo() {
+        return fondo;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
