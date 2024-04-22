@@ -36,7 +36,6 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="22" pref="22" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel1" min="-2" pref="105" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                           <Component id="contraseñaTxt" alignment="1" min="-2" pref="539" max="-2" attributes="0"/>
                           <Group type="103" alignment="1" groupAlignment="0" attributes="0">
@@ -51,6 +50,7 @@
                           <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
                               <Component id="codigoTxt" alignment="0" pref="539" max="32767" attributes="0"/>
+                              <Component id="jLabel1" alignment="0" min="-2" pref="115" max="-2" attributes="0"/>
                               <Component id="jLabel2" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
                           </Group>
                       </Group>

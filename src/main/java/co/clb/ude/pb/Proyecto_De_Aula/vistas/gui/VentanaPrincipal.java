@@ -76,7 +76,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         icono.setIcon(new javax.swing.ImageIcon("C:\\Users\\daniel\\OneDrive\\Escritorio\\Proyecto_de_aula\\src\\main\\java\\co\\clb\\ude\\pb\\Proyecto_De_Aula\\vistas\\iconos\\usuarios.png")); // NOI18N
         bg.add(icono, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 50, 310, 140));
 
+        estudiante.setBackground(new java.awt.Color(1, 174, 250));
         estudiante.setFont(new java.awt.Font("Gill Sans Ultra Bold", 0, 10)); // NOI18N
+        estudiante.setForeground(new java.awt.Color(255, 255, 255));
         estudiante.setText("ESTUDIANTE");
         estudiante.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         estudiante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -87,7 +89,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         bg.add(estudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 380, 110, 40));
 
+        profesor.setBackground(new java.awt.Color(1, 174, 250));
         profesor.setFont(new java.awt.Font("Gill Sans Ultra Bold", 0, 10)); // NOI18N
+        profesor.setForeground(new java.awt.Color(255, 255, 255));
         profesor.setText("PROFESOR");
         profesor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         profesor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -125,7 +129,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\daniel\\OneDrive\\Escritorio\\Proyecto_de_aula\\src\\main\\java\\co\\clb\\ude\\pb\\Proyecto_De_Aula\\vistas\\iconos\\usuario3.png")); // NOI18N
         jLabel3.setText("Usuario");
-        bg.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        bg.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 70, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -163,6 +167,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         content.revalidate();
         content.repaint();
     }//GEN-LAST:event_estudianteActionPerformed
+                          
 
     /**
      * @param args the command line arguments
@@ -197,8 +202,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 new VentanaPrincipal().setVisible(true);
             }
         });
-        
-        
     }
     
     public JLabel getFondo() {

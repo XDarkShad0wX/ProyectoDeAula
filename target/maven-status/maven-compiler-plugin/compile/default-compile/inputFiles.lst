@@ -1,5 +1,6 @@
 C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\GrupoCrud.java
 C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\main\ICrudModel.java
+C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\vistas\gui\VentanaMenuEstudiante.java
 C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\EvaluacionCrud.java
 C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\AlumnosDestacados.java
 C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\Asignatura.java
@@ -16,7 +17,6 @@ C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb
 C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\vistas\componentes\Estudiante.java
 C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\Tema.java
 C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\ExamenOtrosCrud.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\vistas\gui\VentanaMenu.java
 C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\PracticaCrud.java
 C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\vistas\gui\VentanaPrincipal.java
 C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\ActividadPracticaGrupal.java
@@ -32,6 +32,7 @@ C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb
 C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\Customs\Errores.java
 C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\ProfesorCrud.java
 C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\ExamenEscritoCrud.java
+C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\vistas\gui\VentanaMenuProfesor.java
 C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\Principal.java
 C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\DiseñoColaborativoPracticaCrud.java
 C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\AlumnosDestacadosCrud.java

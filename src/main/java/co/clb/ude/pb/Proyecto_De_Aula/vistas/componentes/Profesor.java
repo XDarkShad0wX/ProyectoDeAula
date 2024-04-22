@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package co.clb.ude.pb.Proyecto_De_Aula.vistas.componentes;
-import co.clb.ude.pb.Proyecto_De_Aula.vistas.gui.VentanaMenu;
+import co.clb.ude.pb.Proyecto_De_Aula.vistas.gui.VentanaMenuProfesor;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -11,6 +11,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -156,6 +157,7 @@ public class Profesor extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(contraseñaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,7 +170,6 @@ public class Profesor extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jSeparator1)
                             .addComponent(codigoTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(loginBoton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(29, Short.MAX_VALUE))
@@ -272,8 +273,12 @@ public class Profesor extends javax.swing.JPanel {
             javax.swing.JOptionPane.showMessageDialog(jPanel1, "Correo electrónico inválido");
             correoTxt.requestFocus();
         } else {
-            VentanaMenu ventanaMenu = new VentanaMenu();
-            ventanaMenu.setVisible(true);
+        
+            SwingUtilities.getWindowAncestor(this).dispose();
+        
+        
+            VentanaMenuProfesor ventanaMenuProfesor = new VentanaMenuProfesor();
+            ventanaMenuProfesor.setVisible(true);
         }
     }//GEN-LAST:event_loginTxtMouseClicked
 

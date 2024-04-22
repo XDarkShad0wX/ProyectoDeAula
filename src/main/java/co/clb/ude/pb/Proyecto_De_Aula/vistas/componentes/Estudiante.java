@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package co.clb.ude.pb.Proyecto_De_Aula.vistas.componentes;
-import co.clb.ude.pb.Proyecto_De_Aula.vistas.gui.VentanaMenu;
+import co.clb.ude.pb.Proyecto_De_Aula.vistas.gui.VentanaMenuEstudiante;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -11,6 +11,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.SwingUtilities;
 /**
  *
  * @author daniel
@@ -273,7 +274,11 @@ public class Estudiante extends javax.swing.JPanel {
             javax.swing.JOptionPane.showMessageDialog(jPanel1, "Correo electrónico inválido");
             correoTxt.requestFocus();
         } else {
-            VentanaMenu ventanaMenu = new VentanaMenu();
+        
+            SwingUtilities.getWindowAncestor(this).dispose();
+        
+        
+            VentanaMenuEstudiante ventanaMenu = new VentanaMenuEstudiante();
             ventanaMenu.setVisible(true);
         }
     }//GEN-LAST:event_loginTxtMouseClicked
@@ -369,6 +374,8 @@ public class Estudiante extends javax.swing.JPanel {
                 }
             }
         });
+        
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

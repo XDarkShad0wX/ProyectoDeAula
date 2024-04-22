@@ -3,7 +3,8 @@ co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\main\ICrudModel.class
 co\clb\ude\pb\Proyecto_De_Aula\Customs\Errores.class
 co\clb\ude\pb\Proyecto_De_Aula\vistas\componentes\Estudiante$2.class
 co\clb\ude\pb\Proyecto_De_Aula\entidades\Grupo.class
-co\clb\ude\pb\Proyecto_De_Aula\vistas\gui\VentanaMenu.class
+co\clb\ude\pb\Proyecto_De_Aula\vistas\gui\VentanaMenuEstudiante$1.class
+co\clb\ude\pb\Proyecto_De_Aula\vistas\gui\VentanaMenuEstudiante.class
 co\clb\ude\pb\Proyecto_De_Aula\vistas\componentes\Profesor$5.class
 co\clb\ude\pb\Proyecto_De_Aula\vistas\componentes\Estudiante$5.class
 co\clb\ude\pb\Proyecto_De_Aula\vistas\componentes\Estudiante$8.class
@@ -24,11 +25,13 @@ co\clb\ude\pb\Proyecto_De_Aula\vistas\componentes\Profesor$6.class
 co\clb\ude\pb\Proyecto_De_Aula\entidades\ExamenOtros.class
 co\clb\ude\pb\Proyecto_De_Aula\entidades\Alumno.class
 co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\TemaCrud.class
+co\clb\ude\pb\Proyecto_De_Aula\vistas\gui\VentanaMenuProfesor$1.class
 co\clb\ude\pb\Proyecto_De_Aula\entidades\Practica.class
 co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\AlumnosDestacadosCrud.class
 co\clb\ude\pb\Proyecto_De_Aula\entidades\ExamenPractico.class
 co\clb\ude\pb\Proyecto_De_Aula\vistas\componentes\Estudiante$4.class
 co\clb\ude\pb\Proyecto_De_Aula\entidades\Tema.class
+co\clb\ude\pb\Proyecto_De_Aula\vistas\gui\VentanaMenuProfesor.class
 co\clb\ude\pb\Proyecto_De_Aula\vistas\gui\VentanaPrincipal.class
 co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\ExamenOtrosCrud.class
 co\clb\ude\pb\Proyecto_De_Aula\vistas\componentes\Estudiante$7.class
@@ -47,7 +50,6 @@ co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\DiseñoColaborativoPracticaCrud.class
 co\clb\ude\pb\Proyecto_De_Aula\vistas\gui\VentanaPrincipal$1.class
 co\clb\ude\pb\Proyecto_De_Aula\vistas\componentes\Profesor.class
 co\clb\ude\pb\Proyecto_De_Aula\vistas\componentes\Estudiante$6.class
-co\clb\ude\pb\Proyecto_De_Aula\vistas\gui\VentanaMenu$1.class
 co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\GrupoCrud.class
 co\clb\ude\pb\Proyecto_De_Aula\entidades\ExamenEscrito.class
 co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\EvaluacionCrud.class
