@@ -1,38 +1,42 @@
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\GrupoCrud.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\main\ICrudModel.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\vistas\gui\VentanaMenuEstudiante.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\EvaluacionCrud.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\AlumnosDestacados.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\Asignatura.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\ExamenEscrito.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\OperacionNota.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\ExamenOtros.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\ExamenPractico.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\Evaluacion.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\AsignaturaCrud.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\Practica.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\ActividadPracticaGrupalCrud.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\OperacionNotaCrud.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\vistas\componentes\Profesor.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\vistas\componentes\Estudiante.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\Tema.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\ExamenOtrosCrud.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\PracticaCrud.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\vistas\gui\VentanaPrincipal.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\ActividadPracticaGrupal.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\DiseñoColaborativoPractica.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\Grupo.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\ExamenPracticoCrud.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\TemaCrud.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\Alumno.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\Profesor.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\AlumnoCrud.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\UsuarioCrud.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\Usuario.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\Customs\Errores.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\ProfesorCrud.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\ExamenEscritoCrud.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\vistas\gui\VentanaMenuProfesor.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\Principal.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\DiseñoColaborativoPracticaCrud.java
-C:\Users\daniel\OneDrive\Escritorio\Proyecto_de_aula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\AlumnosDestacadosCrud.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\vistas\gui\VentanaMenuEstudiante.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\AlumnoCrud.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\Asignatura.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\ExamenEscrito.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\ExamenPracticoCrud.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\DiseñoColaborativoPractica.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\Evaluacion.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\Usuario.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\vistas\gui\VentanaMenuProfesor.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\vistas\gui\VentanaPrincipal.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\Principal.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\ActividadPracticaGrupal.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\vistas\componentes\informacion.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\Practica.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\vistas\componentes\reporte.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\ExamenPractico.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\Profesor.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\EvaluacionCrud.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\UsuarioCrud.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\OperacionNota.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\AlumnosDestacadosCrud.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\vistas\componentes\notas.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\PracticaCrud.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\Tema.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\vistas\componentes\plan.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\OperacionNotaCrud.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\ExamenOtros.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\Grupo.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\Customs\Errores.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\Alumno.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\GrupoCrud.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\entidades\AlumnosDestacados.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\ExamenEscritoCrud.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\DiseñoColaborativoPracticaCrud.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\TemaCrud.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\ActividadPracticaGrupalCrud.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\ExamenOtrosCrud.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\vistas\componentes\Profesor.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\AsignaturaCrud.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\ProfesorCrud.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\modelo\crud\main\ICrudModel.java
+C:\Users\asus\Documents\samuel Diaz\git\ProyectoDeAula\src\main\java\co\clb\ude\pb\Proyecto_De_Aula\vistas\componentes\Estudiante.java
