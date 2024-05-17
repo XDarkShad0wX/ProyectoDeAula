@@ -3,17 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package co.clb.ude.pb.Proyecto_De_Aula.vistas.gui;
-import co.clb.ude.pb.Proyecto_De_Aula.vistas.componentes.Estudiante;
-import co.clb.ude.pb.Proyecto_De_Aula.vistas.componentes.Profesor;
+import co.clb.ude.pb.Proyecto_De_Aula.vistas.LogIncomponentes.LogInEstudiante;
+import co.clb.ude.pb.Proyecto_De_Aula.vistas.LogIncomponentes.LogInProfesor;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.SwingUtilities;
 
 /**
  *
  * @author daniel
  */
-public class VentanaPrincipalLogin extends javax.swing.JFrame {
+public class VentanaPrincipalLogIn extends javax.swing.JFrame {
 
     private int xMouse;
     private int yMouse;
@@ -21,11 +22,11 @@ public class VentanaPrincipalLogin extends javax.swing.JFrame {
     /**
      * Creates new form VentanaPrincipal
      */
-    public VentanaPrincipalLogin() {
+    public VentanaPrincipalLogIn() {
         initComponents();
         content.requestFocusInWindow();
         
-        Estudiante estudiante = new Estudiante();
+        LogInEstudiante estudiante = new LogInEstudiante();
         estudiante.setSize(590, 410);
         estudiante.setLocation(0, 0);
         
@@ -45,6 +46,8 @@ public class VentanaPrincipalLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         bg = new javax.swing.JPanel();
+        RegistrarseBoton = new javax.swing.JPanel();
+        registrarseTxt = new javax.swing.JLabel();
         BarraSuperior = new javax.swing.JPanel();
         ExitBoton = new javax.swing.JPanel();
         Accion = new java.awt.Label();
@@ -66,6 +69,39 @@ public class VentanaPrincipalLogin extends javax.swing.JFrame {
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        RegistrarseBoton.setBackground(new java.awt.Color(1, 174, 250));
+
+        registrarseTxt.setFont(new java.awt.Font("Eras Bold ITC", 0, 14)); // NOI18N
+        registrarseTxt.setForeground(new java.awt.Color(255, 255, 255));
+        registrarseTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        registrarseTxt.setText("Registrarse");
+        registrarseTxt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        registrarseTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        registrarseTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                registrarseTxtMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                registrarseTxtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                registrarseTxtMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout RegistrarseBotonLayout = new javax.swing.GroupLayout(RegistrarseBoton);
+        RegistrarseBoton.setLayout(RegistrarseBotonLayout);
+        RegistrarseBotonLayout.setHorizontalGroup(
+            RegistrarseBotonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(registrarseTxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+        );
+        RegistrarseBotonLayout.setVerticalGroup(
+            RegistrarseBotonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(registrarseTxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+        );
+
+        bg.add(RegistrarseBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 480, 90, 20));
 
         BarraSuperior.setBackground(new java.awt.Color(0, 0, 0, 0));
         BarraSuperior.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -196,7 +232,7 @@ public class VentanaPrincipalLogin extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Inicio");
+        jLabel1.setText("LogIn");
         bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 180, 310, 60));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/clb/ude/pb/Proyecto_De_Aula/vistas/imagenes/fondo-azul-formal-min.png"))); // NOI18N
@@ -230,7 +266,7 @@ public class VentanaPrincipalLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void profesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profesorActionPerformed
-        Profesor profesor = new Profesor();
+        LogInProfesor profesor = new LogInProfesor();
         profesor.setSize(590, 410);
         profesor.setLocation(0, 0);
         
@@ -241,7 +277,7 @@ public class VentanaPrincipalLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_profesorActionPerformed
 
     private void estudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estudianteActionPerformed
-        Estudiante estudiante = new Estudiante();
+        LogInEstudiante estudiante = new LogInEstudiante();
         estudiante.setSize(590, 410);
         estudiante.setLocation(0, 0);
         
@@ -289,6 +325,21 @@ public class VentanaPrincipalLogin extends javax.swing.JFrame {
         int y = evt.getYOnScreen();
         this.setLocation(x - xMouse, y - yMouse);
     }//GEN-LAST:event_BarraSuperiorMouseDragged
+
+    private void registrarseTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarseTxtMouseClicked
+        this.dispose();  // Cierra la ventana actual
+        
+        VentanaPrincipalSignUp ventanaPrincipalSignUp = new VentanaPrincipalSignUp();
+        ventanaPrincipalSignUp.setVisible(true);  // Abre la nueva ventana
+    }//GEN-LAST:event_registrarseTxtMouseClicked
+
+    private void registrarseTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarseTxtMouseEntered
+        RegistrarseBoton.setBackground(new Color(1, 105, 150));
+    }//GEN-LAST:event_registrarseTxtMouseEntered
+
+    private void registrarseTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarseTxtMouseExited
+        RegistrarseBoton.setBackground(new Color(1, 174, 250));
+    }//GEN-LAST:event_registrarseTxtMouseExited
                           
 
     /**
@@ -308,21 +359,23 @@ public class VentanaPrincipalLogin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipalLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaPrincipalLogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipalLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaPrincipalLogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipalLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaPrincipalLogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipalLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaPrincipalLogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaPrincipalLogin().setVisible(true);
+                new VentanaPrincipalLogIn().setVisible(true);
             }
         });
     }
@@ -335,6 +388,7 @@ public class VentanaPrincipalLogin extends javax.swing.JFrame {
     private java.awt.Label Accion;
     private javax.swing.JPanel BarraSuperior;
     private javax.swing.JPanel ExitBoton;
+    private javax.swing.JPanel RegistrarseBoton;
     private javax.swing.JPanel bg;
     private javax.swing.JPanel content;
     private javax.swing.JButton estudiante;
@@ -345,6 +399,9 @@ public class VentanaPrincipalLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel loginBoton;
+    private javax.swing.JLabel loginTxt;
     private javax.swing.JButton profesor;
+    private javax.swing.JLabel registrarseTxt;
     // End of variables declaration//GEN-END:variables
 }
