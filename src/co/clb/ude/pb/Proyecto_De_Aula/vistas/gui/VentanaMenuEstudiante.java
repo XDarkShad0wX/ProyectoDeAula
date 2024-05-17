@@ -4,6 +4,8 @@
  */
 package co.clb.ude.pb.Proyecto_De_Aula.vistas.gui;
 
+import co.clb.ude.pb.Proyecto_De_Aula.vistas.MenusEstudiante.PanelPrincipal;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.Date;
 import java.text.SimpleDateFormat;
@@ -23,6 +25,15 @@ public class VentanaMenuEstudiante extends javax.swing.JFrame {
     public VentanaMenuEstudiante() {
         initComponents();
         fechaActual.setText(fecha());
+        
+        PanelPrincipal panelPrincipal = new PanelPrincipal();
+        panelPrincipal.setSize(660, 420);
+        panelPrincipal.setLocation(0, 0);
+        
+        content.removeAll();
+        content.add(panelPrincipal, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
     }
 
     /**
@@ -54,7 +65,7 @@ public class VentanaMenuEstudiante extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         fechaActual = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        content = new javax.swing.JPanel();
         BarraSuperior = new javax.swing.JPanel();
         ExitBoton = new javax.swing.JPanel();
         Accion = new java.awt.Label();
@@ -301,21 +312,21 @@ public class VentanaMenuEstudiante extends javax.swing.JFrame {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/clb/ude/pb/Proyecto_De_Aula/vistas/imagenes/water-drops-background (1) (1).jpg"))); // NOI18N
         P2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 660, 90));
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        content.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
+        content.setLayout(contentLayout);
+        contentLayout.setHorizontalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 660, Short.MAX_VALUE)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        contentLayout.setVerticalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 420, Short.MAX_VALUE)
         );
 
-        P2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 660, 420));
-        jPanel3.getAccessibleContext().setAccessibleDescription("");
+        P2.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 660, 420));
+        content.getAccessibleContext().setAccessibleDescription("");
 
         BarraSuperior.setBackground(new java.awt.Color(0, 0, 0, 0));
         BarraSuperior.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -531,6 +542,7 @@ public class VentanaMenuEstudiante extends javax.swing.JFrame {
     private javax.swing.JPanel Pp;
     private javax.swing.JPanel Principal;
     private javax.swing.JPanel Reportes;
+    private javax.swing.JPanel content;
     private javax.swing.JLabel fechaActual;
     private javax.swing.JLabel informacionTxt;
     private javax.swing.JLabel jLabel1;
@@ -538,7 +550,6 @@ public class VentanaMenuEstudiante extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel menuBotones2;
     private javax.swing.JLabel notasTxt;

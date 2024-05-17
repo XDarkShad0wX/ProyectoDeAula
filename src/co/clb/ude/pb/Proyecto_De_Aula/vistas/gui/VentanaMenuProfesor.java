@@ -4,6 +4,8 @@
  */
 package co.clb.ude.pb.Proyecto_De_Aula.vistas.gui;
 
+import co.clb.ude.pb.Proyecto_De_Aula.vistas.MenusProfesor.PanelPrincipal;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.Date;
 import java.text.SimpleDateFormat;
@@ -23,6 +25,15 @@ public class VentanaMenuProfesor extends javax.swing.JFrame {
     public VentanaMenuProfesor() {
         initComponents();
         fechaActual.setText(fecha());
+        
+        PanelPrincipal panelPrincipal = new PanelPrincipal();
+        panelPrincipal.setSize(660, 420);
+        panelPrincipal.setLocation(0, 0);
+        
+        content.removeAll();
+        content.add(panelPrincipal, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
     }
 
     /**
@@ -35,7 +46,7 @@ public class VentanaMenuProfesor extends javax.swing.JFrame {
     private void initComponents() {
 
         Pp = new javax.swing.JPanel();
-        menuBotones = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         Principal = new javax.swing.JPanel();
         principalTxt = new javax.swing.JLabel();
         Estudiantes = new javax.swing.JPanel();
@@ -57,7 +68,7 @@ public class VentanaMenuProfesor extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         fechaActual = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        content = new javax.swing.JPanel();
         BarraSuperior = new javax.swing.JPanel();
         ExitBoton = new javax.swing.JPanel();
         Accion = new java.awt.Label();
@@ -69,8 +80,8 @@ public class VentanaMenuProfesor extends javax.swing.JFrame {
         Pp.setBackground(new java.awt.Color(255, 255, 255));
         Pp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        menuBotones.setBackground(new java.awt.Color(17, 89, 218));
-        menuBotones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.setBackground(new java.awt.Color(17, 89, 218));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Principal.setBackground(new java.awt.Color(19, 117, 255));
 
@@ -102,7 +113,7 @@ public class VentanaMenuProfesor extends javax.swing.JFrame {
             .addComponent(principalTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        menuBotones.add(Principal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 240, 50));
+        jPanel2.add(Principal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 240, 50));
 
         Estudiantes.setBackground(new java.awt.Color(19, 117, 255));
 
@@ -138,7 +149,7 @@ public class VentanaMenuProfesor extends javax.swing.JFrame {
                 .addComponent(estudiantesTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        menuBotones.add(Estudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 240, 50));
+        jPanel2.add(Estudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 240, 50));
 
         Asignatura.setBackground(new java.awt.Color(19, 117, 255));
 
@@ -180,7 +191,7 @@ public class VentanaMenuProfesor extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        menuBotones.add(Asignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 240, 50));
+        jPanel2.add(Asignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 240, 50));
 
         Notas.setBackground(new java.awt.Color(19, 117, 255));
 
@@ -222,7 +233,7 @@ public class VentanaMenuProfesor extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        menuBotones.add(Notas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 240, 50));
+        jPanel2.add(Notas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 240, 50));
 
         Reportes.setBackground(new java.awt.Color(19, 117, 255));
 
@@ -264,7 +275,7 @@ public class VentanaMenuProfesor extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        menuBotones.add(Reportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 240, 50));
+        jPanel2.add(Reportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 240, 50));
 
         Informacion.setBackground(new java.awt.Color(19, 117, 255));
 
@@ -300,7 +311,7 @@ public class VentanaMenuProfesor extends javax.swing.JFrame {
                 .addComponent(informacionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        menuBotones.add(Informacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 240, 50));
+        jPanel2.add(Informacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 240, 50));
 
         ReportesEstudiante.setBackground(new java.awt.Color(19, 117, 255));
 
@@ -336,9 +347,9 @@ public class VentanaMenuProfesor extends javax.swing.JFrame {
                 .addComponent(reportesEstudianteTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        menuBotones.add(ReportesEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 240, 50));
+        jPanel2.add(ReportesEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 240, 50));
 
-        Pp.add(menuBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 240, 450));
+        Pp.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 240, 450));
 
         jPanel1.setBackground(new java.awt.Color(17, 89, 218));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -373,20 +384,20 @@ public class VentanaMenuProfesor extends javax.swing.JFrame {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/clb/ude/pb/Proyecto_De_Aula/vistas/imagenes/water-drops-background (1) (1).jpg"))); // NOI18N
         Pp.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 660, 90));
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        content.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
+        content.setLayout(contentLayout);
+        contentLayout.setHorizontalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 660, Short.MAX_VALUE)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        contentLayout.setVerticalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 420, Short.MAX_VALUE)
         );
 
-        Pp.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 660, 420));
+        Pp.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 660, 420));
 
         BarraSuperior.setBackground(new java.awt.Color(0, 0, 0, 0));
         BarraSuperior.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -630,6 +641,7 @@ public class VentanaMenuProfesor extends javax.swing.JFrame {
     private javax.swing.JPanel Reportes;
     private javax.swing.JPanel ReportesEstudiante;
     private javax.swing.JLabel asignaturaTxt;
+    private javax.swing.JPanel content;
     private javax.swing.JLabel estudiantesTxt;
     private javax.swing.JLabel fechaActual;
     private javax.swing.JLabel informacionTxt;
@@ -638,9 +650,8 @@ public class VentanaMenuProfesor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JPanel menuBotones;
     private javax.swing.JLabel notasTxt;
     private javax.swing.JLabel principalTxt;
     private javax.swing.JLabel reportesEstudianteTxt;
