@@ -24,10 +24,10 @@ public class ProfesorCrud implements ICrudModel<Profesor> {
     @Override
     public void agregar(Profesor objeto) throws Exception {
         try{
-            if(bdProfesor.containsKey(objeto.getDni())){
+            if(bdProfesor.containsKey(objeto.getID())){
                 throw new UnsupportedOperationException("// No se encontro el Profesor //");
             }
-            bdProfesor.put(objeto.getDni(), objeto);
+            bdProfesor.put(objeto.getID(), objeto);
         } catch (Exception e){
             System.out.println(e.getMessage());
         }

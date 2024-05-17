@@ -4,7 +4,13 @@
  */
 package co.clb.ude.pb.Proyecto_De_Aula.vistas.gui;
 
+import co.clb.ude.pb.Proyecto_De_Aula.vistas.MenusProfesor.PanelAsignaturas;
+import co.clb.ude.pb.Proyecto_De_Aula.vistas.MenusProfesor.PanelEstudiantes;
+import co.clb.ude.pb.Proyecto_De_Aula.vistas.MenusProfesor.PanelInfoProfesor;
+import co.clb.ude.pb.Proyecto_De_Aula.vistas.MenusProfesor.PanelNotasyAsistencia;
 import co.clb.ude.pb.Proyecto_De_Aula.vistas.MenusProfesor.PanelPrincipal;
+import co.clb.ude.pb.Proyecto_De_Aula.vistas.MenusProfesor.PanelReportes;
+import co.clb.ude.pb.Proyecto_De_Aula.vistas.MenusProfesor.PanelReportesEstudiantes;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.Date;
@@ -476,12 +482,14 @@ public class VentanaMenuProfesor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void principalTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_principalTxtMouseClicked
+        PanelPrincipal panelPrincipal = new PanelPrincipal();
+        panelPrincipal.setSize(660, 420);
+        panelPrincipal.setLocation(0, 0);
         
-        
-        
-        
-        
-        
+        content.removeAll();
+        content.add(panelPrincipal, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
     }//GEN-LAST:event_principalTxtMouseClicked
 
     private void principalTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_principalTxtMouseEntered
@@ -493,7 +501,14 @@ public class VentanaMenuProfesor extends javax.swing.JFrame {
     }//GEN-LAST:event_principalTxtMouseExited
 
     private void estudiantesTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_estudiantesTxtMouseClicked
-        // TODO add your handling code here:
+        PanelEstudiantes panelEstudiantes = new PanelEstudiantes();
+        panelEstudiantes.setSize(660, 420);
+        panelEstudiantes.setLocation(0, 0);
+        
+        content.removeAll();
+        content.add(panelEstudiantes, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
     }//GEN-LAST:event_estudiantesTxtMouseClicked
 
     private void estudiantesTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_estudiantesTxtMouseEntered
@@ -505,7 +520,14 @@ public class VentanaMenuProfesor extends javax.swing.JFrame {
     }//GEN-LAST:event_estudiantesTxtMouseExited
 
     private void informacionTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_informacionTxtMouseClicked
-        // TODO add your handling code here:
+        PanelInfoProfesor panelInfoProfesor = new PanelInfoProfesor();
+        panelInfoProfesor.setSize(660, 420);
+        panelInfoProfesor.setLocation(0, 0);
+        
+        content.removeAll();
+        content.add(panelInfoProfesor, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
     }//GEN-LAST:event_informacionTxtMouseClicked
 
     private void informacionTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_informacionTxtMouseEntered
@@ -517,7 +539,14 @@ public class VentanaMenuProfesor extends javax.swing.JFrame {
     }//GEN-LAST:event_informacionTxtMouseExited
 
     private void asignaturaTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_asignaturaTxtMouseClicked
-        // TODO add your handling code here:
+        PanelAsignaturas panelAsignaturas = new PanelAsignaturas();
+        panelAsignaturas.setSize(660, 420);
+        panelAsignaturas.setLocation(0, 0);
+        
+        content.removeAll();
+        content.add(panelAsignaturas, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
     }//GEN-LAST:event_asignaturaTxtMouseClicked
 
     private void asignaturaTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_asignaturaTxtMouseEntered
@@ -529,7 +558,14 @@ public class VentanaMenuProfesor extends javax.swing.JFrame {
     }//GEN-LAST:event_asignaturaTxtMouseExited
 
     private void notasTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_notasTxtMouseClicked
-        // TODO add your handling code here:
+        PanelNotasyAsistencia panelNotasyAsistencia = new PanelNotasyAsistencia();
+        panelNotasyAsistencia.setSize(660, 420);
+        panelNotasyAsistencia.setLocation(0, 0);
+        
+        content.removeAll();
+        content.add(panelNotasyAsistencia, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
     }//GEN-LAST:event_notasTxtMouseClicked
 
     private void notasTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_notasTxtMouseEntered
@@ -541,7 +577,14 @@ public class VentanaMenuProfesor extends javax.swing.JFrame {
     }//GEN-LAST:event_notasTxtMouseExited
 
     private void reportesTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportesTxtMouseClicked
-        // TODO add your handling code here:
+        PanelReportes panelReportes = new PanelReportes();
+        panelReportes.setSize(660, 420);
+        panelReportes.setLocation(0, 0);
+        
+        content.removeAll();
+        content.add(panelReportes, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
     }//GEN-LAST:event_reportesTxtMouseClicked
 
     private void reportesTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportesTxtMouseEntered
@@ -553,7 +596,14 @@ public class VentanaMenuProfesor extends javax.swing.JFrame {
     }//GEN-LAST:event_reportesTxtMouseExited
 
     private void reportesEstudianteTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportesEstudianteTxtMouseClicked
-        // TODO add your handling code here:
+        PanelReportesEstudiantes panelReportesEstudiantes = new PanelReportesEstudiantes();
+        panelReportesEstudiantes.setSize(660, 420);
+        panelReportesEstudiantes.setLocation(0, 0);
+        
+        content.removeAll();
+        content.add(panelReportesEstudiantes, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
     }//GEN-LAST:event_reportesEstudianteTxtMouseClicked
 
     private void reportesEstudianteTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportesEstudianteTxtMouseEntered

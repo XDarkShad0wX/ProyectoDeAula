@@ -9,7 +9,7 @@ package co.clb.ude.pb.Proyecto_De_Aula.entidades;
  * @author daniel
  */
 public class Alumno extends Usuario {
-    private String numeroMatricula;
+    private String codigoEstudiante;
     private String semestre;
     private Grupo grupos;
     
@@ -19,14 +19,14 @@ public class Alumno extends Usuario {
 
     public Alumno(String numeroMatricula, String semestre, Grupo grupos) {
         super(semestre, semestre, semestre, semestre, semestre, numeroMatricula, semestre);
-        this.numeroMatricula = numeroMatricula;
+        this.codigoEstudiante = numeroMatricula;
         this.semestre = semestre;
         this.grupos = grupos;
     }
 
     
-    public String getNumeroMatricula() {
-        return numeroMatricula;
+    public String getCodigoEstudiante() {
+        return codigoEstudiante;
     }
 
     public String getSemestre() {
@@ -37,8 +37,8 @@ public class Alumno extends Usuario {
         return grupos;
     }
 
-    public void setNumeroMatricula(String numeroMatricula) {
-        this.numeroMatricula = numeroMatricula;
+    public void setCodigoEstudiante(String codigoEstudiante) {
+        this.codigoEstudiante = codigoEstudiante;
     }
 
     public void setSemestre(String semestre) {
@@ -52,7 +52,7 @@ public class Alumno extends Usuario {
     @Override
     public void mostrarInformacion() {
         super.mostrarInformacion();
-        System.out.println("Número de matrícula: " + numeroMatricula);
+        System.out.println("Número de matrícula: " + codigoEstudiante);
         System.out.println("Semestre: " + semestre);
     }
 }

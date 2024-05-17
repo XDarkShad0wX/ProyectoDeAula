@@ -22,10 +22,10 @@ public class AlumnoCrud implements ICrudModel<Alumno> {
     @Override
     public void agregar(Alumno objeto) throws Exception {
         try{
-            if(bdAlumno.containsKey(objeto.getNumeroMatricula())){
+            if(bdAlumno.containsKey(objeto.getCodigoEstudiante())){
                 throw new UnsupportedOperationException("// No se encontro el Alumno //");
             }
-            bdAlumno.put(objeto.getNumeroMatricula(), objeto);
+            bdAlumno.put(objeto.getCodigoEstudiante(), objeto);
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
@@ -48,10 +48,10 @@ public class AlumnoCrud implements ICrudModel<Alumno> {
     @Override
     public void editar(Alumno objeto) throws Exception {
         try {
-            if(!bdAlumno.containsKey(objeto.getNumeroMatricula())){
+            if(!bdAlumno.containsKey(objeto.getCodigoEstudiante())){
                 throw new Exception("// El Alumno no esta registrado //");
             }
-            bdAlumno.put(objeto.getNumeroMatricula(), objeto);
+            bdAlumno.put(objeto.getCodigoEstudiante(), objeto);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());

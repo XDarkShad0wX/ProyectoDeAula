@@ -232,7 +232,7 @@ public class VentanaPrincipalLogIn extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("LogIn");
+        jLabel1.setText("Log-In");
         bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 180, 310, 60));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/clb/ude/pb/Proyecto_De_Aula/vistas/imagenes/fondo-azul-formal-min.png"))); // NOI18N
@@ -399,8 +399,6 @@ public class VentanaPrincipalLogIn extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel loginBoton;
-    private javax.swing.JLabel loginTxt;
     private javax.swing.JButton profesor;
     private javax.swing.JLabel registrarseTxt;
     // End of variables declaration//GEN-END:variables

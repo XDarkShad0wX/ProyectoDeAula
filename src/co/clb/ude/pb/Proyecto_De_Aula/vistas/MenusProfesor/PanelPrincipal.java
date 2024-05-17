@@ -46,57 +46,57 @@ public class PanelPrincipal extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0, 0));
 
-        jLabel1.setFont(new java.awt.Font("Segoe Print", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Bienvenido");
 
-        jLabel2.setFont(new java.awt.Font("Segoe Print", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Sistema de gestion de Estudiantes, Notas y Plan de estudio academico.");
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jLabel3.setFont(new java.awt.Font("Segoe Print", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Esta herramienta le permitirá llevar una gestion completa las notas");
         jLabel3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jLabel4.setFont(new java.awt.Font("Segoe Print", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Tendra acceso a herramientas como lo son:");
         jLabel4.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jLabel5.setFont(new java.awt.Font("Segoe Print", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("   • Info- Profesor: Podrá modificar su informacion personal ya registrada.");
         jLabel5.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jLabel6.setFont(new java.awt.Font("Segoe Print", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("   • Notas y Asistencia: Podrá gestionar las notas y asistencia de sus estudiantes.");
         jLabel6.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jLabel7.setFont(new java.awt.Font("Segoe Print", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("   • Asignatura: Podrá Organizar su asignatura y plan de estudio.");
         jLabel7.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jLabel8.setFont(new java.awt.Font("Segoe Print", 0, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("y informacion personal de sus alumnos.");
         jLabel8.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jLabel9.setFont(new java.awt.Font("Segoe Print", 0, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("   • Estudiantes: Podrá Agregar, Modificar, Eliminar y Listar a los estudiantes.");
         jLabel9.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jLabel10.setFont(new java.awt.Font("Segoe Print", 0, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("   • Reportes: se mostraran sus cambios realizados.");
         jLabel10.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jLabel11.setFont(new java.awt.Font("Segoe Print", 0, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("   • Reportes Estudiantes: Se mostraran los cambios realizados por estudiantes.");
         jLabel11.setVerticalAlignment(javax.swing.SwingConstants.TOP);
@@ -184,7 +184,7 @@ public class PanelPrincipal extends javax.swing.JPanel {
 
         jPanelimagen.setBackground(new java.awt.Color(0, 0, 0, 0));
 
-        jLabelimagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/clb/ude/pb/Proyecto_De_Aula/vistas/imagenes/3d-book-renders-graphics-of-captivating-book-designs-perfect-for-immersing-yourself-in-stories-knowledge-and-imagination-png (1).png"))); // NOI18N
+        jLabelimagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/clb/ude/pb/Proyecto_De_Aula/vistas/imagenes/3d-binders-render-graphics-of-stylish-and-functional-binder-designs-perfect-for-organizing-and-securing-your-documents-projects-and-presentations-png (1).png"))); // NOI18N
 
         javax.swing.GroupLayout jPanelimagenLayout = new javax.swing.GroupLayout(jPanelimagen);
         jPanelimagen.setLayout(jPanelimagenLayout);

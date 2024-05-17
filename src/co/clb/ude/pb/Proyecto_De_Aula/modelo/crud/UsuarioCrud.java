@@ -21,10 +21,10 @@ public class UsuarioCrud implements ICrudModel<Usuario> {
     @Override
     public void agregar(Usuario objeto) throws Exception {
         try{
-            if(bdUsuarios.containsKey(objeto.getDni())){
+            if(bdUsuarios.containsKey(objeto.getID())){
                 throw new UnsupportedOperationException("// No se encontro el Usuario //");
             }
-            bdUsuarios.put(objeto.getDni(), objeto);
+            bdUsuarios.put(objeto.getID(), objeto);
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
@@ -47,7 +47,7 @@ public class UsuarioCrud implements ICrudModel<Usuario> {
     @Override
     public void editar(Usuario objeto) throws Exception {
         try {
-            if(!bdUsuarios.containsKey(objeto.getDni())){
+            if(!bdUsuarios.containsKey(objeto.getID())){
                 throw new Exception("// El Usuario no esta registrado //");
             }
             bdUsuarios.put(objeto.getNombres(), objeto);

@@ -232,7 +232,7 @@ public class VentanaPrincipalSignUp extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Sign Up");
+        jLabel1.setText("Sign-Up");
         bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 180, 310, 60));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/clb/ude/pb/Proyecto_De_Aula/vistas/imagenes/fondo-azul-formal-min.png"))); // NOI18N
@@ -240,7 +240,7 @@ public class VentanaPrincipalSignUp extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Sitka Text", 1, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Registrarse");
+        jLabel2.setText("REGISTRARSE");
         bg.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, 50));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N

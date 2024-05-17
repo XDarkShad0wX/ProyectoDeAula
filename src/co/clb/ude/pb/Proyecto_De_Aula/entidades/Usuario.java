@@ -5,7 +5,7 @@
 package co.clb.ude.pb.Proyecto_De_Aula.entidades;
 
 public class Usuario {
-    protected String dni;
+    protected String ID;
     protected String nombres;
     protected String apellidos;
     protected String genero;
@@ -17,7 +17,7 @@ public Usuario() {
 }
 
     public Usuario(String dni, String nombres, String apellidos, String genero, String telefono, String email, String tipoUsuario) {
-        this.dni = dni;
+        this.ID = dni;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.genero = genero;
@@ -26,8 +26,8 @@ public Usuario() {
         this.tipoUsuario = tipoUsuario;
     }
 
-    public String getDni() {
-        return dni;
+    public String getID() {
+        return ID;
     }
 
     public String getNombres() {
@@ -54,8 +54,8 @@ public Usuario() {
         return tipoUsuario;
     }
 
-    public void setDni(String dni) {
-        this.dni = dni;
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
     public void setNombres(String nombres) {
@@ -83,7 +83,7 @@ public Usuario() {
     }
 
     public void mostrarInformacion() {
-        System.out.println("DNI: " + dni);
+        System.out.println("DNI: " + ID);
         System.out.println("Nombres: " + nombres);
         System.out.println("Apellidos: " + apellidos);
         System.out.println("Género: " + genero);

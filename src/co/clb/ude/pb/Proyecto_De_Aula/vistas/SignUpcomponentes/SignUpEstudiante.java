@@ -3,6 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package co.clb.ude.pb.Proyecto_De_Aula.vistas.SignUpcomponentes;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import com.toedter.calendar.JDateChooser;
+
 import co.clb.ude.pb.Proyecto_De_Aula.vistas.gui.VentanaMenuEstudiante;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
@@ -11,7 +21,9 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.ButtonGroup;
 import javax.swing.SwingUtilities;
+
 /**
  *
  * @author daniel
@@ -24,6 +36,24 @@ public class SignUpEstudiante extends javax.swing.JPanel {
     public SignUpEstudiante() {
         initComponents();
         configurarCamposTexto();
+
+        // ButtonGroup
+        botonesGenero = new ButtonGroup();
+
+        // Agrega los RadioButtons al ButtonGroup
+        botonesGenero.add(gHombre);
+        botonesGenero.add(gMujer);
+    }
+
+    private void limpiarCampos() {
+        nombreEstTxt.setText("Ingrese su(s) Nombre(s)");
+        apellidoEstTxt.setText("Ingrese su(s) Apellido(s)");
+        correoEstTxt.setText("Ingrese su correo");
+        contraseñaEstTxt.setText("•••••••••••••••");
+        confirmarContraseñaEstTxt.setText("•••••••••••••••");
+        IDEstTxt.setText("Numero de Identificacion");
+        botonesGenero.clearSelection();
+        jCalendar1.setDate(null);
     }
 
     /**
@@ -35,88 +65,116 @@ public class SignUpEstudiante extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        botonesGenero = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        codigoTxt = new javax.swing.JTextField();
+        jLabelImagen = new javax.swing.JLabel();
+        jLabelNombre = new javax.swing.JLabel();
+        nombreEstTxt = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        correoTxt = new javax.swing.JTextField();
+        correoEstTxt = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabel3 = new javax.swing.JLabel();
+        jLabelCorrreo = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
-        jLabel4 = new javax.swing.JLabel();
-        contraseñaTxt = new javax.swing.JPasswordField();
+        jLabelContraseña = new javax.swing.JLabel();
+        contraseñaEstTxt = new javax.swing.JPasswordField();
         SignUpBoton = new javax.swing.JPanel();
         SignUpTxt = new javax.swing.JLabel();
+        jLabelApellido = new javax.swing.JLabel();
+        apellidoEstTxt = new javax.swing.JTextField();
+        jLabelGenero = new javax.swing.JLabel();
+        jSeparator5 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
+        jLabelConfirmarContraseña = new javax.swing.JLabel();
+        confirmarContraseñaEstTxt = new javax.swing.JPasswordField();
+        jLabelID = new javax.swing.JLabel();
+        IDEstTxt = new javax.swing.JTextField();
+        jSeparator7 = new javax.swing.JSeparator();
+        gMujer = new javax.swing.JRadioButton();
+        gHombre = new javax.swing.JRadioButton();
+        jLabelFechaNacimiento = new javax.swing.JLabel();
+        jSeparator8 = new javax.swing.JSeparator();
+        jCalendar1 = new com.toedter.calendar.JCalendar();
+        jSeparator9 = new javax.swing.JSeparator();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 14)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/clb/ude/pb/Proyecto_De_Aula/vistas/iconos/tipo.png"))); // NOI18N
-        jLabel1.setText("Estudiante");
+        jLabelImagen.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 14)); // NOI18N
+        jLabelImagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/clb/ude/pb/Proyecto_De_Aula/vistas/iconos/tipo.png"))); // NOI18N
+        jLabelImagen.setText("Estudiante");
+        jPanel1.add(jLabelImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 23, 115, 36));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel2.setText("CODIGO ESTUDIANTE");
+        jLabelNombre.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        jLabelNombre.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabelNombre.setText("Nombre(s)");
+        jPanel1.add(jLabelNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 132, 33));
 
-        codigoTxt.setForeground(new java.awt.Color(204, 204, 204));
-        codigoTxt.setText("Ingrese su codigo estudiante");
-        codigoTxt.setBorder(null);
-        codigoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+        nombreEstTxt.setForeground(new java.awt.Color(204, 204, 204));
+        nombreEstTxt.setText("Ingrese su(s) Nombre(s)");
+        nombreEstTxt.setBorder(null);
+        nombreEstTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                codigoTxtMousePressed(evt);
+                nombreEstTxtMousePressed(evt);
             }
         });
-        codigoTxt.addActionListener(new java.awt.event.ActionListener() {
+        nombreEstTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                codigoTxtActionPerformed(evt);
+                nombreEstTxtActionPerformed(evt);
             }
         });
+        jPanel1.add(nombreEstTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 166, 30));
 
         jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 166, -1));
 
-        correoTxt.setForeground(new java.awt.Color(204, 204, 204));
-        correoTxt.setText("Ingrese su correo");
-        correoTxt.setBorder(null);
-        correoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+        correoEstTxt.setForeground(new java.awt.Color(204, 204, 204));
+        correoEstTxt.setText("Ingrese su correo");
+        correoEstTxt.setBorder(null);
+        correoEstTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                correoTxtMousePressed(evt);
+                correoEstTxtMousePressed(evt);
             }
         });
-        correoTxt.addActionListener(new java.awt.event.ActionListener() {
+        correoEstTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                correoTxtActionPerformed(evt);
+                correoEstTxtActionPerformed(evt);
             }
         });
+        jPanel1.add(correoEstTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 160, 30));
 
         jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 160, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel3.setText("CORREO");
+        jLabelCorrreo.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        jLabelCorrreo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabelCorrreo.setText("Correo");
+        jPanel1.add(jLabelCorrreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 96, 33));
 
         jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 160, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel4.setText("CONTRASEÑA");
+        jLabelContraseña.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        jLabelContraseña.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabelContraseña.setText("Contraseña");
+        jPanel1.add(jLabelContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 96, 33));
 
-        contraseñaTxt.setForeground(new java.awt.Color(204, 204, 204));
-        contraseñaTxt.setText("jPasswordField1");
-        contraseñaTxt.setBorder(null);
-        contraseñaTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+        contraseñaEstTxt.setForeground(new java.awt.Color(204, 204, 204));
+        contraseñaEstTxt.setText("jPasswordField1");
+        contraseñaEstTxt.setBorder(null);
+        contraseñaEstTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                contraseñaTxtMousePressed(evt);
+                contraseñaEstTxtMousePressed(evt);
             }
         });
-        contraseñaTxt.addActionListener(new java.awt.event.ActionListener() {
+        contraseñaEstTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                contraseñaTxtActionPerformed(evt);
+                contraseñaEstTxtActionPerformed(evt);
             }
         });
+        jPanel1.add(contraseñaEstTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 160, 30));
 
         SignUpBoton.setBackground(new java.awt.Color(1, 174, 250));
 
@@ -149,133 +207,269 @@ public class SignUpEstudiante extends javax.swing.JPanel {
             .addComponent(SignUpTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(contraseñaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jSeparator2)
-                            .addComponent(correoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jSeparator1)
-                            .addComponent(codigoTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(SignUpBoton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(29, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(codigoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(correoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(contraseñaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addComponent(SignUpBoton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
-        );
+        jPanel1.add(SignUpBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 350, -1, -1));
+
+        jLabelApellido.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        jLabelApellido.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabelApellido.setText("Apellido(s)");
+        jPanel1.add(jLabelApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 132, 33));
+
+        apellidoEstTxt.setForeground(new java.awt.Color(204, 204, 204));
+        apellidoEstTxt.setText("Ingrese su(s) Apellido(s)");
+        apellidoEstTxt.setBorder(null);
+        apellidoEstTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                apellidoEstTxtMousePressed(evt);
+            }
+        });
+        apellidoEstTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                apellidoEstTxtActionPerformed(evt);
+            }
+        });
+        jPanel1.add(apellidoEstTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 166, 30));
+
+        jLabelGenero.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        jLabelGenero.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabelGenero.setText("Genero");
+        jPanel1.add(jLabelGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 132, 33));
+
+        jSeparator5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 180, 10));
+
+        jSeparator6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, 170, -1));
+
+        jLabelConfirmarContraseña.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        jLabelConfirmarContraseña.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabelConfirmarContraseña.setText("Confirmar Contraseña");
+        jPanel1.add(jLabelConfirmarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 120, 33));
+
+        confirmarContraseñaEstTxt.setForeground(new java.awt.Color(204, 204, 204));
+        confirmarContraseñaEstTxt.setText("jPasswordField1");
+        confirmarContraseñaEstTxt.setBorder(null);
+        confirmarContraseñaEstTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                confirmarContraseñaEstTxtMousePressed(evt);
+            }
+        });
+        confirmarContraseñaEstTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmarContraseñaEstTxtActionPerformed(evt);
+            }
+        });
+        jPanel1.add(confirmarContraseñaEstTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, 170, 30));
+
+        jLabelID.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        jLabelID.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabelID.setText("ID");
+        jPanel1.add(jLabelID, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 132, 33));
+
+        IDEstTxt.setForeground(new java.awt.Color(204, 204, 204));
+        IDEstTxt.setText("Numero de Identificacion");
+        IDEstTxt.setBorder(null);
+        IDEstTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                IDEstTxtMousePressed(evt);
+            }
+        });
+        IDEstTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IDEstTxtActionPerformed(evt);
+            }
+        });
+        jPanel1.add(IDEstTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 166, 30));
+
+        jSeparator7.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 166, -1));
+
+        gMujer.setText("Mujer");
+        gMujer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gMujerActionPerformed(evt);
+            }
+        });
+        jPanel1.add(gMujer, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, 80, 30));
+
+        gHombre.setText("Hombre");
+        gHombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gHombreActionPerformed(evt);
+            }
+        });
+        jPanel1.add(gHombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, 80, 30));
+
+        jLabelFechaNacimiento.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        jLabelFechaNacimiento.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabelFechaNacimiento.setText("Fecha de nacimiento");
+        jPanel1.add(jLabelFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 132, 33));
+
+        jSeparator8.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 166, -1));
+        jPanel1.add(jCalendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 180, 110));
+
+        jSeparator9.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 320, 180, 10));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 410));
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
-    private void codigoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_codigoTxtMousePressed
-        if (codigoTxt.getText().equals("Ingrese su codigo estudiante")) {
-            codigoTxt.setText("");
-            codigoTxt.setForeground(Color.black);
+    private void nombreEstTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreEstTxtMousePressed
+        if (nombreEstTxt.getText().equals("Ingrese su(s) Nombre(s)")) {
+            nombreEstTxt.setText("");
+            nombreEstTxt.setForeground(Color.black);
         }
 
-        if (correoTxt.getText().isEmpty()) {
-            correoTxt.setText("Ingrese su correo");
-            correoTxt.setForeground(Color.gray);
+        if (correoEstTxt.getText().isEmpty()) {
+            correoEstTxt.setText("Ingrese su correo");
+            correoEstTxt.setForeground(Color.gray);
         }
 
-        if (String.valueOf(contraseñaTxt.getPassword()).isEmpty()) {
-            contraseñaTxt.setText("•••••••••••••••");
-            contraseñaTxt.setForeground(Color.gray);
+        if (String.valueOf(contraseñaEstTxt.getPassword()).isEmpty()) {
+            contraseñaEstTxt.setText("•••••••••••••••");
+            contraseñaEstTxt.setForeground(Color.gray);
         }
-    }//GEN-LAST:event_codigoTxtMousePressed
 
-    private void codigoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigoTxtActionPerformed
+        if (String.valueOf(confirmarContraseñaEstTxt.getPassword()).isEmpty()) {
+            confirmarContraseñaEstTxt.setText("•••••••••••••••");
+            confirmarContraseñaEstTxt.setForeground(Color.gray);
+        }
+
+        if (IDEstTxt.getText().isEmpty()) {
+            IDEstTxt.setText("Numero de Identificacion");
+            IDEstTxt.setForeground(Color.gray);
+        }
+
+        if (apellidoEstTxt.getText().isEmpty()) {
+            apellidoEstTxt.setText("Ingrese su(s) Apellido(s)");
+            apellidoEstTxt.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_nombreEstTxtMousePressed
+
+    private void nombreEstTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreEstTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_codigoTxtActionPerformed
+    }//GEN-LAST:event_nombreEstTxtActionPerformed
 
-    private void correoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_correoTxtMousePressed
-        if (correoTxt.getText().equals("")) {
-            correoTxt.setText("Ingrese su correo");
-            correoTxt.setForeground(Color.black);
+    private void correoEstTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_correoEstTxtMousePressed
+        if (correoEstTxt.getText().equals("Ingrese su correo")) {
+            correoEstTxt.setText("");
+            correoEstTxt.setForeground(Color.black);
         }
 
-        if (String.valueOf(codigoTxt.getText()).isEmpty()) {
-            codigoTxt.setText("Ingrese su codigo estudiante");
-            codigoTxt.setForeground(Color.gray);
+        if (nombreEstTxt.getText().isEmpty()) {
+            nombreEstTxt.setText("Ingrese su(s) Nombre(s)");
+            nombreEstTxt.setForeground(Color.gray);
         }
 
-        if (String.valueOf(contraseñaTxt.getPassword()).isEmpty()) {
-            contraseñaTxt.setText("•••••••••••••••");
-            contraseñaTxt.setForeground(Color.gray);
+        if (String.valueOf(contraseñaEstTxt.getPassword()).isEmpty()) {
+            contraseñaEstTxt.setText("•••••••••••••••");
+            contraseñaEstTxt.setForeground(Color.gray);
         }
-    }//GEN-LAST:event_correoTxtMousePressed
 
-    private void correoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoTxtActionPerformed
+        if (String.valueOf(confirmarContraseñaEstTxt.getPassword()).isEmpty()) {
+            confirmarContraseñaEstTxt.setText("•••••••••••••••");
+            confirmarContraseñaEstTxt.setForeground(Color.gray);
+        }
+
+        if (IDEstTxt.getText().isEmpty()) {
+            IDEstTxt.setText("Numero de Identificacion");
+            IDEstTxt.setForeground(Color.gray);
+        }
+
+        if (apellidoEstTxt.getText().isEmpty()) {
+            apellidoEstTxt.setText("Ingrese su(s) Apellido(s)");
+            apellidoEstTxt.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_correoEstTxtMousePressed
+
+    private void correoEstTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoEstTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_correoTxtActionPerformed
+    }//GEN-LAST:event_correoEstTxtActionPerformed
 
-    private void contraseñaTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contraseñaTxtMousePressed
-        if (contraseñaTxt.getText().equals("•••••••••••••••")) {
-            contraseñaTxt.setText("");
-            contraseñaTxt.setForeground(Color.black);
+    private void contraseñaEstTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contraseñaEstTxtMousePressed
+        if (String.valueOf(contraseñaEstTxt.getPassword()).equals("•••••••••••••••")) {
+            contraseñaEstTxt.setText("");
+            contraseñaEstTxt.setForeground(Color.black);
         }
 
-        if (String.valueOf(codigoTxt.getText()).isEmpty()) {
-            codigoTxt.setText("Ingrese su codigo estudiante");
-            codigoTxt.setForeground(Color.gray);
+        if (nombreEstTxt.getText().isEmpty()) {
+            nombreEstTxt.setText("Ingrese su(s) Nombre(s)");
+            nombreEstTxt.setForeground(Color.gray);
         }
 
-        if (String.valueOf(correoTxt.getText()).isEmpty()) {
-            correoTxt.setText("Ingrese su correo");
-            correoTxt.setForeground(Color.gray);
+        if (correoEstTxt.getText().isEmpty()) {
+            correoEstTxt.setText("Ingrese su correo");
+            correoEstTxt.setForeground(Color.gray);
         }
-    }//GEN-LAST:event_contraseñaTxtMousePressed
 
-    private void contraseñaTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contraseñaTxtActionPerformed
+        if (String.valueOf(confirmarContraseñaEstTxt.getPassword()).isEmpty()) {
+            confirmarContraseñaEstTxt.setText("•••••••••••••••");
+            confirmarContraseñaEstTxt.setForeground(Color.gray);
+        }
+
+        if (IDEstTxt.getText().isEmpty()) {
+            IDEstTxt.setText("Numero de Identificacion");
+            IDEstTxt.setForeground(Color.gray);
+        }
+
+        if (apellidoEstTxt.getText().isEmpty()) {
+            apellidoEstTxt.setText("Ingrese su(s) Apellido(s)");
+            apellidoEstTxt.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_contraseñaEstTxtMousePressed
+
+    private void contraseñaEstTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contraseñaEstTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_contraseñaTxtActionPerformed
+    }//GEN-LAST:event_contraseñaEstTxtActionPerformed
 
     private void SignUpTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignUpTxtMouseClicked
-        if (!esCorreoValido(correoTxt.getText())) {
+        if (!esCorreoValido(correoEstTxt.getText())) {
             javax.swing.JOptionPane.showMessageDialog(jPanel1, "Correo electrónico inválido");
-            correoTxt.requestFocus();
+            correoEstTxt.requestFocus();
+
+            return;
         } else {
-        
             javax.swing.JOptionPane.showMessageDialog(jPanel1, "Registrado Correctamente");
+
+        }
+
+        try {
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/plataforma", "root", "");
+            PreparedStatement pst = cn.prepareStatement("insert into estudiantes values(?,?,?,?,?,?,?,?,?,?,?,?)");
+
+            pst.setString(1, "000");
+            pst.setString(2, nombreEstTxt.getText().trim());
+            pst.setString(3, apellidoEstTxt.getText().trim());
+
+            java.util.Date date = jCalendar1.getDate();
+            java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+
+            pst.setDate(4, sqlDate);
+            pst.setString(5, correoEstTxt.getText().trim());
+
+            String genero;
+            if (gHombre.isSelected()) {
+                genero = "Hombre";
+            } else if (gMujer.isSelected()) {
+                genero = "Mujer";
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe seleccionar un género");
+                return;
+            }
+            pst.setString(6, genero);
+
+            pst.setString(7, String.valueOf(contraseñaEstTxt.getPassword()));
+
+            pst.setString(8, IDEstTxt.getText().trim());
+            pst.setString(9, "0");
+            pst.setString(10, "Estudiante");
+            pst.setString(11, "0");
+            pst.setString(12, "0");
+
+            pst.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }//GEN-LAST:event_SignUpTxtMouseClicked
 
@@ -287,6 +481,122 @@ public class SignUpEstudiante extends javax.swing.JPanel {
         SignUpBoton.setBackground(new Color(1, 174, 250));
     }//GEN-LAST:event_SignUpTxtMouseExited
 
+    private void apellidoEstTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_apellidoEstTxtMousePressed
+        if (apellidoEstTxt.getText().equals("Ingrese su(s) Apellido(s)")) {
+            apellidoEstTxt.setText("");
+            apellidoEstTxt.setForeground(Color.black);
+        }
+
+        if (nombreEstTxt.getText().isEmpty()) {
+            nombreEstTxt.setText("Ingrese su(s) Nombre(s)");
+            nombreEstTxt.setForeground(Color.gray);
+        }
+
+        if (correoEstTxt.getText().isEmpty()) {
+            correoEstTxt.setText("Ingrese su correo");
+            correoEstTxt.setForeground(Color.gray);
+        }
+
+        if (String.valueOf(contraseñaEstTxt.getPassword()).isEmpty()) {
+            contraseñaEstTxt.setText("•••••••••••••••");
+            contraseñaEstTxt.setForeground(Color.gray);
+        }
+
+        if (String.valueOf(confirmarContraseñaEstTxt.getPassword()).isEmpty()) {
+            confirmarContraseñaEstTxt.setText("•••••••••••••••");
+            confirmarContraseñaEstTxt.setForeground(Color.gray);
+        }
+
+        if (IDEstTxt.getText().isEmpty()) {
+            IDEstTxt.setText("Numero de Identificacion");
+            IDEstTxt.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_apellidoEstTxtMousePressed
+
+    private void apellidoEstTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoEstTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_apellidoEstTxtActionPerformed
+
+    private void confirmarContraseñaEstTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmarContraseñaEstTxtMousePressed
+        if (String.valueOf(confirmarContraseñaEstTxt.getPassword()).equals("•••••••••••••••")) {
+            confirmarContraseñaEstTxt.setText("");
+            confirmarContraseñaEstTxt.setForeground(Color.black);
+        }
+
+        if (nombreEstTxt.getText().isEmpty()) {
+            nombreEstTxt.setText("Ingrese su(s) Nombre(s)");
+            nombreEstTxt.setForeground(Color.gray);
+        }
+
+        if (correoEstTxt.getText().isEmpty()) {
+            correoEstTxt.setText("Ingrese su correo");
+            correoEstTxt.setForeground(Color.gray);
+        }
+
+        if (String.valueOf(contraseñaEstTxt.getPassword()).isEmpty()) {
+            contraseñaEstTxt.setText("•••••••••••••••");
+            contraseñaEstTxt.setForeground(Color.gray);
+        }
+
+        if (IDEstTxt.getText().isEmpty()) {
+            IDEstTxt.setText("Numero de Identificacion");
+            IDEstTxt.setForeground(Color.gray);
+        }
+
+        if (apellidoEstTxt.getText().isEmpty()) {
+            apellidoEstTxt.setText("Ingrese su(s) Apellido(s)");
+            apellidoEstTxt.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_confirmarContraseñaEstTxtMousePressed
+
+    private void confirmarContraseñaEstTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarContraseñaEstTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_confirmarContraseñaEstTxtActionPerformed
+
+    private void IDEstTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IDEstTxtMousePressed
+        if (IDEstTxt.getText().equals("Numero de Identificacion")) {
+            IDEstTxt.setText("");
+            IDEstTxt.setForeground(Color.black);
+        }
+
+        if (nombreEstTxt.getText().isEmpty()) {
+            nombreEstTxt.setText("Ingrese su(s) Nombre(s)");
+            nombreEstTxt.setForeground(Color.gray);
+        }
+
+        if (correoEstTxt.getText().isEmpty()) {
+            correoEstTxt.setText("Ingrese su correo");
+            correoEstTxt.setForeground(Color.gray);
+        }
+
+        if (String.valueOf(contraseñaEstTxt.getPassword()).isEmpty()) {
+            contraseñaEstTxt.setText("•••••••••••••••");
+            contraseñaEstTxt.setForeground(Color.gray);
+        }
+
+        if (String.valueOf(confirmarContraseñaEstTxt.getPassword()).isEmpty()) {
+            confirmarContraseñaEstTxt.setText("•••••••••••••••");
+            confirmarContraseñaEstTxt.setForeground(Color.gray);
+        }
+
+        if (apellidoEstTxt.getText().isEmpty()) {
+            apellidoEstTxt.setText("Ingrese su(s) Apellido(s)");
+            apellidoEstTxt.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_IDEstTxtMousePressed
+
+    private void IDEstTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDEstTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IDEstTxtActionPerformed
+
+    private void gMujerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gMujerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_gMujerActionPerformed
+
+    private void gHombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gHombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_gHombreActionPerformed
+
     public static boolean esCorreoValido(String correoElectronico) {
         String patron = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
 
@@ -296,9 +606,10 @@ public class SignUpEstudiante extends javax.swing.JPanel {
 
         return matcher.matches();
     }
-    
+
     private void configurarCamposTexto() {
-        codigoTxt.addKeyListener(new KeyAdapter() {
+
+        IDEstTxt.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
                 char caracter = e.getKeyChar();
@@ -309,84 +620,160 @@ public class SignUpEstudiante extends javax.swing.JPanel {
             }
         });
 
-        codigoTxt.setForeground(Color.gray);
-        codigoTxt.setText("Ingrese su codigo estudiante");
-        correoTxt.setForeground(Color.gray);
-        correoTxt.setText("Ingrese su correo");
-        contraseñaTxt.setForeground(Color.gray);
-        contraseñaTxt.setText("•••••••••••••••");
+        nombreEstTxt.setForeground(Color.gray);
+        nombreEstTxt.setText("Ingrese su(s) Nombre(s)");
+        apellidoEstTxt.setForeground(Color.gray);
+        apellidoEstTxt.setText("Ingrese su(s) Apellido(s)");
+        correoEstTxt.setForeground(Color.gray);
+        correoEstTxt.setText("Ingrese su correo");
+        contraseñaEstTxt.setForeground(Color.gray);
+        contraseñaEstTxt.setText("•••••••••••••••");
+        confirmarContraseñaEstTxt.setForeground(Color.gray);
+        confirmarContraseñaEstTxt.setText("•••••••••••••••");
+        IDEstTxt.setForeground(Color.gray);
+        IDEstTxt.setText("Numero de Identificacion");
 
         // Agregar FocusListener a cada campo de texto
-        codigoTxt.addFocusListener(new FocusListener() {
+        nombreEstTxt.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                if (codigoTxt.getText().equals("Ingrese su codigo estudiante")) {
-                    codigoTxt.setText("");
-                    codigoTxt.setForeground(Color.black);
+                if (nombreEstTxt.getText().equals("Ingrese su(s) Nombre(s)")) {
+                    nombreEstTxt.setText("");
+                    nombreEstTxt.setForeground(Color.black);
                 }
             }
 
             @Override
             public void focusLost(FocusEvent e) {
-                if (codigoTxt.getText().isEmpty()) {
-                    codigoTxt.setText("Ingrese su codigo estudiante");
-                    codigoTxt.setForeground(Color.gray);
+                if (nombreEstTxt.getText().isEmpty()) {
+                    nombreEstTxt.setText("Ingrese su(s) Nombre(s)");
+                    nombreEstTxt.setForeground(Color.gray);
                 }
             }
         });
 
-        correoTxt.addFocusListener(new FocusListener() {
+        apellidoEstTxt.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                if (correoTxt.getText().equals("Ingrese su correo")) {
-                    correoTxt.setText("");
-                    correoTxt.setForeground(Color.black);
+                if (apellidoEstTxt.getText().equals("Ingrese su(s) Nombre(s)")) {
+                    apellidoEstTxt.setText("");
+                    apellidoEstTxt.setForeground(Color.black);
                 }
             }
 
             @Override
             public void focusLost(FocusEvent e) {
-                if (correoTxt.getText().isEmpty()) {
-                    correoTxt.setText("Ingrese su correo");
-                    correoTxt.setForeground(Color.gray);
+                if (apellidoEstTxt.getText().isEmpty()) {
+                    apellidoEstTxt.setText("Ingrese su(s) Nombre(s)");
+                    apellidoEstTxt.setForeground(Color.gray);
                 }
             }
         });
 
-        contraseñaTxt.addFocusListener(new FocusListener() {
+        correoEstTxt.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                if (contraseñaTxt.getText().equals("•••••••••••••••")) {
-                    contraseñaTxt.setText("");
-                    contraseñaTxt.setForeground(Color.black);
+                if (correoEstTxt.getText().equals("Ingrese su correo")) {
+                    correoEstTxt.setText("");
+                    correoEstTxt.setForeground(Color.black);
                 }
             }
 
             @Override
             public void focusLost(FocusEvent e) {
-                if (String.valueOf(contraseñaTxt.getPassword()).isEmpty()) {
-                    contraseñaTxt.setText("•••••••••••••••");
-                    contraseñaTxt.setForeground(Color.gray);
+                if (correoEstTxt.getText().isEmpty()) {
+                    correoEstTxt.setText("Ingrese su correo");
+                    correoEstTxt.setForeground(Color.gray);
                 }
             }
         });
-        
-        
+
+        contraseñaEstTxt.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (contraseñaEstTxt.getText().equals("•••••••••••••••")) {
+                    contraseñaEstTxt.setText("");
+                    contraseñaEstTxt.setForeground(Color.black);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (String.valueOf(contraseñaEstTxt.getPassword()).isEmpty()) {
+                    contraseñaEstTxt.setText("•••••••••••••••");
+                    contraseñaEstTxt.setForeground(Color.gray);
+                }
+            }
+        });
+
+        confirmarContraseñaEstTxt.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (confirmarContraseñaEstTxt.getText().equals("•••••••••••••••")) {
+                    confirmarContraseñaEstTxt.setText("");
+                    confirmarContraseñaEstTxt.setForeground(Color.black);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (String.valueOf(confirmarContraseñaEstTxt.getPassword()).isEmpty()) {
+                    confirmarContraseñaEstTxt.setText("•••••••••••••••");
+                    confirmarContraseñaEstTxt.setForeground(Color.gray);
+                }
+            }
+        });
+
+        IDEstTxt.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (IDEstTxt.getText().equals("Numero de Identificacion")) {
+                    IDEstTxt.setText("");
+                    IDEstTxt.setForeground(Color.black);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (IDEstTxt.getText().isEmpty()) {
+                    IDEstTxt.setText("Numero de Identificacion");
+                    IDEstTxt.setForeground(Color.gray);
+                }
+            }
+        });
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField IDEstTxt;
     private javax.swing.JPanel SignUpBoton;
     private javax.swing.JLabel SignUpTxt;
-    private javax.swing.JTextField codigoTxt;
-    private javax.swing.JPasswordField contraseñaTxt;
-    private javax.swing.JTextField correoTxt;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JTextField apellidoEstTxt;
+    private javax.swing.ButtonGroup botonesGenero;
+    private javax.swing.JPasswordField confirmarContraseñaEstTxt;
+    private javax.swing.JPasswordField contraseñaEstTxt;
+    private javax.swing.JTextField correoEstTxt;
+    private javax.swing.JRadioButton gHombre;
+    private javax.swing.JRadioButton gMujer;
+    private com.toedter.calendar.JCalendar jCalendar1;
+    private javax.swing.JLabel jLabelApellido;
+    private javax.swing.JLabel jLabelConfirmarContraseña;
+    private javax.swing.JLabel jLabelContraseña;
+    private javax.swing.JLabel jLabelCorrreo;
+    private javax.swing.JLabel jLabelFechaNacimiento;
+    private javax.swing.JLabel jLabelGenero;
+    private javax.swing.JLabel jLabelID;
+    private javax.swing.JLabel jLabelImagen;
+    private javax.swing.JLabel jLabelNombre;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JTextField nombreEstTxt;
     // End of variables declaration//GEN-END:variables
 }
