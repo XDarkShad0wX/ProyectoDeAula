@@ -13,6 +13,13 @@ import java.awt.event.KeyEvent;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.SwingUtilities;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -213,15 +220,7 @@ public class LogInEstudiante extends javax.swing.JPanel {
             codigoEstTxt.setForeground(Color.black);
         }
 
-        if (correoEstTxt.getText().isEmpty()) {
-            correoEstTxt.setText("Ingrese su correo");
-            correoEstTxt.setForeground(Color.gray);
-        }
-
-        if (String.valueOf(contraseñaEstTxt.getPassword()).isEmpty()) {
-            contraseñaEstTxt.setText("•••••••••••••••");
-            contraseñaEstTxt.setForeground(Color.gray);
-        }
+        restaurarTextoPredeterminado();
     }//GEN-LAST:event_codigoEstTxtMousePressed
 
     private void codigoEstTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigoEstTxtActionPerformed
@@ -229,20 +228,12 @@ public class LogInEstudiante extends javax.swing.JPanel {
     }//GEN-LAST:event_codigoEstTxtActionPerformed
 
     private void correoEstTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_correoEstTxtMousePressed
-        if (correoEstTxt.getText().equals("")) {
-            correoEstTxt.setText("Ingrese su correo");
+        if (correoEstTxt.getText().equals("Ingrese su correo")) {
+            correoEstTxt.setText("");
             correoEstTxt.setForeground(Color.black);
         }
 
-        if (String.valueOf(codigoEstTxt.getText()).isEmpty()) {
-            codigoEstTxt.setText("Ingrese su codigo estudiante");
-            codigoEstTxt.setForeground(Color.gray);
-        }
-
-        if (String.valueOf(contraseñaEstTxt.getPassword()).isEmpty()) {
-            contraseñaEstTxt.setText("•••••••••••••••");
-            contraseñaEstTxt.setForeground(Color.gray);
-        }
+        restaurarTextoPredeterminado();
     }//GEN-LAST:event_correoEstTxtMousePressed
 
     private void correoEstTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoEstTxtActionPerformed
@@ -250,20 +241,12 @@ public class LogInEstudiante extends javax.swing.JPanel {
     }//GEN-LAST:event_correoEstTxtActionPerformed
 
     private void contraseñaEstTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contraseñaEstTxtMousePressed
-        if (contraseñaEstTxt.getText().equals("•••••••••••••••")) {
+        if (String.valueOf(contraseñaEstTxt.getPassword()).equals("•••••••••••••••")) {
             contraseñaEstTxt.setText("");
             contraseñaEstTxt.setForeground(Color.black);
         }
 
-        if (String.valueOf(codigoEstTxt.getText()).isEmpty()) {
-            codigoEstTxt.setText("Ingrese su codigo estudiante");
-            codigoEstTxt.setForeground(Color.gray);
-        }
-
-        if (String.valueOf(correoEstTxt.getText()).isEmpty()) {
-            correoEstTxt.setText("Ingrese su correo");
-            correoEstTxt.setForeground(Color.gray);
-        }
+        restaurarTextoPredeterminado();
     }//GEN-LAST:event_contraseñaEstTxtMousePressed
 
     private void contraseñaEstTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contraseñaEstTxtActionPerformed
@@ -274,9 +257,13 @@ public class LogInEstudiante extends javax.swing.JPanel {
         if (!validarEntrada()) {
             return;
         } else {
-            SwingUtilities.getWindowAncestor(this).dispose();
-            VentanaMenuEstudiante ventanaMenu = new VentanaMenuEstudiante();
-            ventanaMenu.setVisible(true);
+            if (validarEntradaBD()) {
+                SwingUtilities.getWindowAncestor(this).dispose();
+                VentanaMenuEstudiante ventanaMenu = new VentanaMenuEstudiante();
+                ventanaMenu.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "Los datos no son válidos. Por favor revisa e intenta de nuevo", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_loginTxtMouseClicked
 
@@ -289,67 +276,67 @@ public class LogInEstudiante extends javax.swing.JPanel {
     }//GEN-LAST:event_loginTxtMouseExited
 
     private void configurarCamposTexto() {
-        codigoEstTxt.setForeground(Color.gray);
-        codigoEstTxt.setText("Ingrese su codigo estudiante");
-        correoEstTxt.setForeground(Color.gray);
-        correoEstTxt.setText("Ingrese su correo");
-        contraseñaEstTxt.setForeground(Color.gray);
-        contraseñaEstTxt.setText("•••••••••••••••");
+        codigoEstTxt.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char caracter = e.getKeyChar();
+                if (!Character.isDigit(caracter)) {
+                    e.consume();
+                }
+            }
+        });
+        
+        TextosPredeterminado(codigoEstTxt, "Ingrese su codigo estudiante");
+        TextosPredeterminado(correoEstTxt, "Ingrese su correo");
+        TextosPredeterminado(contraseñaEstTxt, "•••••••••••••••");
+        
+        agregarFocusListener(codigoEstTxt, "Ingrese su codigo estudiante");
+        agregarFocusListener(correoEstTxt, "Ingrese su correo");
+        agregarFocusListener(contraseñaEstTxt, "•••••••••••••••");
 
-        // Agregar FocusListener a cada campo de texto
-        codigoEstTxt.addFocusListener(new FocusListener() {
+    }
+
+    private void TextosPredeterminado(javax.swing.JTextField campo, String texto) {
+        campo.setForeground(Color.gray);
+        campo.setText(texto);
+    }
+
+    private void agregarFocusListener(javax.swing.JTextField campo, String texto) {
+        campo.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                if (codigoEstTxt.getText().equals("Ingrese su codigo estudiante")) {
-                    codigoEstTxt.setText("");
-                    codigoEstTxt.setForeground(Color.black);
+                if (campo.getText().equals(texto)) {
+                    campo.setText("");
+                    campo.setForeground(Color.black);
                 }
             }
 
             @Override
             public void focusLost(FocusEvent e) {
-                if (codigoEstTxt.getText().isEmpty()) {
-                    codigoEstTxt.setText("Ingrese su codigo estudiante");
-                    codigoEstTxt.setForeground(Color.gray);
+                if (campo.getText().isEmpty()) {
+                    campo.setText(texto);
+                    campo.setForeground(Color.gray);
                 }
             }
         });
+    }
 
-        correoEstTxt.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                if (correoEstTxt.getText().equals("Ingrese su correo")) {
-                    correoEstTxt.setText("");
-                    correoEstTxt.setForeground(Color.black);
-                }
-            }
+    private void limpiarCampos() {
+        TextosPredeterminado(codigoEstTxt, "Ingrese su codigo estudiante");
+        TextosPredeterminado(correoEstTxt, "Ingrese su correo");
+        TextosPredeterminado(contraseñaEstTxt, "•••••••••••••••");
+    }
 
-            @Override
-            public void focusLost(FocusEvent e) {
-                if (correoEstTxt.getText().isEmpty()) {
-                    correoEstTxt.setText("Ingrese su correo");
-                    correoEstTxt.setForeground(Color.gray);
-                }
-            }
-        });
-
-        contraseñaEstTxt.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                if (contraseñaEstTxt.getText().equals("•••••••••••••••")) {
-                    contraseñaEstTxt.setText("");
-                    contraseñaEstTxt.setForeground(Color.black);
-                }
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                if (String.valueOf(contraseñaEstTxt.getPassword()).isEmpty()) {
-                    contraseñaEstTxt.setText("•••••••••••••••");
-                    contraseñaEstTxt.setForeground(Color.gray);
-                }
-            }
-        });
+    private void restaurarTextoPredeterminado() {
+        if (codigoEstTxt.getText().isEmpty()) {
+            TextosPredeterminado(codigoEstTxt, "Ingrese su codigo estudiante");
+        }
+        if (correoEstTxt.getText().isEmpty()) {
+            TextosPredeterminado(correoEstTxt, "Ingrese su correo");
+        }
+        if (String.valueOf(contraseñaEstTxt.getPassword()).isEmpty()) {
+            TextosPredeterminado(contraseñaEstTxt, "•••••••••••••••");
+        }
     }
 
     private static boolean esCorreoValido(String correoElectronico) {
@@ -363,7 +350,7 @@ public class LogInEstudiante extends javax.swing.JPanel {
     }
 
     private boolean validarEntrada() {
-        // Verificar que todos los campos estén llenos y no contengan el texto por defecto
+        // Verificar que todos los campos estén llenos
         if (codigoEstTxt.getText().isEmpty()
                 || codigoEstTxt.getText().equals("Ingrese su codigo estudiante")
                 || correoEstTxt.getText().isEmpty()
@@ -383,6 +370,29 @@ public class LogInEstudiante extends javax.swing.JPanel {
         }
 
         return true;
+    }
+
+    private boolean validarEntradaBD() {
+        String codigoEstudiante = codigoEstTxt.getText().trim();
+        String correo = correoEstTxt.getText().trim();
+        String contraseña = String.valueOf(contraseñaEstTxt.getPassword()).trim();
+
+        try {
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/plataforma", "root", "");
+            PreparedStatement pst = cn.prepareStatement("SELECT * FROM estudiantes WHERE Codigo_Estudiante=? AND Email=? AND Contraseña=?");
+
+            pst.setString(1, codigoEstudiante);
+            pst.setString(2, correo);
+            pst.setString(3, contraseña);
+
+            ResultSet rs = pst.executeQuery();
+
+            return rs.next(); // Si se encuentra un registro, es correcto
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

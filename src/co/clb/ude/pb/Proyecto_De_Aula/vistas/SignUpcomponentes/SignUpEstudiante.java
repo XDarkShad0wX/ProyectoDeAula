@@ -32,10 +32,7 @@ public class SignUpEstudiante extends javax.swing.JPanel {
         initComponents();
         configurarCamposTexto();
 
-        // ButtonGroup
         botonesGenero = new ButtonGroup();
-
-        // Agrega los RadioButtons al ButtonGroup
         botonesGenero.add(gHombre);
         botonesGenero.add(gMujer);
     }
@@ -304,30 +301,8 @@ public class SignUpEstudiante extends javax.swing.JPanel {
             nombreEstTxt.setForeground(Color.black);
         }
 
-        if (correoEstTxt.getText().isEmpty()) {
-            correoEstTxt.setText("Ingrese su correo");
-            correoEstTxt.setForeground(Color.gray);
-        }
+        restaurarTextoPredeterminado();
 
-        if (String.valueOf(contraseñaEstTxt.getPassword()).isEmpty()) {
-            contraseñaEstTxt.setText("•••••••••••••••");
-            contraseñaEstTxt.setForeground(Color.gray);
-        }
-
-        if (String.valueOf(confirmarContraseñaEstTxt.getPassword()).isEmpty()) {
-            confirmarContraseñaEstTxt.setText("•••••••••••••••");
-            confirmarContraseñaEstTxt.setForeground(Color.gray);
-        }
-
-        if (IDEstTxt.getText().isEmpty()) {
-            IDEstTxt.setText("Numero de Identificacion");
-            IDEstTxt.setForeground(Color.gray);
-        }
-
-        if (apellidoEstTxt.getText().isEmpty()) {
-            apellidoEstTxt.setText("Ingrese su(s) Apellido(s)");
-            apellidoEstTxt.setForeground(Color.gray);
-        }
     }//GEN-LAST:event_nombreEstTxtMousePressed
 
     private void nombreEstTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreEstTxtActionPerformed
@@ -340,30 +315,7 @@ public class SignUpEstudiante extends javax.swing.JPanel {
             correoEstTxt.setForeground(Color.black);
         }
 
-        if (nombreEstTxt.getText().isEmpty()) {
-            nombreEstTxt.setText("Ingrese su(s) Nombre(s)");
-            nombreEstTxt.setForeground(Color.gray);
-        }
-
-        if (String.valueOf(contraseñaEstTxt.getPassword()).isEmpty()) {
-            contraseñaEstTxt.setText("•••••••••••••••");
-            contraseñaEstTxt.setForeground(Color.gray);
-        }
-
-        if (String.valueOf(confirmarContraseñaEstTxt.getPassword()).isEmpty()) {
-            confirmarContraseñaEstTxt.setText("•••••••••••••••");
-            confirmarContraseñaEstTxt.setForeground(Color.gray);
-        }
-
-        if (IDEstTxt.getText().isEmpty()) {
-            IDEstTxt.setText("Numero de Identificacion");
-            IDEstTxt.setForeground(Color.gray);
-        }
-
-        if (apellidoEstTxt.getText().isEmpty()) {
-            apellidoEstTxt.setText("Ingrese su(s) Apellido(s)");
-            apellidoEstTxt.setForeground(Color.gray);
-        }
+        restaurarTextoPredeterminado();
     }//GEN-LAST:event_correoEstTxtMousePressed
 
     private void correoEstTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoEstTxtActionPerformed
@@ -376,30 +328,7 @@ public class SignUpEstudiante extends javax.swing.JPanel {
             contraseñaEstTxt.setForeground(Color.black);
         }
 
-        if (nombreEstTxt.getText().isEmpty()) {
-            nombreEstTxt.setText("Ingrese su(s) Nombre(s)");
-            nombreEstTxt.setForeground(Color.gray);
-        }
-
-        if (correoEstTxt.getText().isEmpty()) {
-            correoEstTxt.setText("Ingrese su correo");
-            correoEstTxt.setForeground(Color.gray);
-        }
-
-        if (String.valueOf(confirmarContraseñaEstTxt.getPassword()).isEmpty()) {
-            confirmarContraseñaEstTxt.setText("•••••••••••••••");
-            confirmarContraseñaEstTxt.setForeground(Color.gray);
-        }
-
-        if (IDEstTxt.getText().isEmpty()) {
-            IDEstTxt.setText("Numero de Identificacion");
-            IDEstTxt.setForeground(Color.gray);
-        }
-
-        if (apellidoEstTxt.getText().isEmpty()) {
-            apellidoEstTxt.setText("Ingrese su(s) Apellido(s)");
-            apellidoEstTxt.setForeground(Color.gray);
-        }
+        restaurarTextoPredeterminado();
     }//GEN-LAST:event_contraseñaEstTxtMousePressed
 
     private void contraseñaEstTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contraseñaEstTxtActionPerformed
@@ -414,8 +343,9 @@ public class SignUpEstudiante extends javax.swing.JPanel {
         if (!insertarEstudianteEnBD()) {
             // Manejo de errores si la inserción en la base de datos falla
         } else {
+
             javax.swing.JOptionPane.showMessageDialog(jPanel1, "Registrado Correctamente");
-            limpiarCampos(); // Limpia los campos después de que el registro sea exitoso
+            limpiarCampos();
         }
     }//GEN-LAST:event_SignUpTxtMouseClicked
 
@@ -433,30 +363,7 @@ public class SignUpEstudiante extends javax.swing.JPanel {
             apellidoEstTxt.setForeground(Color.black);
         }
 
-        if (nombreEstTxt.getText().isEmpty()) {
-            nombreEstTxt.setText("Ingrese su(s) Nombre(s)");
-            nombreEstTxt.setForeground(Color.gray);
-        }
-
-        if (correoEstTxt.getText().isEmpty()) {
-            correoEstTxt.setText("Ingrese su correo");
-            correoEstTxt.setForeground(Color.gray);
-        }
-
-        if (String.valueOf(contraseñaEstTxt.getPassword()).isEmpty()) {
-            contraseñaEstTxt.setText("•••••••••••••••");
-            contraseñaEstTxt.setForeground(Color.gray);
-        }
-
-        if (String.valueOf(confirmarContraseñaEstTxt.getPassword()).isEmpty()) {
-            confirmarContraseñaEstTxt.setText("•••••••••••••••");
-            confirmarContraseñaEstTxt.setForeground(Color.gray);
-        }
-
-        if (IDEstTxt.getText().isEmpty()) {
-            IDEstTxt.setText("Numero de Identificacion");
-            IDEstTxt.setForeground(Color.gray);
-        }
+        restaurarTextoPredeterminado();
     }//GEN-LAST:event_apellidoEstTxtMousePressed
 
     private void apellidoEstTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoEstTxtActionPerformed
@@ -469,30 +376,7 @@ public class SignUpEstudiante extends javax.swing.JPanel {
             confirmarContraseñaEstTxt.setForeground(Color.black);
         }
 
-        if (nombreEstTxt.getText().isEmpty()) {
-            nombreEstTxt.setText("Ingrese su(s) Nombre(s)");
-            nombreEstTxt.setForeground(Color.gray);
-        }
-
-        if (correoEstTxt.getText().isEmpty()) {
-            correoEstTxt.setText("Ingrese su correo");
-            correoEstTxt.setForeground(Color.gray);
-        }
-
-        if (String.valueOf(contraseñaEstTxt.getPassword()).isEmpty()) {
-            contraseñaEstTxt.setText("•••••••••••••••");
-            contraseñaEstTxt.setForeground(Color.gray);
-        }
-
-        if (IDEstTxt.getText().isEmpty()) {
-            IDEstTxt.setText("Numero de Identificacion");
-            IDEstTxt.setForeground(Color.gray);
-        }
-
-        if (apellidoEstTxt.getText().isEmpty()) {
-            apellidoEstTxt.setText("Ingrese su(s) Apellido(s)");
-            apellidoEstTxt.setForeground(Color.gray);
-        }
+        restaurarTextoPredeterminado();
     }//GEN-LAST:event_confirmarContraseñaEstTxtMousePressed
 
     private void confirmarContraseñaEstTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarContraseñaEstTxtActionPerformed
@@ -505,30 +389,7 @@ public class SignUpEstudiante extends javax.swing.JPanel {
             IDEstTxt.setForeground(Color.black);
         }
 
-        if (nombreEstTxt.getText().isEmpty()) {
-            nombreEstTxt.setText("Ingrese su(s) Nombre(s)");
-            nombreEstTxt.setForeground(Color.gray);
-        }
-
-        if (correoEstTxt.getText().isEmpty()) {
-            correoEstTxt.setText("Ingrese su correo");
-            correoEstTxt.setForeground(Color.gray);
-        }
-
-        if (String.valueOf(contraseñaEstTxt.getPassword()).isEmpty()) {
-            contraseñaEstTxt.setText("•••••••••••••••");
-            contraseñaEstTxt.setForeground(Color.gray);
-        }
-
-        if (String.valueOf(confirmarContraseñaEstTxt.getPassword()).isEmpty()) {
-            confirmarContraseñaEstTxt.setText("•••••••••••••••");
-            confirmarContraseñaEstTxt.setForeground(Color.gray);
-        }
-
-        if (apellidoEstTxt.getText().isEmpty()) {
-            apellidoEstTxt.setText("Ingrese su(s) Apellido(s)");
-            apellidoEstTxt.setForeground(Color.gray);
-        }
+        restaurarTextoPredeterminado();
     }//GEN-LAST:event_IDEstTxtMousePressed
 
     private void IDEstTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDEstTxtActionPerformed
@@ -543,162 +404,109 @@ public class SignUpEstudiante extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_gHombreActionPerformed
 
-
     private void configurarCamposTexto() {
-
         IDEstTxt.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
                 char caracter = e.getKeyChar();
-                // Verificar si el caracter no es un dígito
                 if (!Character.isDigit(caracter)) {
-                    e.consume(); // Esto consume el evento, evitando que el caracter sea insertado
+                    e.consume();
                 }
             }
         });
+        
+        nombreEstTxt.addKeyListener(new KeyAdapter() {
+        @Override
+        public void keyTyped(KeyEvent e) {
+            char caracter = e.getKeyChar();
+            if (!Character.isLetter(caracter) && !Character.isWhitespace(caracter)) {
+                e.consume();
+            }
+        }
+    });
 
-        nombreEstTxt.setForeground(Color.gray);
-        nombreEstTxt.setText("Ingrese su(s) Nombre(s)");
-        apellidoEstTxt.setForeground(Color.gray);
-        apellidoEstTxt.setText("Ingrese su(s) Apellido(s)");
-        correoEstTxt.setForeground(Color.gray);
-        correoEstTxt.setText("Ingrese su correo");
-        contraseñaEstTxt.setForeground(Color.gray);
-        contraseñaEstTxt.setText("•••••••••••••••");
-        confirmarContraseñaEstTxt.setForeground(Color.gray);
-        confirmarContraseñaEstTxt.setText("•••••••••••••••");
-        IDEstTxt.setForeground(Color.gray);
-        IDEstTxt.setText("Numero de Identificacion");
+    apellidoEstTxt.addKeyListener(new KeyAdapter() {
+        @Override
+        public void keyTyped(KeyEvent e) {
+            char caracter = e.getKeyChar();
+            if (!Character.isLetter(caracter) && !Character.isWhitespace(caracter)) {
+                e.consume();
+            }
+        }
+    });
 
-        // Agregar FocusListener a cada campo de texto
-        nombreEstTxt.addFocusListener(new FocusListener() {
+        TextosPredeterminado(nombreEstTxt, "Ingrese su(s) Nombre(s)");
+        TextosPredeterminado(apellidoEstTxt, "Ingrese su(s) Apellido(s)");
+        TextosPredeterminado(correoEstTxt, "Ingrese su correo");
+        TextosPredeterminado(contraseñaEstTxt, "•••••••••••••••");
+        TextosPredeterminado(confirmarContraseñaEstTxt, "•••••••••••••••");
+        TextosPredeterminado(IDEstTxt, "Numero de Identificacion");
+
+        agregarFocusListener(nombreEstTxt, "Ingrese su(s) Nombre(s)");
+        agregarFocusListener(apellidoEstTxt, "Ingrese su(s) Apellido(s)");
+        agregarFocusListener(correoEstTxt, "Ingrese su correo");
+        agregarFocusListener(contraseñaEstTxt, "•••••••••••••••");
+        agregarFocusListener(confirmarContraseñaEstTxt, "•••••••••••••••");
+        agregarFocusListener(IDEstTxt, "Numero de Identificacion");
+    }
+
+    private void TextosPredeterminado(javax.swing.JTextField campo, String texto) {
+        campo.setForeground(Color.gray);
+        campo.setText(texto);
+    }
+
+    private void agregarFocusListener(javax.swing.JTextField campo, String texto) {
+        campo.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                if (nombreEstTxt.getText().equals("Ingrese su(s) Nombre(s)")) {
-                    nombreEstTxt.setText("");
-                    nombreEstTxt.setForeground(Color.black);
+                if (campo.getText().equals(texto)) {
+                    campo.setText("");
+                    campo.setForeground(Color.black);
                 }
             }
 
             @Override
             public void focusLost(FocusEvent e) {
-                if (nombreEstTxt.getText().isEmpty()) {
-                    nombreEstTxt.setText("Ingrese su(s) Nombre(s)");
-                    nombreEstTxt.setForeground(Color.gray);
-                }
-            }
-        });
-
-        apellidoEstTxt.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                if (apellidoEstTxt.getText().equals("Ingrese su(s) Nombre(s)")) {
-                    apellidoEstTxt.setText("");
-                    apellidoEstTxt.setForeground(Color.black);
-                }
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                if (apellidoEstTxt.getText().isEmpty()) {
-                    apellidoEstTxt.setText("Ingrese su(s) Nombre(s)");
-                    apellidoEstTxt.setForeground(Color.gray);
-                }
-            }
-        });
-
-        correoEstTxt.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                if (correoEstTxt.getText().equals("Ingrese su correo")) {
-                    correoEstTxt.setText("");
-                    correoEstTxt.setForeground(Color.black);
-                }
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                if (correoEstTxt.getText().isEmpty()) {
-                    correoEstTxt.setText("Ingrese su correo");
-                    correoEstTxt.setForeground(Color.gray);
-                }
-            }
-        });
-
-        contraseñaEstTxt.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                if (contraseñaEstTxt.getText().equals("•••••••••••••••")) {
-                    contraseñaEstTxt.setText("");
-                    contraseñaEstTxt.setForeground(Color.black);
-                }
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                if (String.valueOf(contraseñaEstTxt.getPassword()).isEmpty()) {
-                    contraseñaEstTxt.setText("•••••••••••••••");
-                    contraseñaEstTxt.setForeground(Color.gray);
-                }
-            }
-        });
-
-        confirmarContraseñaEstTxt.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                if (confirmarContraseñaEstTxt.getText().equals("•••••••••••••••")) {
-                    confirmarContraseñaEstTxt.setText("");
-                    confirmarContraseñaEstTxt.setForeground(Color.black);
-                }
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                if (String.valueOf(confirmarContraseñaEstTxt.getPassword()).isEmpty()) {
-                    confirmarContraseñaEstTxt.setText("•••••••••••••••");
-                    confirmarContraseñaEstTxt.setForeground(Color.gray);
-                }
-            }
-        });
-
-        IDEstTxt.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                if (IDEstTxt.getText().equals("Numero de Identificacion")) {
-                    IDEstTxt.setText("");
-                    IDEstTxt.setForeground(Color.black);
-                }
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                if (IDEstTxt.getText().isEmpty()) {
-                    IDEstTxt.setText("Numero de Identificacion");
-                    IDEstTxt.setForeground(Color.gray);
+                if (campo.getText().isEmpty()) {
+                    campo.setText(texto);
+                    campo.setForeground(Color.gray);
                 }
             }
         });
     }
-    
+
     private void limpiarCampos() {
-        nombreEstTxt.setForeground(Color.gray);
-        nombreEstTxt.setText("Ingrese su(s) Nombre(s)");
-        apellidoEstTxt.setForeground(Color.gray);
-        apellidoEstTxt.setText("Ingrese su(s) Apellido(s)");
-        correoEstTxt.setForeground(Color.gray);
-        correoEstTxt.setText("Ingrese su correo");
-        contraseñaEstTxt.setForeground(Color.gray);
-        contraseñaEstTxt.setText("•••••••••••••••");
-        confirmarContraseñaEstTxt.setForeground(Color.gray);
-        confirmarContraseñaEstTxt.setText("•••••••••••••••");
-        IDEstTxt.setForeground(Color.gray);
-        IDEstTxt.setText("Numero de Identificacion");
+        TextosPredeterminado(nombreEstTxt, "Ingrese su(s) Nombre(s)");
+        TextosPredeterminado(apellidoEstTxt, "Ingrese su(s) Apellido(s)");
+        TextosPredeterminado(correoEstTxt, "Ingrese su correo");
+        TextosPredeterminado(contraseñaEstTxt, "•••••••••••••••");
+        TextosPredeterminado(confirmarContraseñaEstTxt, "•••••••••••••••");
+        TextosPredeterminado(IDEstTxt, "Numero de Identificacion");
         botonesGenero.clearSelection();
 
-        // Verificar si jCalendar1 es null antes de intentar establecer su fecha
         if (jCalendar1 != null) {
-            java.util.Date date = new java.util.Date(); // Obtiene la fecha actual
-            jCalendar1.setDate(date); // Establece la fecha actual en el JCalendar
+            jCalendar1.setDate(new java.util.Date());
+        }
+    }
+
+    private void restaurarTextoPredeterminado() {
+        if (nombreEstTxt.getText().isEmpty()) {
+            TextosPredeterminado(nombreEstTxt, "Ingrese su(s) Nombre(s)");
+        }
+        if (apellidoEstTxt.getText().isEmpty()) {
+            TextosPredeterminado(apellidoEstTxt, "Ingrese su(s) Apellido(s)");
+        }
+        if (correoEstTxt.getText().isEmpty()) {
+            TextosPredeterminado(correoEstTxt, "Ingrese su correo");
+        }
+        if (String.valueOf(contraseñaEstTxt.getPassword()).isEmpty()) {
+            TextosPredeterminado(contraseñaEstTxt, "•••••••••••••••");
+        }
+        if (String.valueOf(confirmarContraseñaEstTxt.getPassword()).isEmpty()) {
+            TextosPredeterminado(confirmarContraseñaEstTxt, "•••••••••••••••");
+        }
+        if (IDEstTxt.getText().isEmpty()) {
+            TextosPredeterminado(IDEstTxt, "Numero de Identificacion");
         }
     }
 
@@ -713,31 +521,27 @@ public class SignUpEstudiante extends javax.swing.JPanel {
 
         public static boolean esFechaValida(JCalendar jCalendar) {
             if (jCalendar.getDate() == null) {
-                return false; // La fecha no puede ser nula
+                return false;
             }
 
             java.util.Date fechaNacimiento = jCalendar.getDate();
             java.util.Calendar calNacimiento = java.util.Calendar.getInstance();
             calNacimiento.setTime(fechaNacimiento);
 
-            // Obtener la fecha actual
             java.util.Calendar calActual = java.util.Calendar.getInstance();
 
-            // Calcular la edad
             int edad = calActual.get(java.util.Calendar.YEAR) - calNacimiento.get(java.util.Calendar.YEAR);
             int mesActual = calActual.get(java.util.Calendar.MONTH);
             int mesNacimiento = calNacimiento.get(java.util.Calendar.MONTH);
             int diaActual = calActual.get(java.util.Calendar.DAY_OF_MONTH);
             int diaNacimiento = calNacimiento.get(java.util.Calendar.DAY_OF_MONTH);
 
-            // Ajustar la edad si aún no se ha cumplido el aniversario de nacimiento este año
             if (mesNacimiento > mesActual || (mesNacimiento == mesActual && diaNacimiento > diaActual)) {
                 edad--;
             }
 
-            // Verificar si la edad está dentro del rango deseado
-            int edadMinima = 18; // Edad mínima permitida
-            int edadMaxima = 100; // Edad máxima permitida
+            int edadMinima = 14;
+            int edadMaxima = 100;
 
             return (edad >= edadMinima && edad <= edadMaxima);
         }
@@ -745,80 +549,72 @@ public class SignUpEstudiante extends javax.swing.JPanel {
 
     private static boolean esCorreoValido(String correoElectronico) {
         String patron = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
-
         Pattern pattern = Pattern.compile(patron);
-
         Matcher matcher = pattern.matcher(correoElectronico);
-
         return matcher.matches();
     }
 
     private boolean validarGenero() {
-        if (!gHombre.isSelected() && !gMujer.isSelected()) {
-            return false;
-        }
-        return true;
+        return gHombre.isSelected() || gMujer.isSelected();
     }
 
     private boolean validarEntrada() {
-        
-        // Validar JCalendar
-        if (!ValidadorJCalendar.esFechaValida(jCalendar1)) {
-            javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe seleccionar una fecha valida");
-            return false;
-        }
-        
-        
-        // Verificar que todos los campos estén llenos
-        if (nombreEstTxt.getText().isEmpty()
-                || apellidoEstTxt.getText().isEmpty()
-                || correoEstTxt.getText().isEmpty()
-                || String.valueOf(contraseñaEstTxt.getPassword()).isEmpty()
-                || String.valueOf(confirmarContraseñaEstTxt.getPassword()).isEmpty()
-                || IDEstTxt.getText().isEmpty()
-                || !gHombre.isSelected() && !gMujer.isSelected()
-                || !ValidadorJCalendar.esFechaValida(jCalendar1)) {
-
-            javax.swing.JOptionPane.showMessageDialog(jPanel1, "Eres idiota o te parieron por el culo?, debes llenar todos los campos Hp");
-            return false;
-        }
-
-        // Validar que el ID es un número entero
-        try {
-            Integer.parseInt(IDEstTxt.getText().trim());
-        } catch (NumberFormatException e) {
-            javax.swing.JOptionPane.showMessageDialog(jPanel1, "El número de identificación debe ser un valor numérico.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
-
-        if (!esCorreoValido(correoEstTxt.getText())) {
-            javax.swing.JOptionPane.showMessageDialog(jPanel1, "Correo electrónico inválido");
-            correoEstTxt.requestFocus();
-            return false;
-        }
-
-        String contraseña = String.valueOf(contraseñaEstTxt.getPassword());
-        String confirmarContraseña = String.valueOf(confirmarContraseñaEstTxt.getPassword());
-
-        if (!ValidacionContrseña.contraseñasCoinciden(contraseña, confirmarContraseña)) {
-            javax.swing.JOptionPane.showMessageDialog(jPanel1, "Las contraseñas no coinciden");
-            return false;
-        }
-
-        if (!validarGenero()) {
-            javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe seleccionar un género");
-            return false;
-        }
-
-        // Otros controles de validación si es necesario
-        return true;
+    if (!ValidadorJCalendar.esFechaValida(jCalendar1)) {
+        javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe seleccionar una fecha valida", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        return false;
     }
+
+    if (!validarGenero()) {
+        javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe seleccionar su genero", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+
+    // Validar que el ID sea de 10 dígitos
+    if (IDEstTxt.getText().trim().length() != 10) {
+        javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe ingresar un numero de Identificacion valido", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    
+    // Validar que la contraseña tenga al menos 6 caracteres
+    if (String.valueOf(contraseñaEstTxt.getPassword()).trim().length() < 6) {
+        javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe ingresar una contraseña más larga (al menos 6 caracteres)", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+
+    if (!esCorreoValido(correoEstTxt.getText())) {
+        javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe Ingresar un correo electrónico válido.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+
+    String contraseña = String.valueOf(contraseñaEstTxt.getPassword());
+    String confirmarContraseña = String.valueOf(confirmarContraseñaEstTxt.getPassword());
+
+    if (!ValidacionContrseña.contraseñasCoinciden(contraseña, confirmarContraseña)) {
+        javax.swing.JOptionPane.showMessageDialog(jPanel1, "Las contraseñas no coinciden");
+        return false;
+    }
+
+    if (nombreEstTxt.getText().equals("Ingrese su(s) Nombre(s)")
+            || apellidoEstTxt.getText().equals("Ingrese su(s) Apellido(s)")
+            || correoEstTxt.getText().equals("Ingrese su correo")
+            || String.valueOf(contraseñaEstTxt.getPassword()).equals("•••••••••••••••")
+            || String.valueOf(confirmarContraseñaEstTxt.getPassword()).equals("•••••••••••••••")
+            || IDEstTxt.getText().equals("Numero de Identificacion")) {
+        javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe llenar todos los campos de informacion");
+        return false;
+    }
+    if (!ValidacionContrseña.contraseñasCoinciden(contraseña, confirmarContraseña)) {
+        javax.swing.JOptionPane.showMessageDialog(jPanel1, "Las contraseñas no coinciden");
+        return false;
+    }
+
+    return true;
+}
 
     private void mostrarCodigoEstudiante(ResultSet rs) throws SQLException {
         if (rs.next()) {
             int codigoEstudiante = rs.getInt(1);
-            String mensaje = "Su código de estudiante es: " + codigoEstudiante + ". \nADVERTENCIA: Guarde el código antes de presionar el botón 'OK'.";
-            javax.swing.JOptionPane.showMessageDialog(jPanel1, mensaje);
+            javax.swing.JOptionPane.showMessageDialog(jPanel1, "Su código de estudiante es: " + codigoEstudiante + ". \nADVERTENCIA: Guarde el código antes de presionar el botón 'OK'.", "Warning", javax.swing.JOptionPane.WARNING_MESSAGE);
         }
     }
 
@@ -841,17 +637,11 @@ public class SignUpEstudiante extends javax.swing.JPanel {
             pst.setString(6, genero);
 
             pst.setString(7, String.valueOf(contraseñaEstTxt.getPassword()));
-
-            // Convertir el valor de identificación a entero
+            
             int identificacion;
-            try {
-                identificacion = Integer.parseInt(IDEstTxt.getText().trim());
-            } catch (NumberFormatException e) {
-                javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe ingresar un numero de Identificacion.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-                return false;
-            }
+            identificacion = Integer.parseInt(IDEstTxt.getText().trim());
+            pst.setInt(8, identificacion);
 
-            pst.setInt(8, identificacion); // Usar el valor entero para la identificación
             pst.setString(9, "0");
             pst.setString(10, "Estudiante");
             pst.setString(11, "0");
