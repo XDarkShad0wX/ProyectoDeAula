@@ -184,7 +184,7 @@ public class PanelPrincipal extends javax.swing.JPanel {
 
         jPanelimagen.setBackground(new java.awt.Color(0, 0, 0, 0));
 
-        jLabelimagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/clb/ude/pb/Proyecto_De_Aula/vistas/imagenes/3d-binders-render-graphics-of-stylish-and-functional-binder-designs-perfect-for-organizing-and-securing-your-documents-projects-and-presentations-png (1).png"))); // NOI18N
+        jLabelimagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/clb/ude/pb/Proyecto_De_Aula/vistas/imagenes/imgCarpetas.png.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanelimagenLayout = new javax.swing.GroupLayout(jPanelimagen);
         jPanelimagen.setLayout(jPanelimagenLayout);
