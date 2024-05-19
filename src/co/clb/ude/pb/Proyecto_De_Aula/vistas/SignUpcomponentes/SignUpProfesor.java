@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package co.clb.ude.pb.Proyecto_De_Aula.vistas.SignUpcomponentes;
+
 import co.clb.ude.pb.Proyecto_De_Aula.vistas.gui.VentanaMenuProfesor;
+import com.toedter.calendar.JCalendar;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -11,7 +13,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.swing.SwingUtilities;
+import javax.swing.ButtonGroup;
 
 /**
  *
@@ -25,6 +27,10 @@ public class SignUpProfesor extends javax.swing.JPanel {
     public SignUpProfesor() {
         initComponents();
         configurarCamposTexto();
+        
+        botonesGenero = new ButtonGroup();
+        botonesGenero.add(gHombre);
+        botonesGenero.add(gMujer);
     }
 
     /**
@@ -36,6 +42,7 @@ public class SignUpProfesor extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        botonesGenero = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabelImagen = new javax.swing.JLabel();
         jLabelNombre = new javax.swing.JLabel();
@@ -290,30 +297,7 @@ public class SignUpProfesor extends javax.swing.JPanel {
             nombrePoTxt.setForeground(Color.black);
         }
 
-        if (correoPoTxt.getText().isEmpty()) {
-            correoPoTxt.setText("Ingrese su correo");
-            correoPoTxt.setForeground(Color.gray);
-        }
-
-        if (String.valueOf(contraseñaPoTxt.getPassword()).isEmpty()) {
-            contraseñaPoTxt.setText("•••••••••••••••");
-            contraseñaPoTxt.setForeground(Color.gray);
-        }
-
-        if (String.valueOf(confirmarContraseñaPoTxt.getPassword()).isEmpty()) {
-            confirmarContraseñaPoTxt.setText("•••••••••••••••");
-            confirmarContraseñaPoTxt.setForeground(Color.gray);
-        }
-
-        if (IDPoTxt.getText().isEmpty()) {
-            IDPoTxt.setText("Numero de Identificacion");
-            IDPoTxt.setForeground(Color.gray);
-        }
-
-        if (apellidoPoTxt.getText().isEmpty()) {
-            apellidoPoTxt.setText("Ingrese su(s) Apellido(s)");
-            apellidoPoTxt.setForeground(Color.gray);
-        }
+        restaurarTextoPredeterminado();
     }//GEN-LAST:event_nombrePoTxtMousePressed
 
     private void nombrePoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombrePoTxtActionPerformed
@@ -326,30 +310,7 @@ public class SignUpProfesor extends javax.swing.JPanel {
             correoPoTxt.setForeground(Color.black);
         }
 
-        if (nombrePoTxt.getText().isEmpty()) {
-            nombrePoTxt.setText("Ingrese su(s) Nombre(s)");
-            nombrePoTxt.setForeground(Color.gray);
-        }
-
-        if (String.valueOf(contraseñaPoTxt.getPassword()).isEmpty()) {
-            contraseñaPoTxt.setText("•••••••••••••••");
-            contraseñaPoTxt.setForeground(Color.gray);
-        }
-
-        if (String.valueOf(confirmarContraseñaPoTxt.getPassword()).isEmpty()) {
-            confirmarContraseñaPoTxt.setText("•••••••••••••••");
-            confirmarContraseñaPoTxt.setForeground(Color.gray);
-        }
-
-        if (IDPoTxt.getText().isEmpty()) {
-            IDPoTxt.setText("Numero de Identificacion");
-            IDPoTxt.setForeground(Color.gray);
-        }
-
-        if (apellidoPoTxt.getText().isEmpty()) {
-            apellidoPoTxt.setText("Ingrese su(s) Apellido(s)");
-            apellidoPoTxt.setForeground(Color.gray);
-        }
+        restaurarTextoPredeterminado();
     }//GEN-LAST:event_correoPoTxtMousePressed
 
     private void correoPoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoPoTxtActionPerformed
@@ -358,34 +319,11 @@ public class SignUpProfesor extends javax.swing.JPanel {
 
     private void contraseñaPoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contraseñaPoTxtMousePressed
         if (String.valueOf(contraseñaPoTxt.getPassword()).equals("•••••••••••••••")) {
-        contraseñaPoTxt.setText("");
-        contraseñaPoTxt.setForeground(Color.black);
+            contraseñaPoTxt.setText("");
+            contraseñaPoTxt.setForeground(Color.black);
         }
 
-        if (nombrePoTxt.getText().isEmpty()) {
-            nombrePoTxt.setText("Ingrese su(s) Nombre(s)");
-            nombrePoTxt.setForeground(Color.gray);
-        }
-
-        if (correoPoTxt.getText().isEmpty()) {
-            correoPoTxt.setText("Ingrese su correo");
-            correoPoTxt.setForeground(Color.gray);
-        }
-
-        if (String.valueOf(confirmarContraseñaPoTxt.getPassword()).isEmpty()) {
-            confirmarContraseñaPoTxt.setText("•••••••••••••••");
-            confirmarContraseñaPoTxt.setForeground(Color.gray);
-        }
-
-        if (IDPoTxt.getText().isEmpty()) {
-            IDPoTxt.setText("Numero de Identificacion");
-            IDPoTxt.setForeground(Color.gray);
-        }
-
-        if (apellidoPoTxt.getText().isEmpty()) {
-            apellidoPoTxt.setText("Ingrese su(s) Apellido(s)");
-            apellidoPoTxt.setForeground(Color.gray);
-        }
+        restaurarTextoPredeterminado();
     }//GEN-LAST:event_contraseñaPoTxtMousePressed
 
     private void contraseñaPoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contraseñaPoTxtActionPerformed
@@ -393,9 +331,8 @@ public class SignUpProfesor extends javax.swing.JPanel {
     }//GEN-LAST:event_contraseñaPoTxtActionPerformed
 
     private void SignUpTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignUpTxtMouseClicked
-        if (!esCorreoValido(correoPoTxt.getText())) {
-            javax.swing.JOptionPane.showMessageDialog(jPanel1, "Correo electrónico inválido");
-            correoPoTxt.requestFocus();
+        if (!validarEntrada()) {
+            return;
         } else {
 
             javax.swing.JOptionPane.showMessageDialog(jPanel1, "Registrado Correctamente");
@@ -416,30 +353,7 @@ public class SignUpProfesor extends javax.swing.JPanel {
             apellidoPoTxt.setForeground(Color.black);
         }
 
-        if (nombrePoTxt.getText().isEmpty()) {
-            nombrePoTxt.setText("Ingrese su(s) Nombre(s)");
-            nombrePoTxt.setForeground(Color.gray);
-        }
-
-        if (correoPoTxt.getText().isEmpty()) {
-            correoPoTxt.setText("Ingrese su correo");
-            correoPoTxt.setForeground(Color.gray);
-        }
-
-        if (String.valueOf(contraseñaPoTxt.getPassword()).isEmpty()) {
-            contraseñaPoTxt.setText("•••••••••••••••");
-            contraseñaPoTxt.setForeground(Color.gray);
-        }
-
-        if (String.valueOf(confirmarContraseñaPoTxt.getPassword()).isEmpty()) {
-            confirmarContraseñaPoTxt.setText("•••••••••••••••");
-            confirmarContraseñaPoTxt.setForeground(Color.gray);
-        }
-
-        if (IDPoTxt.getText().isEmpty()) {
-            IDPoTxt.setText("Numero de Identificacion");
-            IDPoTxt.setForeground(Color.gray);
-        }
+        restaurarTextoPredeterminado();
     }//GEN-LAST:event_apellidoPoTxtMousePressed
 
     private void apellidoPoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoPoTxtActionPerformed
@@ -452,30 +366,7 @@ public class SignUpProfesor extends javax.swing.JPanel {
             confirmarContraseñaPoTxt.setForeground(Color.black);
         }
 
-        if (nombrePoTxt.getText().isEmpty()) {
-            nombrePoTxt.setText("Ingrese su(s) Nombre(s)");
-            nombrePoTxt.setForeground(Color.gray);
-        }
-
-        if (correoPoTxt.getText().isEmpty()) {
-            correoPoTxt.setText("Ingrese su correo");
-            correoPoTxt.setForeground(Color.gray);
-        }
-
-        if (String.valueOf(contraseñaPoTxt.getPassword()).isEmpty()) {
-            contraseñaPoTxt.setText("•••••••••••••••");
-            contraseñaPoTxt.setForeground(Color.gray);
-        }
-
-        if (IDPoTxt.getText().isEmpty()) {
-            IDPoTxt.setText("Numero de Identificacion");
-            IDPoTxt.setForeground(Color.gray);
-        }
-
-        if (apellidoPoTxt.getText().isEmpty()) {
-            apellidoPoTxt.setText("Ingrese su(s) Apellido(s)");
-            apellidoPoTxt.setForeground(Color.gray);
-        }
+        restaurarTextoPredeterminado();
     }//GEN-LAST:event_confirmarContraseñaPoTxtMousePressed
 
     private void confirmarContraseñaPoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarContraseñaPoTxtActionPerformed
@@ -488,30 +379,7 @@ public class SignUpProfesor extends javax.swing.JPanel {
             IDPoTxt.setForeground(Color.black);
         }
 
-        if (nombrePoTxt.getText().isEmpty()) {
-            nombrePoTxt.setText("Ingrese su(s) Nombre(s)");
-            nombrePoTxt.setForeground(Color.gray);
-        }
-
-        if (correoPoTxt.getText().isEmpty()) {
-            correoPoTxt.setText("Ingrese su correo");
-            correoPoTxt.setForeground(Color.gray);
-        }
-
-        if (String.valueOf(contraseñaPoTxt.getPassword()).isEmpty()) {
-            contraseñaPoTxt.setText("•••••••••••••••");
-            contraseñaPoTxt.setForeground(Color.gray);
-        }
-
-        if (String.valueOf(confirmarContraseñaPoTxt.getPassword()).isEmpty()) {
-            confirmarContraseñaPoTxt.setText("•••••••••••••••");
-            confirmarContraseñaPoTxt.setForeground(Color.gray);
-        }
-
-        if (apellidoPoTxt.getText().isEmpty()) {
-            apellidoPoTxt.setText("Ingrese su(s) Apellido(s)");
-            apellidoPoTxt.setForeground(Color.gray);
-        }
+        restaurarTextoPredeterminado();
     }//GEN-LAST:event_IDPoTxtMousePressed
 
     private void IDPoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDPoTxtActionPerformed
@@ -526,156 +394,222 @@ public class SignUpProfesor extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_gHombreActionPerformed
 
-    public static boolean esCorreoValido(String correoElectronico) {
-        String patron = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
 
-        Pattern pattern = Pattern.compile(patron);
-
-        Matcher matcher = pattern.matcher(correoElectronico);
-
-        return matcher.matches();
-    }
-    
     private void configurarCamposTexto() {
         IDPoTxt.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
                 char caracter = e.getKeyChar();
-                // Verificar si el caracter no es un dígito
                 if (!Character.isDigit(caracter)) {
-                    e.consume(); // Esto consume el evento, evitando que el caracter sea insertado
+                    e.consume();
                 }
             }
         });
-        
-        nombrePoTxt.setForeground(Color.gray);
-        nombrePoTxt.setText("Ingrese su(s) Nombre(s)");
-        apellidoPoTxt.setForeground(Color.gray);
-        apellidoPoTxt.setText("Ingrese su(s) Apellido(s)");
-        correoPoTxt.setForeground(Color.gray);
-        correoPoTxt.setText("Ingrese su correo");
-        contraseñaPoTxt.setForeground(Color.gray);
-        contraseñaPoTxt.setText("•••••••••••••••");
-        confirmarContraseñaPoTxt.setForeground(Color.gray);
-        confirmarContraseñaPoTxt.setText("•••••••••••••••");
-        IDPoTxt.setForeground(Color.gray);
-        IDPoTxt.setText("Numero de Identificacion");
 
-        // Agregar FocusListener a cada campo de texto
-        nombrePoTxt.addFocusListener(new FocusListener() {
+        nombrePoTxt.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char caracter = e.getKeyChar();
+                if (!Character.isLetter(caracter) && !Character.isWhitespace(caracter)) {
+                    e.consume();
+                }
+            }
+        });
+
+        apellidoPoTxt.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char caracter = e.getKeyChar();
+                if (!Character.isLetter(caracter) && !Character.isWhitespace(caracter)) {
+                    e.consume();
+                }
+            }
+        });
+
+        TextosPredeterminado(nombrePoTxt, "Ingrese su(s) Nombre(s)");
+        TextosPredeterminado(apellidoPoTxt, "Ingrese su(s) Apellido(s)");
+        TextosPredeterminado(correoPoTxt, "Ingrese su correo");
+        TextosPredeterminado(contraseñaPoTxt, "•••••••••••••••");
+        TextosPredeterminado(confirmarContraseñaPoTxt, "•••••••••••••••");
+        TextosPredeterminado(IDPoTxt, "Numero de Identificacion");
+
+        agregarFocusListener(nombrePoTxt, "Ingrese su(s) Nombre(s)");
+        agregarFocusListener(apellidoPoTxt, "Ingrese su(s) Apellido(s)");
+        agregarFocusListener(correoPoTxt, "Ingrese su correo");
+        agregarFocusListener(contraseñaPoTxt, "•••••••••••••••");
+        agregarFocusListener(confirmarContraseñaPoTxt, "•••••••••••••••");
+        agregarFocusListener(IDPoTxt, "Numero de Identificacion");
+    }
+    
+    private void TextosPredeterminado(javax.swing.JTextField campo, String texto) {
+        campo.setForeground(Color.gray);
+        campo.setText(texto);
+    }
+
+    private void agregarFocusListener(javax.swing.JTextField campo, String texto) {
+        campo.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                if (nombrePoTxt.getText().equals("Ingrese su(s) Nombre(s)")) {
-                    nombrePoTxt.setText("");
-                    nombrePoTxt.setForeground(Color.black);
+                if (campo.getText().equals(texto)) {
+                    campo.setText("");
+                    campo.setForeground(Color.black);
                 }
             }
 
             @Override
             public void focusLost(FocusEvent e) {
-                if (nombrePoTxt.getText().isEmpty()) {
-                    nombrePoTxt.setText("Ingrese su(s) Nombre(s)");
-                    nombrePoTxt.setForeground(Color.gray);
-                }
-            }
-        });
-        
-        apellidoPoTxt.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                if (apellidoPoTxt.getText().equals("Ingrese su(s) Nombre(s)")) {
-                    apellidoPoTxt.setText("");
-                    apellidoPoTxt.setForeground(Color.black);
-                }
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                if (apellidoPoTxt.getText().isEmpty()) {
-                    apellidoPoTxt.setText("Ingrese su(s) Nombre(s)");
-                    apellidoPoTxt.setForeground(Color.gray);
-                }
-            }
-        });
-
-        correoPoTxt.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                if (correoPoTxt.getText().equals("Ingrese su correo")) {
-                    correoPoTxt.setText("");
-                    correoPoTxt.setForeground(Color.black);
-                }
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                if (correoPoTxt.getText().isEmpty()) {
-                    correoPoTxt.setText("Ingrese su correo");
-                    correoPoTxt.setForeground(Color.gray);
-                }
-            }
-        });
-
-        contraseñaPoTxt.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                if (contraseñaPoTxt.getText().equals("•••••••••••••••")) {
-                    contraseñaPoTxt.setText("");
-                    contraseñaPoTxt.setForeground(Color.black);
-                }
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                if (String.valueOf(contraseñaPoTxt.getPassword()).isEmpty()) {
-                    contraseñaPoTxt.setText("•••••••••••••••");
-                    contraseñaPoTxt.setForeground(Color.gray);
-                }
-            }
-        });
-        
-        confirmarContraseñaPoTxt.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                if (confirmarContraseñaPoTxt.getText().equals("•••••••••••••••")) {
-                    confirmarContraseñaPoTxt.setText("");
-                    confirmarContraseñaPoTxt.setForeground(Color.black);
-                }
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                if (String.valueOf(confirmarContraseñaPoTxt.getPassword()).isEmpty()) {
-                    confirmarContraseñaPoTxt.setText("•••••••••••••••");
-                    confirmarContraseñaPoTxt.setForeground(Color.gray);
-                }
-            }
-        });
-        
-        IDPoTxt.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                if (IDPoTxt.getText().equals("Numero de Identificacion")) {
-                    IDPoTxt.setText("");
-                    IDPoTxt.setForeground(Color.black);
-                }
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                if (IDPoTxt.getText().isEmpty()) {
-                    IDPoTxt.setText("Numero de Identificacion");
-                    IDPoTxt.setForeground(Color.gray);
+                if (campo.getText().isEmpty()) {
+                    campo.setText(texto);
+                    campo.setForeground(Color.gray);
                 }
             }
         });
     }
+
+    private void limpiarCampos() {
+        TextosPredeterminado(nombrePoTxt, "Ingrese su(s) Nombre(s)");
+        TextosPredeterminado(apellidoPoTxt, "Ingrese su(s) Apellido(s)");
+        TextosPredeterminado(correoPoTxt, "Ingrese su correo");
+        TextosPredeterminado(contraseñaPoTxt, "•••••••••••••••");
+        TextosPredeterminado(confirmarContraseñaPoTxt, "•••••••••••••••");
+        TextosPredeterminado(IDPoTxt, "Numero de Identificacion");
+        botonesGenero.clearSelection();
+
+        if (jCalendar1 != null) {
+            jCalendar1.setDate(new java.util.Date());
+        }
+    }
+
+    private void restaurarTextoPredeterminado() {
+        if (nombrePoTxt.getText().isEmpty()) {
+            TextosPredeterminado(nombrePoTxt, "Ingrese su(s) Nombre(s)");
+        }
+        if (apellidoPoTxt.getText().isEmpty()) {
+            TextosPredeterminado(apellidoPoTxt, "Ingrese su(s) Apellido(s)");
+        }
+        if (correoPoTxt.getText().isEmpty()) {
+            TextosPredeterminado(correoPoTxt, "Ingrese su correo");
+        }
+        if (String.valueOf(contraseñaPoTxt.getPassword()).isEmpty()) {
+            TextosPredeterminado(contraseñaPoTxt, "•••••••••••••••");
+        }
+        if (String.valueOf(confirmarContraseñaPoTxt.getPassword()).isEmpty()) {
+            TextosPredeterminado(confirmarContraseñaPoTxt, "•••••••••••••••");
+        }
+        if (IDPoTxt.getText().isEmpty()) {
+            TextosPredeterminado(IDPoTxt, "Numero de Identificacion");
+        }
+    }
+    
+    // Fin de metodos visuales
+    
+    private class ValidacionContrseña {
+
+        public static boolean contraseñasCoinciden(String contraseña, String confirmarContraseña) {
+            return contraseña.equals(confirmarContraseña);
+        }
+    }
+
+    private class ValidadorJCalendar {
+
+        public static boolean esFechaValida(JCalendar jCalendar) {
+            if (jCalendar.getDate() == null) {
+                return false;
+            }
+
+            java.util.Date fechaNacimiento = jCalendar.getDate();
+            java.util.Calendar calNacimiento = java.util.Calendar.getInstance();
+            calNacimiento.setTime(fechaNacimiento);
+
+            java.util.Calendar calActual = java.util.Calendar.getInstance();
+
+            int edad = calActual.get(java.util.Calendar.YEAR) - calNacimiento.get(java.util.Calendar.YEAR);
+            int mesActual = calActual.get(java.util.Calendar.MONTH);
+            int mesNacimiento = calNacimiento.get(java.util.Calendar.MONTH);
+            int diaActual = calActual.get(java.util.Calendar.DAY_OF_MONTH);
+            int diaNacimiento = calNacimiento.get(java.util.Calendar.DAY_OF_MONTH);
+
+            if (mesNacimiento > mesActual || (mesNacimiento == mesActual && diaNacimiento > diaActual)) {
+                edad--;
+            }
+
+            int edadMinima = 14;
+            int edadMaxima = 100;
+
+            return (edad >= edadMinima && edad <= edadMaxima);
+        }
+    }
+
+    private static boolean esCorreoValido(String correoElectronico) {
+        String patron = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        Pattern pattern = Pattern.compile(patron);
+        Matcher matcher = pattern.matcher(correoElectronico);
+        return matcher.matches();
+    }
+
+    private boolean validarGenero() {
+        return gHombre.isSelected() || gMujer.isSelected();
+    }
+
+    private boolean validarEntrada() {
+    if (!ValidadorJCalendar.esFechaValida(jCalendar1)) {
+        javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe seleccionar una fecha valida", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+
+    if (!validarGenero()) {
+        javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe seleccionar su genero", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+
+    // Validar que el ID sea de 10 dígitos
+    if (IDPoTxt.getText().trim().length() != 8 && IDPoTxt.getText().trim().length() != 10 && IDPoTxt.getText().trim().length() != 11) {
+        javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe ingresar un numero de Identificacion valido", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    
+    // Validar que la contraseña tenga al menos 6 caracteres
+    if (String.valueOf(contraseñaPoTxt.getPassword()).trim().length() < 6) {
+        javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe ingresar una contraseña más larga (al menos 6 caracteres)", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+
+    if (!esCorreoValido(correoPoTxt.getText())) {
+        javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe Ingresar un correo electrónico válido.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+
+    String contraseña = String.valueOf(contraseñaPoTxt.getPassword());
+    String confirmarContraseña = String.valueOf(confirmarContraseñaPoTxt.getPassword());
+
+    if (!ValidacionContrseña.contraseñasCoinciden(contraseña, confirmarContraseña)) {
+        javax.swing.JOptionPane.showMessageDialog(jPanel1, "Las contraseñas no coinciden", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+
+    if (nombrePoTxt.getText().equals("Ingrese su(s) Nombre(s)")
+            || apellidoPoTxt.getText().equals("Ingrese su(s) Apellido(s)")
+            || correoPoTxt.getText().equals("Ingrese su correo")
+            || String.valueOf(contraseñaPoTxt.getPassword()).equals("•••••••••••••••")
+            || String.valueOf(confirmarContraseñaPoTxt.getPassword()).equals("•••••••••••••••")
+            || IDPoTxt.getText().equals("Numero de Identificacion")) {
+        javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe llenar todos los campos de informacion", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    if (!ValidacionContrseña.contraseñasCoinciden(contraseña, confirmarContraseña)) {
+        javax.swing.JOptionPane.showMessageDialog(jPanel1, "Las contraseñas no coinciden");
+        return false;
+    }
+
+    return true;
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField IDPoTxt;
     private javax.swing.JPanel SignUpBoton;
     private javax.swing.JLabel SignUpTxt;
     private javax.swing.JTextField apellidoPoTxt;
+    private javax.swing.ButtonGroup botonesGenero;
     private javax.swing.JPasswordField confirmarContraseñaPoTxt;
     private javax.swing.JPasswordField contraseñaPoTxt;
     private javax.swing.JTextField correoPoTxt;

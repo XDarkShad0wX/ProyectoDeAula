@@ -338,6 +338,9 @@ public class LogInEstudiante extends javax.swing.JPanel {
             TextosPredeterminado(contraseñaEstTxt, "•••••••••••••••");
         }
     }
+    
+    // Fin de metodos visuales
+
 
     private static boolean esCorreoValido(String correoElectronico) {
         String patron = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";

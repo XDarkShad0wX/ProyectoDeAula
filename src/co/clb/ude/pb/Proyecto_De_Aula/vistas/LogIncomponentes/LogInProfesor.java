@@ -39,7 +39,7 @@ public class LogInProfesor extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        codigoTxt = new javax.swing.JTextField();
+        IDTxt = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         correoTxt = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
@@ -63,17 +63,17 @@ public class LogInProfesor extends javax.swing.JPanel {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel2.setText("NUMERO DE ID");
 
-        codigoTxt.setForeground(new java.awt.Color(204, 204, 204));
-        codigoTxt.setText("Ingrese su numero de ID");
-        codigoTxt.setBorder(null);
-        codigoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+        IDTxt.setForeground(new java.awt.Color(204, 204, 204));
+        IDTxt.setText("Ingrese su numero de ID");
+        IDTxt.setBorder(null);
+        IDTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                codigoTxtMousePressed(evt);
+                IDTxtMousePressed(evt);
             }
         });
-        codigoTxt.addActionListener(new java.awt.event.ActionListener() {
+        IDTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                codigoTxtActionPerformed(evt);
+                IDTxtActionPerformed(evt);
             }
         });
 
@@ -169,7 +169,7 @@ public class LogInProfesor extends javax.swing.JPanel {
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jSeparator1)
-                            .addComponent(codigoTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE)
+                            .addComponent(IDTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(loginBoton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(29, Short.MAX_VALUE))
@@ -182,7 +182,7 @@ public class LogInProfesor extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(codigoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(IDTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -205,42 +205,26 @@ public class LogInProfesor extends javax.swing.JPanel {
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 410));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void codigoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_codigoTxtMousePressed
-        if (codigoTxt.getText().equals("Ingrese su codigo estudiante")) {
-            codigoTxt.setText("");
-            codigoTxt.setForeground(Color.black);
+    private void IDTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IDTxtMousePressed
+        if (IDTxt.getText().equals("Ingrese su codigo estudiante")) {
+            IDTxt.setText("");
+            IDTxt.setForeground(Color.black);
         }
 
-        if (correoTxt.getText().isEmpty()) {
-            correoTxt.setText("Ingrese su correo");
-            correoTxt.setForeground(Color.gray);
-        }
+        restaurarTextoPredeterminado();
+    }//GEN-LAST:event_IDTxtMousePressed
 
-        if (String.valueOf(contraseñaTxt.getPassword()).isEmpty()) {
-            contraseñaTxt.setText("•••••••••••••••");
-            contraseñaTxt.setForeground(Color.gray);
-        }
-    }//GEN-LAST:event_codigoTxtMousePressed
-
-    private void codigoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigoTxtActionPerformed
+    private void IDTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_codigoTxtActionPerformed
+    }//GEN-LAST:event_IDTxtActionPerformed
 
     private void correoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_correoTxtMousePressed
-        if (correoTxt.getText().equals("")) {
-            correoTxt.setText("Ingrese su correo");
+        if (correoTxt.getText().equals("Ingrese su correo")) {
+            correoTxt.setText("");
             correoTxt.setForeground(Color.black);
         }
 
-        if (String.valueOf(codigoTxt.getText()).isEmpty()) {
-            codigoTxt.setText("Ingrese su codigo estudiante");
-            codigoTxt.setForeground(Color.gray);
-        }
-
-        if (String.valueOf(contraseñaTxt.getPassword()).isEmpty()) {
-            contraseñaTxt.setText("•••••••••••••••");
-            contraseñaTxt.setForeground(Color.gray);
-        }
+        restaurarTextoPredeterminado();
     }//GEN-LAST:event_correoTxtMousePressed
 
     private void correoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoTxtActionPerformed
@@ -248,20 +232,12 @@ public class LogInProfesor extends javax.swing.JPanel {
     }//GEN-LAST:event_correoTxtActionPerformed
 
     private void contraseñaTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contraseñaTxtMousePressed
-        if (contraseñaTxt.getText().equals("•••••••••••••••")) {
+        if (String.valueOf(contraseñaTxt.getPassword()).equals("•••••••••••••••")) {
             contraseñaTxt.setText("");
             contraseñaTxt.setForeground(Color.black);
         }
 
-        if (String.valueOf(codigoTxt.getText()).isEmpty()) {
-            codigoTxt.setText("Ingrese su codigo estudiante");
-            codigoTxt.setForeground(Color.gray);
-        }
-
-        if (String.valueOf(correoTxt.getText()).isEmpty()) {
-            correoTxt.setText("Ingrese su correo");
-            correoTxt.setForeground(Color.gray);
-        }
+        restaurarTextoPredeterminado();
     }//GEN-LAST:event_contraseñaTxtMousePressed
 
     private void contraseñaTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contraseñaTxtActionPerformed
@@ -275,8 +251,6 @@ public class LogInProfesor extends javax.swing.JPanel {
         } else {
         
             SwingUtilities.getWindowAncestor(this).dispose();
-        
-        
             VentanaMenuProfesor ventanaMenuProfesor = new VentanaMenuProfesor();
             ventanaMenuProfesor.setVisible(true);
         }
@@ -290,7 +264,74 @@ public class LogInProfesor extends javax.swing.JPanel {
         loginBoton.setBackground(new Color(1, 174, 250));
     }//GEN-LAST:event_loginTxtMouseExited
 
-    public static boolean esCorreoValido(String correoElectronico) {
+    private void configurarCamposTexto() {
+        IDTxt.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char caracter = e.getKeyChar();
+                if (!Character.isDigit(caracter)) {
+                    e.consume();
+                }
+            }
+        });
+        
+        TextosPredeterminado(IDTxt, "Ingrese su codigo estudiante");
+        TextosPredeterminado(correoTxt, "Ingrese su correo");
+        TextosPredeterminado(contraseñaTxt, "•••••••••••••••");
+        
+        agregarFocusListener(IDTxt, "Ingrese su codigo estudiante");
+        agregarFocusListener(correoTxt, "Ingrese su correo");
+        agregarFocusListener(contraseñaTxt, "•••••••••••••••");
+
+    }
+
+    private void TextosPredeterminado(javax.swing.JTextField campo, String texto) {
+        campo.setForeground(Color.gray);
+        campo.setText(texto);
+    }
+
+    private void agregarFocusListener(javax.swing.JTextField campo, String texto) {
+        campo.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (campo.getText().equals(texto)) {
+                    campo.setText("");
+                    campo.setForeground(Color.black);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (campo.getText().isEmpty()) {
+                    campo.setText(texto);
+                    campo.setForeground(Color.gray);
+                }
+            }
+        });
+    }
+
+    private void limpiarCampos() {
+        TextosPredeterminado(IDTxt, "Ingrese su codigo estudiante");
+        TextosPredeterminado(correoTxt, "Ingrese su correo");
+        TextosPredeterminado(contraseñaTxt, "•••••••••••••••");
+    }
+
+    private void restaurarTextoPredeterminado() {
+        if (IDTxt.getText().isEmpty()) {
+            TextosPredeterminado(IDTxt, "Ingrese su codigo estudiante");
+        }
+        if (correoTxt.getText().isEmpty()) {
+            TextosPredeterminado(correoTxt, "Ingrese su correo");
+        }
+        if (String.valueOf(contraseñaTxt.getPassword()).isEmpty()) {
+            TextosPredeterminado(contraseñaTxt, "•••••••••••••••");
+        }
+    }
+    
+    // Fin de metodos visuales
+
+
+    private static boolean esCorreoValido(String correoElectronico) {
         String patron = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
 
         Pattern pattern = Pattern.compile(patron);
@@ -299,84 +340,9 @@ public class LogInProfesor extends javax.swing.JPanel {
 
         return matcher.matches();
     }
-    
-    private void configurarCamposTexto() {
-        codigoTxt.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                char caracter = e.getKeyChar();
-                // Verificar si el caracter no es un dígito
-                if (!Character.isDigit(caracter)) {
-                    e.consume(); // Esto consume el evento, evitando que el caracter sea insertado
-                }
-            }
-        });
-
-        codigoTxt.setForeground(Color.gray);
-        codigoTxt.setText("Ingrese su codigo estudiante");
-        correoTxt.setForeground(Color.gray);
-        correoTxt.setText("Ingrese su correo");
-        contraseñaTxt.setForeground(Color.gray);
-        contraseñaTxt.setText("•••••••••••••••");
-
-        // Agregar FocusListener a cada campo de texto
-        codigoTxt.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                if (codigoTxt.getText().equals("Ingrese su codigo estudiante")) {
-                    codigoTxt.setText("");
-                    codigoTxt.setForeground(Color.black);
-                }
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                if (codigoTxt.getText().isEmpty()) {
-                    codigoTxt.setText("Ingrese su codigo estudiante");
-                    codigoTxt.setForeground(Color.gray);
-                }
-            }
-        });
-
-        correoTxt.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                if (correoTxt.getText().equals("Ingrese su correo")) {
-                    correoTxt.setText("");
-                    correoTxt.setForeground(Color.black);
-                }
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                if (correoTxt.getText().isEmpty()) {
-                    correoTxt.setText("Ingrese su correo");
-                    correoTxt.setForeground(Color.gray);
-                }
-            }
-        });
-
-        contraseñaTxt.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                if (contraseñaTxt.getText().equals("•••••••••••••••")) {
-                    contraseñaTxt.setText("");
-                    contraseñaTxt.setForeground(Color.black);
-                }
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                if (String.valueOf(contraseñaTxt.getPassword()).isEmpty()) {
-                    contraseñaTxt.setText("•••••••••••••••");
-                    contraseñaTxt.setForeground(Color.gray);
-                }
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField codigoTxt;
+    private javax.swing.JTextField IDTxt;
     private javax.swing.JPasswordField contraseñaTxt;
     private javax.swing.JTextField correoTxt;
     private javax.swing.JLabel jLabel1;

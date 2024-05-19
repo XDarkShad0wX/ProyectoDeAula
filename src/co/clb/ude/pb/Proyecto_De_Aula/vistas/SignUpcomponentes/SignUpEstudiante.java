@@ -343,9 +343,7 @@ public class SignUpEstudiante extends javax.swing.JPanel {
         if (!insertarEstudianteEnBD()) {
             // Manejo de errores si la inserción en la base de datos falla
         } else {
-
             javax.swing.JOptionPane.showMessageDialog(jPanel1, "Registrado Correctamente");
-            limpiarCampos();
         }
     }//GEN-LAST:event_SignUpTxtMouseClicked
 
@@ -509,6 +507,8 @@ public class SignUpEstudiante extends javax.swing.JPanel {
             TextosPredeterminado(IDEstTxt, "Numero de Identificacion");
         }
     }
+    
+    // Fin de metodos visuales
 
     private class ValidacionContrseña {
 
@@ -570,7 +570,7 @@ public class SignUpEstudiante extends javax.swing.JPanel {
     }
 
     // Validar que el ID sea de 10 dígitos
-    if (IDEstTxt.getText().trim().length() != 10) {
+    if (IDEstTxt.getText().trim().length() != 8 && IDEstTxt.getText().trim().length() != 10 && IDEstTxt.getText().trim().length() != 11) {
         javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe ingresar un numero de Identificacion valido", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         return false;
     }
@@ -590,7 +590,7 @@ public class SignUpEstudiante extends javax.swing.JPanel {
     String confirmarContraseña = String.valueOf(confirmarContraseñaEstTxt.getPassword());
 
     if (!ValidacionContrseña.contraseñasCoinciden(contraseña, confirmarContraseña)) {
-        javax.swing.JOptionPane.showMessageDialog(jPanel1, "Las contraseñas no coinciden");
+        javax.swing.JOptionPane.showMessageDialog(jPanel1, "Las contraseñas no coinciden", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         return false;
     }
 
@@ -600,7 +600,7 @@ public class SignUpEstudiante extends javax.swing.JPanel {
             || String.valueOf(contraseñaEstTxt.getPassword()).equals("•••••••••••••••")
             || String.valueOf(confirmarContraseñaEstTxt.getPassword()).equals("•••••••••••••••")
             || IDEstTxt.getText().equals("Numero de Identificacion")) {
-        javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe llenar todos los campos de informacion");
+        javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe llenar todos los campos de informacion", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         return false;
     }
     if (!ValidacionContrseña.contraseñasCoinciden(contraseña, confirmarContraseña)) {
@@ -651,6 +651,7 @@ public class SignUpEstudiante extends javax.swing.JPanel {
 
             // Obtener el código de estudiante generado
             ResultSet rs = pst.getGeneratedKeys();
+            limpiarCampos();
             mostrarCodigoEstudiante(rs);
 
             return true;
