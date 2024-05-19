@@ -62,6 +62,8 @@ public class VentanaMenuEstudiante extends javax.swing.JFrame {
         planEstudioTxt = new javax.swing.JLabel();
         Reportes = new javax.swing.JPanel();
         reportesTxt = new javax.swing.JLabel();
+        CerrarSesionBoton = new javax.swing.JPanel();
+        CerrarSesionTxt = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -280,6 +282,43 @@ public class VentanaMenuEstudiante extends javax.swing.JFrame {
         );
 
         menuBotones2.add(Reportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 240, 50));
+
+        CerrarSesionBoton.setBackground(new java.awt.Color(1, 174, 250));
+
+        CerrarSesionTxt.setFont(new java.awt.Font("Eras Bold ITC", 0, 14)); // NOI18N
+        CerrarSesionTxt.setForeground(new java.awt.Color(255, 255, 255));
+        CerrarSesionTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        CerrarSesionTxt.setText("Cerrar sesión");
+        CerrarSesionTxt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        CerrarSesionTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        CerrarSesionTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CerrarSesionTxtMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                CerrarSesionTxtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                CerrarSesionTxtMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout CerrarSesionBotonLayout = new javax.swing.GroupLayout(CerrarSesionBoton);
+        CerrarSesionBoton.setLayout(CerrarSesionBotonLayout);
+        CerrarSesionBotonLayout.setHorizontalGroup(
+            CerrarSesionBotonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CerrarSesionBotonLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(CerrarSesionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        CerrarSesionBotonLayout.setVerticalGroup(
+            CerrarSesionBotonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CerrarSesionBotonLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(CerrarSesionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        menuBotones2.add(CerrarSesionBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, -1, -1));
 
         P2.add(menuBotones2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 240, 450));
 
@@ -526,6 +565,21 @@ public class VentanaMenuEstudiante extends javax.swing.JFrame {
         yMouse = evt.getY();
     }//GEN-LAST:event_BarraSuperiorMousePressed
 
+    private void CerrarSesionTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionTxtMouseClicked
+        this.dispose();  // Cierra la ventana actual
+
+        VentanaPrincipalLogIn ventanaPrincipalLogIn = new VentanaPrincipalLogIn();
+        ventanaPrincipalLogIn.setVisible(true);  // Abre la nueva ventana
+    }//GEN-LAST:event_CerrarSesionTxtMouseClicked
+
+    private void CerrarSesionTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionTxtMouseEntered
+        CerrarSesionBoton.setBackground(new Color(1, 105, 150));
+    }//GEN-LAST:event_CerrarSesionTxtMouseEntered
+
+    private void CerrarSesionTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionTxtMouseExited
+        CerrarSesionBoton.setBackground(new Color(1, 174, 250));
+    }//GEN-LAST:event_CerrarSesionTxtMouseExited
+
     private static String fecha(){
         Date fechaActual = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/YYYY");
@@ -573,6 +627,8 @@ public class VentanaMenuEstudiante extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Label Accion;
     private javax.swing.JPanel BarraSuperior;
+    private javax.swing.JPanel CerrarSesionBoton;
+    private javax.swing.JLabel CerrarSesionTxt;
     private javax.swing.JPanel ExitBoton;
     private javax.swing.JPanel Informacion;
     private javax.swing.JPanel Notas;
