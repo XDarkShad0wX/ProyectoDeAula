@@ -4,16 +4,28 @@
  */
 package co.clb.ude.pb.Proyecto_De_Aula.vistas.SignUpcomponentes;
 
-import co.clb.ude.pb.Proyecto_De_Aula.vistas.gui.VentanaMenuProfesor;
-import com.toedter.calendar.JCalendar;
+import java.awt.event.FocusAdapter;
+import java.sql.ResultSet;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import com.toedter.calendar.JTextFieldDateEditor;
+import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.ButtonGroup;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DocumentFilter;
 
 /**
  *
@@ -28,9 +40,9 @@ public class SignUpProfesor extends javax.swing.JPanel {
         initComponents();
         configurarCamposTexto();
         
-        botonesGenero = new ButtonGroup();
-        botonesGenero.add(gHombre);
-        botonesGenero.add(gMujer);
+        grupoGenero();
+
+        configurarDateChooser();
     }
 
     /**
@@ -70,8 +82,8 @@ public class SignUpProfesor extends javax.swing.JPanel {
         gHombre = new javax.swing.JRadioButton();
         jLabelFechaNacimiento = new javax.swing.JLabel();
         jSeparator8 = new javax.swing.JSeparator();
-        jCalendar1 = new com.toedter.calendar.JCalendar();
         jSeparator9 = new javax.swing.JSeparator();
+        jDateChooserPo = new com.toedter.calendar.JDateChooser();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -209,10 +221,10 @@ public class SignUpProfesor extends javax.swing.JPanel {
         jLabelGenero.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         jLabelGenero.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelGenero.setText("Genero");
-        jPanel1.add(jLabelGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 132, 33));
+        jPanel1.add(jLabelGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 132, 33));
 
         jSeparator5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 180, 10));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 180, 10));
 
         jSeparator6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, 170, -1));
@@ -266,7 +278,7 @@ public class SignUpProfesor extends javax.swing.JPanel {
                 gMujerActionPerformed(evt);
             }
         });
-        jPanel1.add(gMujer, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, 80, 30));
+        jPanel1.add(gMujer, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 190, 80, 30));
 
         gHombre.setText("Hombre");
         gHombre.addActionListener(new java.awt.event.ActionListener() {
@@ -274,7 +286,7 @@ public class SignUpProfesor extends javax.swing.JPanel {
                 gHombreActionPerformed(evt);
             }
         });
-        jPanel1.add(gHombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, 80, 30));
+        jPanel1.add(gHombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 80, 30));
 
         jLabelFechaNacimiento.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         jLabelFechaNacimiento.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -283,10 +295,10 @@ public class SignUpProfesor extends javax.swing.JPanel {
 
         jSeparator8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 166, -1));
-        jPanel1.add(jCalendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 180, 110));
 
         jSeparator9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 320, 180, 10));
+        jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 180, 10));
+        jPanel1.add(jDateChooserPo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 180, 30));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 410));
     }// </editor-fold>//GEN-END:initComponents
@@ -334,8 +346,12 @@ public class SignUpProfesor extends javax.swing.JPanel {
         if (!validarEntrada()) {
             return;
         } else {
-
-            javax.swing.JOptionPane.showMessageDialog(jPanel1, "Registrado Correctamente");
+            if (insertarProfesorBD()) {
+                javax.swing.JOptionPane.showMessageDialog(jPanel1, "Registrado Correctamente");
+                limpiarCampos();
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(jPanel1, "Error al registrar el profesor", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_SignUpTxtMouseClicked
 
@@ -394,7 +410,18 @@ public class SignUpProfesor extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_gHombreActionPerformed
 
+    private void configurarDateChooser() {
+        jDateChooserPo.setDateFormatString("d/MM/yyyy");
+        jDateChooserPo.getDateEditor().setEnabled(false);
+        jDateChooserPo.setSelectableDateRange(new java.util.Date(0), new java.util.Date()); // Esto permite seleccionar fechas hasta la fecha actual
+    }
 
+    private void grupoGenero() {
+        botonesGenero = new ButtonGroup();
+        botonesGenero.add(gHombre);
+        botonesGenero.add(gMujer);
+    }
+    
     private void configurarCamposTexto() {
         IDPoTxt.addKeyListener(new KeyAdapter() {
             @Override
@@ -440,7 +467,7 @@ public class SignUpProfesor extends javax.swing.JPanel {
         agregarFocusListener(confirmarContraseñaPoTxt, "•••••••••••••••");
         agregarFocusListener(IDPoTxt, "Numero de Identificacion");
     }
-    
+
     private void TextosPredeterminado(javax.swing.JTextField campo, String texto) {
         campo.setForeground(Color.gray);
         campo.setText(texto);
@@ -475,8 +502,11 @@ public class SignUpProfesor extends javax.swing.JPanel {
         TextosPredeterminado(IDPoTxt, "Numero de Identificacion");
         botonesGenero.clearSelection();
 
-        if (jCalendar1 != null) {
-            jCalendar1.setDate(new java.util.Date());
+        if (jDateChooserPo != null) {
+            JTextFieldDateEditor editor = (JTextFieldDateEditor) jDateChooserPo.getDateEditor();
+            editor.setText("dd/mm/yyyy");
+            editor.setForeground(Color.gray);
+            jDateChooserPo.setDate(null);
         }
     }
 
@@ -499,25 +529,24 @@ public class SignUpProfesor extends javax.swing.JPanel {
         if (IDPoTxt.getText().isEmpty()) {
             TextosPredeterminado(IDPoTxt, "Numero de Identificacion");
         }
-    }
-    
-    // Fin de metodos visuales
-    
-    private class ValidacionContrseña {
-
-        public static boolean contraseñasCoinciden(String contraseña, String confirmarContraseña) {
-            return contraseña.equals(confirmarContraseña);
+        
+        if (jDateChooserPo.getDate() == null) {
+            JTextFieldDateEditor editor = (JTextFieldDateEditor) jDateChooserPo.getDateEditor();
+            editor.setText("dd/mm/yyyy");
+            editor.setForeground(Color.gray);
         }
     }
 
-    private class ValidadorJCalendar {
+    // Fin de metodos visuales
+    
+    private class ValidadorJDateChooser {
 
-        public static boolean esFechaValida(JCalendar jCalendar) {
-            if (jCalendar.getDate() == null) {
+        public static boolean esFechaValida(JDateChooser jDateChooser) {
+            if (jDateChooser.getDate() == null) {
                 return false;
             }
 
-            java.util.Date fechaNacimiento = jCalendar.getDate();
+            java.util.Date fechaNacimiento = jDateChooser.getDate();
             java.util.Calendar calNacimiento = java.util.Calendar.getInstance();
             calNacimiento.setTime(fechaNacimiento);
 
@@ -533,10 +562,17 @@ public class SignUpProfesor extends javax.swing.JPanel {
                 edad--;
             }
 
-            int edadMinima = 14;
+            int edadMinima = 18;
             int edadMaxima = 100;
 
             return (edad >= edadMinima && edad <= edadMaxima);
+        }
+    }
+    
+    private class ValidacionContrseña {
+
+        public static boolean contraseñasCoinciden(String contraseña, String confirmarContraseña) {
+            return contraseña.equals(confirmarContraseña);
         }
     }
 
@@ -552,57 +588,92 @@ public class SignUpProfesor extends javax.swing.JPanel {
     }
 
     private boolean validarEntrada() {
-    if (!ValidadorJCalendar.esFechaValida(jCalendar1)) {
-        javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe seleccionar una fecha valida", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-        return false;
+        if (!ValidadorJDateChooser.esFechaValida(jDateChooserPo)) {
+            javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe seleccionar una fecha valida", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        if (!validarGenero()) {
+            javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe seleccionar su genero", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        // Validar que el ID sea de 10 dígitos
+        if (IDPoTxt.getText().trim().length() != 8 && IDPoTxt.getText().trim().length() != 10 && IDPoTxt.getText().trim().length() != 11) {
+            javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe ingresar un numero de Identificacion valido", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        // Validar que la contraseña tenga al menos 6 caracteres
+        if (String.valueOf(contraseñaPoTxt.getPassword()).trim().length() < 6) {
+            javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe ingresar una contraseña más larga (al menos 6 caracteres)", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        if (!esCorreoValido(correoPoTxt.getText())) {
+            javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe Ingresar un correo electrónico válido.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        String contraseña = String.valueOf(contraseñaPoTxt.getPassword());
+        String confirmarContraseña = String.valueOf(confirmarContraseñaPoTxt.getPassword());
+
+        if (!ValidacionContrseña.contraseñasCoinciden(contraseña, confirmarContraseña)) {
+            javax.swing.JOptionPane.showMessageDialog(jPanel1, "Las contraseñas no coinciden", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        if (nombrePoTxt.getText().equals("Ingrese su(s) Nombre(s)")
+                || apellidoPoTxt.getText().equals("Ingrese su(s) Apellido(s)")
+                || correoPoTxt.getText().equals("Ingrese su correo")
+                || String.valueOf(contraseñaPoTxt.getPassword()).equals("•••••••••••••••")
+                || String.valueOf(confirmarContraseñaPoTxt.getPassword()).equals("•••••••••••••••")
+                || IDPoTxt.getText().equals("Numero de Identificacion")) {
+            javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe llenar todos los campos de informacion", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if (!ValidacionContrseña.contraseñasCoinciden(contraseña, confirmarContraseña)) {
+            javax.swing.JOptionPane.showMessageDialog(jPanel1, "Las contraseñas no coinciden");
+            return false;
+        }
+
+        return true;
     }
 
-    if (!validarGenero()) {
-        javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe seleccionar su genero", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-        return false;
+    private boolean insertarProfesorBD() {
+        Connection cn = null;
+        PreparedStatement pst = null;
+
+        try {
+            cn = DriverManager.getConnection("jdbc:mysql://localhost/plataforma", "root", "");
+            pst = cn.prepareStatement("INSERT INTO profesores (Identificacion, Nombre, Apellidos, Email, Contraseña, Nacimiento, Genero, Tipo_Usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+
+            // Convertir la fecha de jCalendar a java.sql.Date
+            java.util.Date date = jDateChooserPo.getDate();
+            java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+
+            String genero = gHombre.isSelected() ? "Hombre" : "Mujer";
+
+            // Establecer los parámetros de la consulta SQL
+            pst.setInt(1, Integer.parseInt(IDPoTxt.getText().trim()));
+            pst.setString(2, nombrePoTxt.getText().trim());
+            pst.setString(3, apellidoPoTxt.getText().trim());
+            pst.setString(4, correoPoTxt.getText().trim());
+            pst.setString(5, String.valueOf(contraseñaPoTxt.getPassword()));
+            pst.setDate(6, sqlDate);
+            pst.setString(7, genero);
+            pst.setString(8, "Profesor");
+
+            // Ejecutar la consulta
+            int filasInsertadas = pst.executeUpdate();
+            return filasInsertadas > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
-    // Validar que el ID sea de 10 dígitos
-    if (IDPoTxt.getText().trim().length() != 8 && IDPoTxt.getText().trim().length() != 10 && IDPoTxt.getText().trim().length() != 11) {
-        javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe ingresar un numero de Identificacion valido", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-        return false;
-    }
-    
-    // Validar que la contraseña tenga al menos 6 caracteres
-    if (String.valueOf(contraseñaPoTxt.getPassword()).trim().length() < 6) {
-        javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe ingresar una contraseña más larga (al menos 6 caracteres)", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-        return false;
-    }
-
-    if (!esCorreoValido(correoPoTxt.getText())) {
-        javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe Ingresar un correo electrónico válido.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-        return false;
-    }
-
-    String contraseña = String.valueOf(contraseñaPoTxt.getPassword());
-    String confirmarContraseña = String.valueOf(confirmarContraseñaPoTxt.getPassword());
-
-    if (!ValidacionContrseña.contraseñasCoinciden(contraseña, confirmarContraseña)) {
-        javax.swing.JOptionPane.showMessageDialog(jPanel1, "Las contraseñas no coinciden", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-        return false;
-    }
-
-    if (nombrePoTxt.getText().equals("Ingrese su(s) Nombre(s)")
-            || apellidoPoTxt.getText().equals("Ingrese su(s) Apellido(s)")
-            || correoPoTxt.getText().equals("Ingrese su correo")
-            || String.valueOf(contraseñaPoTxt.getPassword()).equals("•••••••••••••••")
-            || String.valueOf(confirmarContraseñaPoTxt.getPassword()).equals("•••••••••••••••")
-            || IDPoTxt.getText().equals("Numero de Identificacion")) {
-        javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe llenar todos los campos de informacion", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-        return false;
-    }
-    if (!ValidacionContrseña.contraseñasCoinciden(contraseña, confirmarContraseña)) {
-        javax.swing.JOptionPane.showMessageDialog(jPanel1, "Las contraseñas no coinciden");
-        return false;
-    }
-
-    return true;
-}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField IDPoTxt;
@@ -615,7 +686,7 @@ public class SignUpProfesor extends javax.swing.JPanel {
     private javax.swing.JTextField correoPoTxt;
     private javax.swing.JRadioButton gHombre;
     private javax.swing.JRadioButton gMujer;
-    private com.toedter.calendar.JCalendar jCalendar1;
+    private com.toedter.calendar.JDateChooser jDateChooserPo;
     private javax.swing.JLabel jLabelApellido;
     private javax.swing.JLabel jLabelConfirmarContraseña;
     private javax.swing.JLabel jLabelContraseña;

@@ -3,14 +3,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package co.clb.ude.pb.Proyecto_De_Aula.vistas.LogIncomponentes;
+
 import co.clb.ude.pb.Proyecto_De_Aula.vistas.gui.VentanaMenuProfesor;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 /**
@@ -245,14 +252,16 @@ public class LogInProfesor extends javax.swing.JPanel {
     }//GEN-LAST:event_contraseñaTxtActionPerformed
 
     private void loginTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginTxtMouseClicked
-        if (!esCorreoValido(correoTxt.getText())) {
-            javax.swing.JOptionPane.showMessageDialog(jPanel1, "Correo electrónico inválido");
-            correoTxt.requestFocus();
+        if (!validarEntrada()) {
+            return;
         } else {
-        
-            SwingUtilities.getWindowAncestor(this).dispose();
-            VentanaMenuProfesor ventanaMenuProfesor = new VentanaMenuProfesor();
-            ventanaMenuProfesor.setVisible(true);
+            if (validarEntradaBD()) {
+                SwingUtilities.getWindowAncestor(this).dispose();
+                VentanaMenuProfesor ventanaMenu = new VentanaMenuProfesor();
+                ventanaMenu.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "Los datos no son válidos. Por favor revisa e intenta de nuevo", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_loginTxtMouseClicked
 
@@ -274,11 +283,11 @@ public class LogInProfesor extends javax.swing.JPanel {
                 }
             }
         });
-        
+
         TextosPredeterminado(IDTxt, "Ingrese su codigo estudiante");
         TextosPredeterminado(correoTxt, "Ingrese su correo");
         TextosPredeterminado(contraseñaTxt, "•••••••••••••••");
-        
+
         agregarFocusListener(IDTxt, "Ingrese su codigo estudiante");
         agregarFocusListener(correoTxt, "Ingrese su correo");
         agregarFocusListener(contraseñaTxt, "•••••••••••••••");
@@ -327,10 +336,8 @@ public class LogInProfesor extends javax.swing.JPanel {
             TextosPredeterminado(contraseñaTxt, "•••••••••••••••");
         }
     }
-    
+
     // Fin de metodos visuales
-
-
     private static boolean esCorreoValido(String correoElectronico) {
         String patron = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
 
@@ -339,6 +346,52 @@ public class LogInProfesor extends javax.swing.JPanel {
         Matcher matcher = pattern.matcher(correoElectronico);
 
         return matcher.matches();
+    }
+
+    private boolean validarEntrada() {
+        // Verificar que todos los campos estén llenos
+        if (IDTxt.getText().isEmpty()
+                || IDTxt.getText().equals("Ingrese su codigo estudiante")
+                || correoTxt.getText().isEmpty()
+                || correoTxt.getText().equals("Ingrese su correo")
+                || String.valueOf(contraseñaTxt.getPassword()).isEmpty()
+                || String.valueOf(contraseñaTxt.getPassword()).equals("•••••••••••••••")) {
+
+            javax.swing.JOptionPane.showMessageDialog(jPanel1, "IDENTIFICATE \nIdentificate en esta Mnda quien eres prro Hp \nQUE NO TE TENGO ANOTADO AQUI EN MI CELULAR, Mlparido cabeza e vrg \ntrple cabeza de mda IDENTIFICATE", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        // Verificar formato del correo electrónico
+        if (!esCorreoValido(correoTxt.getText())) {
+            javax.swing.JOptionPane.showMessageDialog(jPanel1, "Correo electrónico inválido");
+            correoTxt.requestFocus();
+            return false;
+        }
+
+        return true;
+    }
+
+    private boolean validarEntradaBD() {
+        String identificacionPo = IDTxt.getText().trim();
+        String correoPo = correoTxt.getText().trim();
+        String contraseñaPo = String.valueOf(contraseñaTxt.getPassword()).trim();
+
+        try {
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/plataforma", "root", "");
+            PreparedStatement pst = cn.prepareStatement("SELECT * FROM profesores WHERE Identificacion=? AND Email=? AND Contraseña=?");
+
+            pst.setString(1, identificacionPo);
+            pst.setString(2, correoPo);
+            pst.setString(3, contraseñaPo);
+
+            ResultSet rs = pst.executeQuery();
+
+            return rs.next(); // Si se encuentra un registro, es correcto
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
