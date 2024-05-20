@@ -4,8 +4,7 @@
  */
 package co.clb.ude.pb.Proyecto_De_Aula.vistas.SignUpcomponentes;
 
-import java.awt.event.FocusAdapter;
-import java.sql.ResultSet;
+import java.util.Objects;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -19,13 +18,9 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import javax.swing.ButtonGroup;
-import javax.swing.text.AbstractDocument;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.DocumentFilter;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -39,7 +34,7 @@ public class SignUpProfesor extends javax.swing.JPanel {
     public SignUpProfesor() {
         initComponents();
         configurarCamposTexto();
-        
+
         grupoGenero();
 
         configurarDateChooser();
@@ -421,7 +416,7 @@ public class SignUpProfesor extends javax.swing.JPanel {
         botonesGenero.add(gHombre);
         botonesGenero.add(gMujer);
     }
-    
+
     private void configurarCamposTexto() {
         IDPoTxt.addKeyListener(new KeyAdapter() {
             @Override
@@ -529,7 +524,7 @@ public class SignUpProfesor extends javax.swing.JPanel {
         if (IDPoTxt.getText().isEmpty()) {
             TextosPredeterminado(IDPoTxt, "Numero de Identificacion");
         }
-        
+
         if (jDateChooserPo.getDate() == null) {
             JTextFieldDateEditor editor = (JTextFieldDateEditor) jDateChooserPo.getDateEditor();
             editor.setText("dd/mm/yyyy");
@@ -538,7 +533,22 @@ public class SignUpProfesor extends javax.swing.JPanel {
     }
 
     // Fin de metodos visuales
-    
+    private static boolean accesoRegistroPo() {
+        String clave = "1234";
+        String pass = null;
+
+        while (!Objects.equals(pass, clave)) {
+            pass = javax.swing.JOptionPane.showInputDialog(null, "Introduce el código de acceso para poder registrarse como profesor (Admin)", "Warning", javax.swing.JOptionPane.WARNING_MESSAGE);
+
+            if (!Objects.equals(clave, pass)) {
+                javax.swing.JOptionPane.showMessageDialog(null, "Codigo de acceso no valido", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     private class ValidadorJDateChooser {
 
         public static boolean esFechaValida(JDateChooser jDateChooser) {
@@ -568,7 +578,7 @@ public class SignUpProfesor extends javax.swing.JPanel {
             return (edad >= edadMinima && edad <= edadMaxima);
         }
     }
-    
+
     private class ValidacionContrseña {
 
         public static boolean contraseñasCoinciden(String contraseña, String confirmarContraseña) {
@@ -633,7 +643,11 @@ public class SignUpProfesor extends javax.swing.JPanel {
             return false;
         }
         if (!ValidacionContrseña.contraseñasCoinciden(contraseña, confirmarContraseña)) {
-            javax.swing.JOptionPane.showMessageDialog(jPanel1, "Las contraseñas no coinciden");
+            javax.swing.JOptionPane.showMessageDialog(jPanel1, "Las contraseñas no coinciden", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        if (!accesoRegistroPo()) {
             return false;
         }
 
