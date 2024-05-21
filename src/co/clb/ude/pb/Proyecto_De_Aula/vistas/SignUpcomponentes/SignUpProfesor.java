@@ -14,13 +14,18 @@ import java.util.regex.Pattern;
 import com.toedter.calendar.JTextFieldDateEditor;
 import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 
 /**
  *
@@ -409,6 +414,7 @@ public class SignUpProfesor extends javax.swing.JPanel {
         jDateChooserPo.setDateFormatString("d/MM/yyyy");
         jDateChooserPo.getDateEditor().setEnabled(false);
         jDateChooserPo.setSelectableDateRange(new java.util.Date(0), new java.util.Date()); // Esto permite seleccionar fechas hasta la fecha actual
+       
     }
 
     private void grupoGenero() {
@@ -535,18 +541,33 @@ public class SignUpProfesor extends javax.swing.JPanel {
     // Fin de metodos visuales
     private static boolean accesoRegistroPo() {
         String clave = "1234";
-        String pass = null;
 
-        while (!Objects.equals(pass, clave)) {
-            pass = javax.swing.JOptionPane.showInputDialog(null, "Introduce el código de acceso para poder registrarse como profesor (Admin)", "Warning", javax.swing.JOptionPane.WARNING_MESSAGE);
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
-            if (!Objects.equals(clave, pass)) {
-                javax.swing.JOptionPane.showMessageDialog(null, "Codigo de acceso no valido", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        JLabel label = new JLabel("¡ADVERTENCIA! Necesita código de acceso para poder registrarse como profesor (Admin)");
+        JPasswordField passField = new JPasswordField(10);
+
+        panel.add(label);
+        panel.add(Box.createVerticalStrut(10)); // Añadir un espacio vertical entre el mensaje y el campo de texto
+        panel.add(passField);
+
+        String[] options = {"OK"};
+        int option = JOptionPane.showOptionDialog(null, panel, "Código de acceso",
+                JOptionPane.NO_OPTION, JOptionPane.WARNING_MESSAGE,
+                null, options, options[0]);
+
+        if (option == JOptionPane.OK_OPTION) {
+            String pass = new String(passField.getPassword());
+            if (!Objects.equals(pass, clave)) {
+                JOptionPane.showMessageDialog(null, "Código de acceso no válido", "Error", JOptionPane.ERROR_MESSAGE);
                 return false;
+            } else {
+                return true;
             }
+        } else {
+            return false; // El usuario canceló la operación
         }
-
-        return true;
     }
 
     private class ValidadorJDateChooser {
