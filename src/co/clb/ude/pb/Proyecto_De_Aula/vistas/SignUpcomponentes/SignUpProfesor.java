@@ -55,6 +55,7 @@ public class SignUpProfesor extends javax.swing.JPanel {
     private void initComponents() {
 
         botonesGenero = new javax.swing.ButtonGroup();
+        jSpinner1 = new javax.swing.JSpinner();
         jPanel1 = new javax.swing.JPanel();
         jLabelImagen = new javax.swing.JLabel();
         jLabelNombre = new javax.swing.JLabel();
@@ -771,6 +772,7 @@ public class SignUpProfesor extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTextField nombrePoTxt;
     // End of variables declaration//GEN-END:variables
 }
