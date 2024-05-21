@@ -20,7 +20,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.ButtonGroup;
 
-
 /**
  *
  * @author daniel
@@ -342,7 +341,7 @@ public class SignUpEstudiante extends javax.swing.JPanel {
         }
 
         if (!insertarEstudianteEnBD()) {
-            // Manejo de errores si la inserción en la base de datos falla
+            // javax.swing.JOptionPane.showMessageDialog(jPanel1, "No se pudo registrar el estudiante en la base de datos", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         } else {
             javax.swing.JOptionPane.showMessageDialog(jPanel1, "Registrado Correctamente");
         }
@@ -414,7 +413,7 @@ public class SignUpEstudiante extends javax.swing.JPanel {
         botonesGenero.add(gHombre);
         botonesGenero.add(gMujer);
     }
-    
+
     private void configurarCamposTexto() {
         IDEstTxt.addKeyListener(new KeyAdapter() {
             @Override
@@ -460,7 +459,7 @@ public class SignUpEstudiante extends javax.swing.JPanel {
         agregarFocusListener(confirmarContraseñaEstTxt, "•••••••••••••••");
         agregarFocusListener(IDEstTxt, "Numero de Identificacion");
     }
-    
+
     private void TextosPredeterminado(javax.swing.JTextField campo, String texto) {
         campo.setForeground(Color.gray);
         campo.setText(texto);
@@ -639,7 +638,58 @@ public class SignUpEstudiante extends javax.swing.JPanel {
         }
     }
 
+    private boolean usuarioExisteBd(String cedula, String correo, String nombre, String apellidos) {
+        Connection cn = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
+        try {
+            // Establecer conexión con la base de datos
+            cn = DriverManager.getConnection("jdbc:mysql://localhost/plataforma", "root", "");
+
+            // Consultar si existe un usuario con la misma cédula, correo, nombre y apellidos
+            String query = "SELECT * FROM estudiantes WHERE Identificacion = ? OR Email = ? OR (Nombre = ? AND Apellidos = ?)";
+            pst = cn.prepareStatement(query);
+            pst.setString(1, cedula);
+            pst.setString(2, correo);
+            pst.setString(3, nombre);
+            pst.setString(4, apellidos);
+            rs = pst.executeQuery();
+
+            // Si hay resultados, significa que el usuario ya existe
+            if (rs.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            javax.swing.JOptionPane.showMessageDialog(jPanel1, "Error al verificar el usuario: " + e.getMessage());
+            return true; // En caso de error, asumimos que el usuario existe para evitar problemas
+        } finally {
+            // Cerrar la conexión y liberar recursos
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (pst != null) {
+                    pst.close();
+                }
+                if (cn != null) {
+                    cn.close();
+                }
+            } catch (SQLException e) {
+                javax.swing.JOptionPane.showMessageDialog(jPanel1, "Error al cerrar la conexión: " + e.getMessage());
+            }
+        }
+    }
+
     private boolean insertarEstudianteEnBD() {
+        // Verifica si el usuario ya existe en la base de datos
+        if (usuarioExisteBd(IDEstTxt.getText(), correoEstTxt.getText(), nombreEstTxt.getText(), apellidoEstTxt.getText())) {
+            javax.swing.JOptionPane.showMessageDialog(jPanel1, "El usuario que intenta ingresar, ya existe", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return false; // No se inserta el usuario
+        }
+
         Connection cn = null;
         PreparedStatement pst = null;
 
@@ -668,10 +718,12 @@ public class SignUpEstudiante extends javax.swing.JPanel {
             limpiarCampos();
             mostrarCodigoEstudiante(rs);
 
-            return true;
+            return true; // Inserción exitosa
         } catch (SQLException e) {
             javax.swing.JOptionPane.showMessageDialog(jPanel1, "Error al registrar el estudiante: " + e.getMessage());
-            return false;
+            return false; // Inserción fallida
+        } finally {
+            // Cierre de conexiones
         }
     }
 

@@ -6,6 +6,7 @@ package co.clb.ude.pb.Proyecto_De_Aula.vistas.SignUpcomponentes;
 
 import java.util.Objects;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -14,7 +15,6 @@ import java.util.regex.Pattern;
 import com.toedter.calendar.JTextFieldDateEditor;
 import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyAdapter;
@@ -350,7 +350,7 @@ public class SignUpProfesor extends javax.swing.JPanel {
                 javax.swing.JOptionPane.showMessageDialog(jPanel1, "Registrado Correctamente");
                 limpiarCampos();
             } else {
-                javax.swing.JOptionPane.showMessageDialog(jPanel1, "Error al registrar el profesor", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+                //javax.swing.JOptionPane.showMessageDialog(jPanel1, "No se pudo registrar el profesor en la base de datos", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_SignUpTxtMouseClicked
@@ -414,7 +414,7 @@ public class SignUpProfesor extends javax.swing.JPanel {
         jDateChooserPo.setDateFormatString("d/MM/yyyy");
         jDateChooserPo.getDateEditor().setEnabled(false);
         jDateChooserPo.setSelectableDateRange(new java.util.Date(0), new java.util.Date()); // Esto permite seleccionar fechas hasta la fecha actual
-       
+
     }
 
     private void grupoGenero() {
@@ -678,9 +678,25 @@ public class SignUpProfesor extends javax.swing.JPanel {
     private boolean insertarProfesorBD() {
         Connection cn = null;
         PreparedStatement pst = null;
+        ResultSet rs = null;
 
         try {
+            // Establecer conexión a la base de datos
             cn = DriverManager.getConnection("jdbc:mysql://localhost/plataforma", "root", "");
+            // Consultar si el usuario ya existe por cédula o correo electrónico
+            String consulta = "SELECT * FROM profesores WHERE Identificacion = ? OR Email = ?";
+            pst = cn.prepareStatement(consulta);
+            pst.setInt(1, Integer.parseInt(IDPoTxt.getText().trim()));
+            pst.setString(2, correoPoTxt.getText().trim());
+            rs = pst.executeQuery();
+
+            // Verificar si se encontraron resultados
+            if (rs.next()) {
+                javax.swing.JOptionPane.showMessageDialog(jPanel1, "El usuario que intenta ingresar ya existe", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+                return false; // El usuario ya existe, abortar registro
+            }
+
+            // Insertar nuevo profesor si no existe duplicados
             pst = cn.prepareStatement("INSERT INTO profesores (Identificacion, Nombre, Apellidos, Email, Contraseña, Nacimiento, Genero, Tipo_Usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
             // Convertir la fecha de jCalendar a java.sql.Date
@@ -706,6 +722,21 @@ public class SignUpProfesor extends javax.swing.JPanel {
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        } finally {
+            // Cerrar recursos
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (pst != null) {
+                    pst.close();
+                }
+                if (cn != null) {
+                    cn.close();
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
         }
     }
 
