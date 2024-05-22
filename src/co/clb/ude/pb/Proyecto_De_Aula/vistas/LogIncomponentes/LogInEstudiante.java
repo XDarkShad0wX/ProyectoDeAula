@@ -4,6 +4,7 @@
  */
 package co.clb.ude.pb.Proyecto_De_Aula.vistas.LogIncomponentes;
 
+import co.clb.ude.pb.Proyecto_De_Aula.entidades.Usuario;
 import co.clb.ude.pb.Proyecto_De_Aula.vistas.gui.VentanaMenuEstudiante;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
@@ -25,6 +26,8 @@ import javax.swing.JOptionPane;
  * @author daniel
  */
 public class LogInEstudiante extends javax.swing.JPanel {
+
+        public static Usuario usuario;
 
     /**
      * Creates new form Estudiante
@@ -371,6 +374,8 @@ public class LogInEstudiante extends javax.swing.JPanel {
 
         return true;
     }
+    
+   
 
     private boolean validarEntradaBD() {
         String codigoEstudiante = codigoEstTxt.getText().trim();
@@ -384,9 +389,11 @@ public class LogInEstudiante extends javax.swing.JPanel {
             pst.setString(1, codigoEstudiante);
             pst.setString(2, correo);
             pst.setString(3, contraseña);
+            
+            
 
             ResultSet rs = pst.executeQuery();
-
+            
             return rs.next(); // Si se encuentra un registro, es correcto
 
         } catch (SQLException e) {

@@ -4,6 +4,8 @@
  */
 package co.clb.ude.pb.Proyecto_De_Aula.vistas.MenusEstudiante;
 
+import co.clb.ude.pb.Proyecto_De_Aula.entidades.Usuario;
+import co.clb.ude.pb.Proyecto_De_Aula.vistas.LogIncomponentes.LogInEstudiante;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JTextFieldDateEditor;
 import java.awt.Color;
@@ -31,12 +33,13 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
      * Creates new form PanelInfoEstudiante
      */
     public PanelInfoEstudiante() {
-        // this.estudianteId = estudianteId; // Establecer el ID del estudiante
         initComponents();
         configurarCamposTexto();
         grupoGenero();
         configurarDateChooser();
-        //cargarDatosEstudiante(); // Cargar datos al iniciar el panel
+        
+        //String name = LogInEstudiante.usuario.getNombres();
+       
     }
 
     /**
@@ -169,7 +172,7 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
         SignUpTxt.setFont(new java.awt.Font("Eras Bold ITC", 0, 14)); // NOI18N
         SignUpTxt.setForeground(new java.awt.Color(255, 255, 255));
         SignUpTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        SignUpTxt.setText("Guardar");
+        SignUpTxt.setText("modificar");
         SignUpTxt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         SignUpTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         SignUpTxt.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -332,7 +335,6 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
         jPanel1.add(jLabelCodigoEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, 130, 30));
 
         CodigoEstTxt.setForeground(new java.awt.Color(204, 204, 204));
-        CodigoEstTxt.setText("Numero de Codigo Estudiante");
         CodigoEstTxt.setBorder(null);
         CodigoEstTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -712,13 +714,13 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
             TextosPredeterminado(IDEstTxt, "Numero de Identificacion");
         }
         if (GrupoEstTxt.getText().isEmpty()) {
-            TextosPredeterminado(nombreEstTxt, "Ingrese el Nombre de la Carrera");
+            TextosPredeterminado(GrupoEstTxt, "Ingrese el Nombre de la Carrera");
         }
         if (TelefonoEstTxt.getText().isEmpty()) {
-            TextosPredeterminado(IDEstTxt, "Ingrese se numero de Telefono");
+            TextosPredeterminado(TelefonoEstTxt, "Ingrese se numero de Telefono");
         }
         if (SemestreEstTxt.getText().isEmpty()) {
-            TextosPredeterminado(IDEstTxt, "Ingrese el Semestre");
+            TextosPredeterminado(SemestreEstTxt, "Ingrese el Semestre");
         }
 
         if (jDateChooserEst.getDate() == null) {
@@ -836,109 +838,7 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
         return true;
     }
 
-    public static class DatabaseConnection {
-
-        private static final String URL = "jdbc:mysql://localhost/plataforma";
-        private static final String USER = "root";
-        private static final String PASSWORD = "";
-
-        public static Connection getConnection() throws SQLException {
-            return DriverManager.getConnection(URL, USER, PASSWORD);
-        }
-    }
-
-    /* public void cargarDatosEstudiante() {
-        String query = "SELECT Nombre, Apellidos, Email, Identificacion, Nacimiento, Genero, Telefono, Codigo, Grupo, Semestre FROM estudiantes WHERE id = ?";
-
-        try (Connection cn = DatabaseConnection.getConnection(); PreparedStatement pst = cn.prepareStatement(query)) {
-
-            pst.setInt(1, estudianteId); // Usar el ID del estudiante
-            ResultSet rs = pst.executeQuery();
-
-            if (rs.next()) {
-                nombreEstTxt.setText(rs.getString("Nombre"));
-                apellidoEstTxt.setText(rs.getString("Apellidos"));
-                correoEstTxt.setText(rs.getString("Email"));
-                IDEstTxt.setText(rs.getString("Identificacion"));
-                jDateChooserEst.setDate(rs.getDate("Nacimiento"));
-
-                String genero = rs.getString("Genero");
-                if ("Hombre".equals(genero)) {
-                    gHombre.setSelected(true);
-                } else if ("Mujer".equals(genero)) {
-                    gMujer.setSelected(true);
-                }
-
-                TelefonoEstTxt.setText(rs.getString("Telefono"));
-                CodigoEstTxt.setText(rs.getString("Codigo"));
-                GrupoEstTxt.setText(rs.getString("Grupo"));
-                SemestreEstTxt.setText(rs.getString("Semestre"));
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void actualizarDatosEstudiante(int estudianteId) {
-        String query = "UPDATE estudiantes SET Nombre = ?, Apellidos = ?, Email = ?, Identificacion = ?, Nacimiento = ?, Genero = ?, Telefono = ?, Codigo = ?, Grupo = ?, Semestre = ? WHERE id = ?";
-
-        try (Connection cn = DatabaseConnection.getConnection(); PreparedStatement pst = cn.prepareStatement(query)) {
-
-            pst.setString(1, nombreEstTxt.getText());
-            pst.setString(2, apellidoEstTxt.getText());
-            pst.setString(3, correoEstTxt.getText());
-            pst.setString(4, IDEstTxt.getText());
-            pst.setDate(5, new java.sql.Date(jDateChooserEst.getDate().getTime()));
-
-            String genero = gHombre.isSelected() ? "Hombre" : "Mujer";
-            pst.setString(6, genero);
-
-            pst.setString(7, TelefonoEstTxt.getText());
-            pst.setString(8, CodigoEstTxt.getText());
-            pst.setString(9, GrupoEstTxt.getText());
-            pst.setString(10, SemestreEstTxt.getText());
-            pst.setInt(11, estudianteId);
-
-            pst.executeUpdate();
-
-            javax.swing.JOptionPane.showMessageDialog(jPanel1, "Información actualizada correctamente");
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            javax.swing.JOptionPane.showMessageDialog(jPanel1, "Error al actualizar la información", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    private void actualizarDatosEstudiante(int estudianteId) {
-        String query = "UPDATE estudiantes SET Nombre = ?, Apellidos = ?, Email = ?, Identificacion = ?, Nacimiento = ?, Genero = ?, Telefono = ?, Codigo = ?, Grupo = ?, Semestre = ? WHERE id = ?";
-
-        try (Connection cn = DatabaseConnection.getConnection(); PreparedStatement pst = cn.prepareStatement(query)) {
-
-            pst.setString(1, nombreEstTxt.getText());
-            pst.setString(2, apellidoEstTxt.getText());
-            pst.setString(3, correoEstTxt.getText());
-            pst.setString(4, IDEstTxt.getText());
-            pst.setDate(5, new java.sql.Date(jDateChooserEst.getDate().getTime()));
-
-            String genero = gHombre.isSelected() ? "Hombre" : "Mujer";
-            pst.setString(6, genero);
-
-            pst.setString(7, TelefonoEstTxt.getText());
-            pst.setString(8, CodigoEstTxt.getText());
-            pst.setString(9, GrupoEstTxt.getText());
-            pst.setString(10, SemestreEstTxt.getText());
-            pst.setInt(11, estudianteId);
-
-            pst.executeUpdate();
-
-            javax.swing.JOptionPane.showMessageDialog(jPanel1, "Información actualizada correctamente");
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            javax.swing.JOptionPane.showMessageDialog(jPanel1, "Error al actualizar la información", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-        }
-    }*/
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField CodigoEstTxt;
