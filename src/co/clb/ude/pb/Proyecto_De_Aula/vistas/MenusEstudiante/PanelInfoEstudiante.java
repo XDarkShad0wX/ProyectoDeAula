@@ -22,6 +22,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
+import org.eclipse.persistence.eis.EISException;
 
 /**
  *
@@ -37,9 +38,8 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
         configurarCamposTexto();
         grupoGenero();
         configurarDateChooser();
-        
+
         //String name = LogInEstudiante.usuario.getNombres();
-       
     }
 
     /**
@@ -52,6 +52,7 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
     private void initComponents() {
 
         botonesGenero = new javax.swing.ButtonGroup();
+        SignUpTxt = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabelNombre = new javax.swing.JLabel();
         nombreEstTxt = new javax.swing.JTextField();
@@ -63,7 +64,7 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
         jLabelContraseña = new javax.swing.JLabel();
         nuevaContraseñaEstTxt = new javax.swing.JPasswordField();
         SignUpBoton = new javax.swing.JPanel();
-        SignUpTxt = new javax.swing.JLabel();
+        ActualizarTxt = new javax.swing.JLabel();
         jLabelApellido = new javax.swing.JLabel();
         apellidoEstTxt = new javax.swing.JTextField();
         jLabelGenero = new javax.swing.JLabel();
@@ -87,11 +88,32 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
         CodigoEstTxt = new javax.swing.JTextField();
         jSeparator11 = new javax.swing.JSeparator();
         jLabelGrupo = new javax.swing.JLabel();
-        GrupoEstTxt = new javax.swing.JTextField();
         jSeparator12 = new javax.swing.JSeparator();
         jLabelSemestre = new javax.swing.JLabel();
         SemestreEstTxt = new javax.swing.JTextField();
         jSeparator13 = new javax.swing.JSeparator();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        SignUpBoton1 = new javax.swing.JPanel();
+        SignUpTxt2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+
+        SignUpTxt.setFont(new java.awt.Font("Eras Bold ITC", 0, 14)); // NOI18N
+        SignUpTxt.setForeground(new java.awt.Color(255, 255, 255));
+        SignUpTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        SignUpTxt.setText("modificar");
+        SignUpTxt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        SignUpTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SignUpTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SignUpTxtMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                SignUpTxtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                SignUpTxtMouseExited(evt);
+            }
+        });
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -169,21 +191,21 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
 
         SignUpBoton.setBackground(new java.awt.Color(1, 174, 250));
 
-        SignUpTxt.setFont(new java.awt.Font("Eras Bold ITC", 0, 14)); // NOI18N
-        SignUpTxt.setForeground(new java.awt.Color(255, 255, 255));
-        SignUpTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        SignUpTxt.setText("modificar");
-        SignUpTxt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
-        SignUpTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        SignUpTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+        ActualizarTxt.setFont(new java.awt.Font("Eras Bold ITC", 0, 14)); // NOI18N
+        ActualizarTxt.setForeground(new java.awt.Color(255, 255, 255));
+        ActualizarTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ActualizarTxt.setText("Actualizar");
+        ActualizarTxt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        ActualizarTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ActualizarTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                SignUpTxtMouseClicked(evt);
+                ActualizarTxtMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                SignUpTxtMouseEntered(evt);
+                ActualizarTxtMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                SignUpTxtMouseExited(evt);
+                ActualizarTxtMouseExited(evt);
             }
         });
 
@@ -193,16 +215,16 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
             SignUpBotonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SignUpBotonLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(SignUpTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(ActualizarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         SignUpBotonLayout.setVerticalGroup(
             SignUpBotonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SignUpBotonLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(SignUpTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(ActualizarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(SignUpBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, -1, -1));
+        jPanel1.add(SignUpBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 370, -1, 30));
 
         jLabelApellido.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         jLabelApellido.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -227,7 +249,7 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
         jLabelGenero.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         jLabelGenero.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelGenero.setText("Genero");
-        jPanel1.add(jLabelGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, 130, 30));
+        jPanel1.add(jLabelGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 170, 130, 30));
 
         jSeparator5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, 170, 10));
@@ -284,7 +306,7 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
                 gMujerActionPerformed(evt);
             }
         });
-        jPanel1.add(gMujer, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 300, 80, 30));
+        jPanel1.add(gMujer, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 210, 80, 30));
 
         gHombre.setText("Hombre");
         gHombre.addActionListener(new java.awt.event.ActionListener() {
@@ -292,7 +314,7 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
                 gHombreActionPerformed(evt);
             }
         });
-        jPanel1.add(gHombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, 80, 30));
+        jPanel1.add(gHombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 210, 80, 30));
 
         jLabelFechaNacimiento.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         jLabelFechaNacimiento.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -303,7 +325,7 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
         jPanel1.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 170, -1));
 
         jSeparator9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 340, 170, 10));
+        jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 250, 170, 10));
         jPanel1.add(jDateChooserEst, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 170, 30));
 
         jLabelTelefono.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
@@ -332,7 +354,7 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
         jLabelCodigoEstudiante.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         jLabelCodigoEstudiante.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelCodigoEstudiante.setText("Codigo Estudiante");
-        jPanel1.add(jLabelCodigoEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, 130, 30));
+        jPanel1.add(jLabelCodigoEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 270, 140, 30));
 
         CodigoEstTxt.setForeground(new java.awt.Color(204, 204, 204));
         CodigoEstTxt.setBorder(null);
@@ -346,38 +368,23 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
                 CodigoEstTxtActionPerformed(evt);
             }
         });
-        jPanel1.add(CodigoEstTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, 170, 30));
+        jPanel1.add(CodigoEstTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, 180, 30));
 
         jSeparator11.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 80, 170, -1));
+        jPanel1.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, 180, 10));
 
         jLabelGrupo.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         jLabelGrupo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelGrupo.setText("Carrera");
-        jPanel1.add(jLabelGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 130, 30));
-
-        GrupoEstTxt.setForeground(new java.awt.Color(204, 204, 204));
-        GrupoEstTxt.setText("Ingrese el Nombre de la Carrera");
-        GrupoEstTxt.setBorder(null);
-        GrupoEstTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                GrupoEstTxtMousePressed(evt);
-            }
-        });
-        GrupoEstTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GrupoEstTxtActionPerformed(evt);
-            }
-        });
-        jPanel1.add(GrupoEstTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, 170, 30));
+        jPanel1.add(jLabelGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, 130, 30));
 
         jSeparator12.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, 170, 10));
+        jPanel1.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, 170, 10));
 
         jLabelSemestre.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         jLabelSemestre.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelSemestre.setText("Semestre");
-        jPanel1.add(jLabelSemestre, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 170, 130, 30));
+        jPanel1.add(jLabelSemestre, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, 130, 30));
 
         SemestreEstTxt.setForeground(new java.awt.Color(204, 204, 204));
         SemestreEstTxt.setText("Ingrese el Semestre");
@@ -392,10 +399,55 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
                 SemestreEstTxtActionPerformed(evt);
             }
         });
-        jPanel1.add(SemestreEstTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, 170, 30));
+        jPanel1.add(SemestreEstTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, 170, 30));
 
         jSeparator13.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 250, 170, -1));
+        jPanel1.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, 170, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "seleccione una carrera", "Ingeneria en sistemas", "Ingeneria industrial", "Ingeneria quimica", "licenciatura en bilinguismo" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 40, 170, 30));
+
+        SignUpBoton1.setBackground(new java.awt.Color(1, 174, 250));
+
+        SignUpTxt2.setFont(new java.awt.Font("Eras Bold ITC", 0, 14)); // NOI18N
+        SignUpTxt2.setForeground(new java.awt.Color(255, 255, 255));
+        SignUpTxt2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        SignUpTxt2.setText("Modificar");
+        SignUpTxt2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        SignUpTxt2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SignUpTxt2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SignUpTxt2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                SignUpTxt2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                SignUpTxt2MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout SignUpBoton1Layout = new javax.swing.GroupLayout(SignUpBoton1);
+        SignUpBoton1.setLayout(SignUpBoton1Layout);
+        SignUpBoton1Layout.setHorizontalGroup(
+            SignUpBoton1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(SignUpTxt2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+        );
+        SignUpBoton1Layout.setVerticalGroup(
+            SignUpBoton1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(SignUpTxt2, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(SignUpBoton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, -1, 30));
+
+        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel1.setText("Debe confirmar su codigo ");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 350, 150, -1));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 420));
     }// </editor-fold>//GEN-END:initComponents
@@ -529,19 +581,6 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_CodigoEstTxtActionPerformed
 
-    private void GrupoEstTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GrupoEstTxtMousePressed
-        if (GrupoEstTxt.getText().equals("Numero de Identificacion")) {
-            GrupoEstTxt.setText("");
-            GrupoEstTxt.setForeground(Color.black);
-        }
-
-        restaurarTextoPredeterminado();
-    }//GEN-LAST:event_GrupoEstTxtMousePressed
-
-    private void GrupoEstTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GrupoEstTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_GrupoEstTxtActionPerformed
-
     private void SemestreEstTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SemestreEstTxtMousePressed
         if (SemestreEstTxt.getText().equals("Numero de Identificacion")) {
             SemestreEstTxt.setText("");
@@ -554,6 +593,35 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
     private void SemestreEstTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SemestreEstTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SemestreEstTxtActionPerformed
+
+    private void ActualizarTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActualizarTxtMouseClicked
+        
+       botonactualizar();
+    }//GEN-LAST:event_ActualizarTxtMouseClicked
+
+    private void ActualizarTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActualizarTxtMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ActualizarTxtMouseEntered
+
+    private void ActualizarTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActualizarTxtMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ActualizarTxtMouseExited
+
+    private void SignUpTxt2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignUpTxt2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SignUpTxt2MouseClicked
+
+    private void SignUpTxt2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignUpTxt2MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SignUpTxt2MouseEntered
+
+    private void SignUpTxt2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignUpTxt2MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SignUpTxt2MouseExited
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void configurarDateChooser() {
         jDateChooserEst.setDateFormatString("d/MM/yyyy");
@@ -598,16 +666,6 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
             }
         });
 
-        GrupoEstTxt.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                char caracter = e.getKeyChar();
-                if (!Character.isLetter(caracter) && !Character.isWhitespace(caracter)) {
-                    e.consume();
-                }
-            }
-        });
-
         TelefonoEstTxt.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -634,7 +692,6 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
         TextosPredeterminado(nuevaContraseñaEstTxt, "•••••••••••••••");
         TextosPredeterminado(confirmarContraseñaEstTxt, "•••••••••••••••");
         TextosPredeterminado(IDEstTxt, "Numero de Identificacion");
-        TextosPredeterminado(GrupoEstTxt, "Ingrese el Nombre de la Carrera");
         TextosPredeterminado(TelefonoEstTxt, "Ingrese se numero de Telefono");
         TextosPredeterminado(SemestreEstTxt, "Ingrese el Semestre");
 
@@ -644,7 +701,6 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
         agregarFocusListener(nuevaContraseñaEstTxt, "•••••••••••••••");
         agregarFocusListener(confirmarContraseñaEstTxt, "•••••••••••••••");
         agregarFocusListener(IDEstTxt, "Numero de Identificacion");
-        agregarFocusListener(GrupoEstTxt, "Ingrese el Nombre de la Carrera");
         agregarFocusListener(TelefonoEstTxt, "Ingrese se numero de Telefono");
         agregarFocusListener(SemestreEstTxt, "Ingrese el Semestre");
     }
@@ -681,7 +737,6 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
         TextosPredeterminado(nuevaContraseñaEstTxt, "•••••••••••••••");
         TextosPredeterminado(confirmarContraseñaEstTxt, "•••••••••••••••");
         TextosPredeterminado(IDEstTxt, "Numero de Identificacion");
-        TextosPredeterminado(GrupoEstTxt, "Ingrese el Nombre de la Carrera");
         TextosPredeterminado(TelefonoEstTxt, "Ingrese se numero de Telefono");
         TextosPredeterminado(SemestreEstTxt, "Ingrese el Semestre");
         botonesGenero.clearSelection();
@@ -712,9 +767,6 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
         }
         if (IDEstTxt.getText().isEmpty()) {
             TextosPredeterminado(IDEstTxt, "Numero de Identificacion");
-        }
-        if (GrupoEstTxt.getText().isEmpty()) {
-            TextosPredeterminado(GrupoEstTxt, "Ingrese el Nombre de la Carrera");
         }
         if (TelefonoEstTxt.getText().isEmpty()) {
             TextosPredeterminado(TelefonoEstTxt, "Ingrese se numero de Telefono");
@@ -821,7 +873,6 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
                 || String.valueOf(nuevaContraseñaEstTxt.getPassword()).equals("•••••••••••••••")
                 || String.valueOf(confirmarContraseñaEstTxt.getPassword()).equals("•••••••••••••••")
                 || IDEstTxt.getText().equals("Numero de Identificacion")
-                || GrupoEstTxt.getText().equals("Ingrese el Nombre de la Carrera")
                 || TelefonoEstTxt.getText().equals("Ingrese se numero de Telefono")
                 || SemestreEstTxt.getText().equals("Ingrese el Semestre")) {
 
@@ -838,15 +889,37 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
         return true;
     }
 
-  
+    private boolean botonactualizar() {
+        try {
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/plataforma", "root", "");
+            PreparedStatement pst = cn.prepareStatement("select * from estudiantes where  Codigo_Estudiante=?");
+            pst.setString(1, CodigoEstTxt.getText().trim());
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                nombreEstTxt.setText(rs.getString("Nombre"));
+                apellidoEstTxt.setText(rs.getString("Apellido"));
+                jDateChooserEst.setDate(rs.getDate("Nacimiento"));
+                CodigoEstTxt.setText(rs.getString("Contraseña"));
+                jComboBox1.setSelectedItem(rs.getString("Grupo"));
+
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(jPanel1, "Alumno no escontrado", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+        }
+        return false;
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ActualizarTxt;
     private javax.swing.JTextField CodigoEstTxt;
-    private javax.swing.JTextField GrupoEstTxt;
     private javax.swing.JTextField IDEstTxt;
     private javax.swing.JTextField SemestreEstTxt;
     private javax.swing.JPanel SignUpBoton;
+    private javax.swing.JPanel SignUpBoton1;
     private javax.swing.JLabel SignUpTxt;
+    private javax.swing.JLabel SignUpTxt2;
     private javax.swing.JTextField TelefonoEstTxt;
     private javax.swing.JTextField apellidoEstTxt;
     private javax.swing.ButtonGroup botonesGenero;
@@ -854,7 +927,9 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
     private javax.swing.JTextField correoEstTxt;
     private javax.swing.JRadioButton gHombre;
     private javax.swing.JRadioButton gMujer;
+    private javax.swing.JComboBox<String> jComboBox1;
     private com.toedter.calendar.JDateChooser jDateChooserEst;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelApellido;
     private javax.swing.JLabel jLabelCodigoEstudiante;
     private javax.swing.JLabel jLabelConfirmarContraseña;

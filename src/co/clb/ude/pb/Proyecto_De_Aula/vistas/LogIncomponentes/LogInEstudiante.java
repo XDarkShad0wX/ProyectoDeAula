@@ -389,8 +389,6 @@ public class LogInEstudiante extends javax.swing.JPanel {
             pst.setString(1, codigoEstudiante);
             pst.setString(2, correo);
             pst.setString(3, contraseña);
-            
-            
 
             ResultSet rs = pst.executeQuery();
             
