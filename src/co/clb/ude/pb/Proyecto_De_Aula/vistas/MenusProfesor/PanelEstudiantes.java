@@ -19,7 +19,7 @@ public class PanelEstudiantes extends javax.swing.JPanel {
         jTableEstudiantes.getTableHeader().setOpaque(false);
         jTableEstudiantes.getTableHeader().setBackground(new Color(32, 136, 203));
         jTableEstudiantes.getTableHeader().setForeground(new Color(255, 255, 255));
-        jTableEstudiantes.setRowHeight(40);
+        jTableEstudiantes.setRowHeight(25);
 
         // Deshabilitar reordenación de columnas
         jTableEstudiantes.getTableHeader().setReorderingAllowed(false);
@@ -128,6 +128,7 @@ public class PanelEstudiantes extends javax.swing.JPanel {
         botonEliminarTxt.setFont(new java.awt.Font("Eras Bold ITC", 0, 14)); // NOI18N
         botonEliminarTxt.setForeground(new java.awt.Color(255, 255, 255));
         botonEliminarTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        botonEliminarTxt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/clb/ude/pb/Proyecto_De_Aula/vistas/iconos/borrar_23.png"))); // NOI18N
         botonEliminarTxt.setText("Eliminar");
         botonEliminarTxt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         botonEliminarTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
