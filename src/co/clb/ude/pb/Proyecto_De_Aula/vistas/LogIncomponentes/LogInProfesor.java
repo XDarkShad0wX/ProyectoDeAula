@@ -4,6 +4,7 @@
  */
 package co.clb.ude.pb.Proyecto_De_Aula.vistas.LogIncomponentes;
 
+import co.clb.ude.pb.Proyecto_De_Aula.entidades.UsuarioActual;
 import co.clb.ude.pb.Proyecto_De_Aula.vistas.gui.VentanaMenuProfesor;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
@@ -256,6 +257,11 @@ public class LogInProfesor extends javax.swing.JPanel {
             return;
         } else {
             if (validarEntradaBD()) {
+                UsuarioActual.id = IDTxt.getText().trim();
+                UsuarioActual.email = correoTxt.getText().trim();
+                UsuarioActual.contrasena = String.valueOf(contraseñaTxt.getPassword()).trim();
+                UsuarioActual.esProfesor = true;
+                
                 SwingUtilities.getWindowAncestor(this).dispose();
                 VentanaMenuProfesor ventanaMenu = new VentanaMenuProfesor();
                 ventanaMenu.setVisible(true);

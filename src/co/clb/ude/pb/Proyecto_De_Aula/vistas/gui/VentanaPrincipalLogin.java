@@ -8,7 +8,6 @@ import co.clb.ude.pb.Proyecto_De_Aula.vistas.LogIncomponentes.LogInProfesor;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JLabel;
-import javax.swing.SwingUtilities;
 
 /**
  *
@@ -118,7 +117,7 @@ public class VentanaPrincipalLogIn extends javax.swing.JFrame {
         ExitBoton.setBackground(new java.awt.Color(1, 174, 250));
 
         Accion.setAlignment(java.awt.Label.CENTER);
-        Accion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Accion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Accion.setFont(new java.awt.Font("Britannic Bold", 0, 24)); // NOI18N
         Accion.setText("X");
         Accion.addMouseListener(new java.awt.event.MouseAdapter() {

@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package co.clb.ude.pb.Proyecto_De_Aula.entidades;
 
 public class Usuario {
@@ -11,19 +8,29 @@ public class Usuario {
     protected String genero;
     protected String telefono;
     protected String email;
+    protected String contraseña;
     protected String tipoUsuario;
 
 public Usuario() {
 }
 
-    public Usuario(String dni, String nombres, String apellidos, String genero, String telefono, String email, String tipoUsuario) {
+    public Usuario(String dni, String nombres, String apellidos, String genero, String telefono, String email, String tipoUsuario, String contraseña) {
         this.ID = dni;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.genero = genero;
         this.telefono = telefono;
         this.email = email;
+        this.contraseña = contraseña;
         this.tipoUsuario = tipoUsuario;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
     }
 
     public String getID() {

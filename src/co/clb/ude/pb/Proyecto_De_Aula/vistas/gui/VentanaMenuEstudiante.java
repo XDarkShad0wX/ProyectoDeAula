@@ -387,7 +387,7 @@ public class VentanaMenuEstudiante extends javax.swing.JFrame {
 
         Accion.setAlignment(java.awt.Label.CENTER);
         Accion.setBackground(new java.awt.Color(255, 255, 255));
-        Accion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Accion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Accion.setFont(new java.awt.Font("Britannic Bold", 0, 14)); // NOI18N
         Accion.setText("X");
         Accion.addMouseListener(new java.awt.event.MouseAdapter() {

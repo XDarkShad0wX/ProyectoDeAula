@@ -1,11 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package co.clb.ude.pb.Proyecto_De_Aula.vistas.MenusEstudiante;
 
-import co.clb.ude.pb.Proyecto_De_Aula.entidades.Usuario;
-import co.clb.ude.pb.Proyecto_De_Aula.vistas.LogIncomponentes.LogInEstudiante;
+import co.clb.ude.pb.Proyecto_De_Aula.entidades.UsuarioActual;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JTextFieldDateEditor;
 import java.awt.Color;
@@ -22,7 +17,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
-import org.eclipse.persistence.eis.EISException;
 
 /**
  *
@@ -38,8 +32,9 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
         configurarCamposTexto();
         grupoGenero();
         configurarDateChooser();
+        cargarInformacionEstudiante();
 
-        //String name = LogInEstudiante.usuario.getNombres();
+        CodigoEstTxt.setEnabled(false);
     }
 
     /**
@@ -63,8 +58,8 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
         jSeparator3 = new javax.swing.JSeparator();
         jLabelContraseña = new javax.swing.JLabel();
         nuevaContraseñaEstTxt = new javax.swing.JPasswordField();
-        SignUpBoton = new javax.swing.JPanel();
-        ActualizarTxt = new javax.swing.JLabel();
+        ModificarBoton = new javax.swing.JPanel();
+        ModificarTxt = new javax.swing.JLabel();
         jLabelApellido = new javax.swing.JLabel();
         apellidoEstTxt = new javax.swing.JTextField();
         jLabelGenero = new javax.swing.JLabel();
@@ -90,12 +85,9 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
         jLabelGrupo = new javax.swing.JLabel();
         jSeparator12 = new javax.swing.JSeparator();
         jLabelSemestre = new javax.swing.JLabel();
-        SemestreEstTxt = new javax.swing.JTextField();
         jSeparator13 = new javax.swing.JSeparator();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        SignUpBoton1 = new javax.swing.JPanel();
-        SignUpTxt2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jComboBoxCarrera = new javax.swing.JComboBox<>();
+        jComboBoxSemestre = new javax.swing.JComboBox<>();
 
         SignUpTxt.setFont(new java.awt.Font("Eras Bold ITC", 0, 14)); // NOI18N
         SignUpTxt.setForeground(new java.awt.Color(255, 255, 255));
@@ -189,42 +181,42 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
         });
         jPanel1.add(nuevaContraseñaEstTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 160, 30));
 
-        SignUpBoton.setBackground(new java.awt.Color(1, 174, 250));
+        ModificarBoton.setBackground(new java.awt.Color(1, 174, 250));
 
-        ActualizarTxt.setFont(new java.awt.Font("Eras Bold ITC", 0, 14)); // NOI18N
-        ActualizarTxt.setForeground(new java.awt.Color(255, 255, 255));
-        ActualizarTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ActualizarTxt.setText("Actualizar");
-        ActualizarTxt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
-        ActualizarTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ActualizarTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+        ModificarTxt.setFont(new java.awt.Font("Eras Bold ITC", 0, 14)); // NOI18N
+        ModificarTxt.setForeground(new java.awt.Color(255, 255, 255));
+        ModificarTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ModificarTxt.setText("Modificar");
+        ModificarTxt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        ModificarTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ModificarTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ActualizarTxtMouseClicked(evt);
+                ModificarTxtMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ActualizarTxtMouseEntered(evt);
+                ModificarTxtMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                ActualizarTxtMouseExited(evt);
+                ModificarTxtMouseExited(evt);
             }
         });
 
-        javax.swing.GroupLayout SignUpBotonLayout = new javax.swing.GroupLayout(SignUpBoton);
-        SignUpBoton.setLayout(SignUpBotonLayout);
-        SignUpBotonLayout.setHorizontalGroup(
-            SignUpBotonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SignUpBotonLayout.createSequentialGroup()
+        javax.swing.GroupLayout ModificarBotonLayout = new javax.swing.GroupLayout(ModificarBoton);
+        ModificarBoton.setLayout(ModificarBotonLayout);
+        ModificarBotonLayout.setHorizontalGroup(
+            ModificarBotonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ModificarBotonLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(ActualizarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(ModificarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        SignUpBotonLayout.setVerticalGroup(
-            SignUpBotonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SignUpBotonLayout.createSequentialGroup()
+        ModificarBotonLayout.setVerticalGroup(
+            ModificarBotonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ModificarBotonLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(ActualizarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(ModificarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(SignUpBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 370, -1, 30));
+        jPanel1.add(ModificarBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, -1, 30));
 
         jLabelApellido.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         jLabelApellido.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -356,6 +348,7 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
         jLabelCodigoEstudiante.setText("Codigo Estudiante");
         jPanel1.add(jLabelCodigoEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 270, 140, 30));
 
+        CodigoEstTxt.setEditable(false);
         CodigoEstTxt.setForeground(new java.awt.Color(204, 204, 204));
         CodigoEstTxt.setBorder(null);
         CodigoEstTxt.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -386,68 +379,19 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
         jLabelSemestre.setText("Semestre");
         jPanel1.add(jLabelSemestre, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, 130, 30));
 
-        SemestreEstTxt.setForeground(new java.awt.Color(204, 204, 204));
-        SemestreEstTxt.setText("Ingrese el Semestre");
-        SemestreEstTxt.setBorder(null);
-        SemestreEstTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                SemestreEstTxtMousePressed(evt);
-            }
-        });
-        SemestreEstTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SemestreEstTxtActionPerformed(evt);
-            }
-        });
-        jPanel1.add(SemestreEstTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, 170, 30));
-
         jSeparator13.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, 170, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "seleccione una carrera", "Ingeneria en sistemas", "Ingeneria industrial", "Ingeneria quimica", "licenciatura en bilinguismo" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ingeniería Industrial", "Ingeniería Mecánica", "Ingeniería Robótica y Mecatrónica", "Ingeniería de Sistemas", "Ingeniería Civil", "Ingeniería Informática", "Ingeniería Electrónica", "Ingeniería Ambiental o Medio Ambiental", "Ingeniería en Telecomunicaciones", "Ingeniería Agropecuaria", "Ingeniería de Minas", "Ingeniería de Software", "Ingeniería Química", "Ingeniería Geomática", "Ingeniería en Sonido", "Ingeniería Hidráulica", "Ingeniería Metalúrgica", "Ingeniería Física", "Ingeniería Zootecnista", "Ingeniería Naval", "Ingeniería Biomédica", "Ingeniería Forestal", "Ingeniería Petrolera", "Ingeniería de Producción por Ciclos Propedéuticos", "Ingeniería Agroforestal", "Ingeniería de Producción", "Ingeniería Eléctrica ", "Ingeniería Electromecánica", "Ingeniería de Materiales ", "Ingeniería en Ecología", "Ingeniería Aeronáutica", "Ingeniería de Fabricación ", "Bioingeniería ", "Ingeniería Pesquera ", "Ingeniería de Agrimensura", "Medicina general", "Enfermería", "Biomedicina", "Odontología", "Oftalmología", "Farmacia", "Bacteriología y laboratorio clínico", "Optometría", "Psiquiatría", "Paramédico", "Nutrición y dietetica", "Fisioterapia o Terapia física", "Quiropráctica", "Genética", "Atención prehospitalaria", "Terapia respiratoria", "Salud ocupacional", "Arquitecto paisajista", "Planificador urbano", "Arquitectura", "Arquitecto de restauración", "Arquitecto de investigación", "Arquitecto de iluminación", "Arquitecto político", "Arquitecto extremo", "Diseño industrial", "Diseñador gráfico", "Diseñador de videojuegos", "Diseño textiles", "Diseño de muebles", "Diseño publicitario", "Arte contemporáneo", "Diseño naval", "Diseño de interiores", "Diseño de marcas", "Diseño y desarrollo web", "Diseño de moda", "Diseño y decoración", "Administración de Empresas", "Administración en Recursos Humanos.", "Administración y Finanzas", "Administración en Salud Ocupacional", "Administración Comercial y de Mercadeo", "Administración en Mercadeo", "Administración de Logística Internacionales", "Administración de Negocios", "Administración Financiera", "Negocios internacionales", "Sociología", "Comunicación Social y Periodismo", "Fianzas y contabilidad", "Finanzas y Comercio Internacional", "Relaciones Económicas Internacionales", "Derecho", "Economía", "Contaduría pública", "Estadistica" }));
+        jComboBoxCarrera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jComboBoxCarreraActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 40, 170, 30));
+        jPanel1.add(jComboBoxCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 40, 170, 30));
 
-        SignUpBoton1.setBackground(new java.awt.Color(1, 174, 250));
-
-        SignUpTxt2.setFont(new java.awt.Font("Eras Bold ITC", 0, 14)); // NOI18N
-        SignUpTxt2.setForeground(new java.awt.Color(255, 255, 255));
-        SignUpTxt2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        SignUpTxt2.setText("Modificar");
-        SignUpTxt2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
-        SignUpTxt2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        SignUpTxt2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                SignUpTxt2MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                SignUpTxt2MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                SignUpTxt2MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout SignUpBoton1Layout = new javax.swing.GroupLayout(SignUpBoton1);
-        SignUpBoton1.setLayout(SignUpBoton1Layout);
-        SignUpBoton1Layout.setHorizontalGroup(
-            SignUpBoton1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(SignUpTxt2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-        );
-        SignUpBoton1Layout.setVerticalGroup(
-            SignUpBoton1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(SignUpTxt2, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(SignUpBoton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, -1, 30));
-
-        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel1.setText("Debe confirmar su codigo ");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 350, 150, -1));
+        jComboBoxSemestre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" }));
+        jPanel1.add(jComboBoxSemestre, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, 170, 30));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 420));
     }// </editor-fold>//GEN-END:initComponents
@@ -501,11 +445,11 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
     }//GEN-LAST:event_SignUpTxtMouseClicked
 
     private void SignUpTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignUpTxtMouseEntered
-        SignUpBoton.setBackground(new Color(1, 105, 150));
+        ModificarBoton.setBackground(new Color(1, 105, 150));
     }//GEN-LAST:event_SignUpTxtMouseEntered
 
     private void SignUpTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignUpTxtMouseExited
-        SignUpBoton.setBackground(new Color(1, 174, 250));
+        ModificarBoton.setBackground(new Color(1, 174, 250));
     }//GEN-LAST:event_SignUpTxtMouseExited
 
     private void apellidoEstTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_apellidoEstTxtMousePressed
@@ -556,7 +500,7 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
     }//GEN-LAST:event_gHombreActionPerformed
 
     private void TelefonoEstTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TelefonoEstTxtMousePressed
-        if (TelefonoEstTxt.getText().equals("Numero de Identificacion")) {
+        if (TelefonoEstTxt.getText().equals("Ingrese Numero de Telefono")) {
             TelefonoEstTxt.setText("");
             TelefonoEstTxt.setForeground(Color.black);
         }
@@ -569,7 +513,7 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
     }//GEN-LAST:event_TelefonoEstTxtActionPerformed
 
     private void CodigoEstTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CodigoEstTxtMousePressed
-        if (CodigoEstTxt.getText().equals("Numero de Identificacion")) {
+        if (CodigoEstTxt.getText().equals("")) {
             CodigoEstTxt.setText("");
             CodigoEstTxt.setForeground(Color.black);
         }
@@ -581,47 +525,25 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_CodigoEstTxtActionPerformed
 
-    private void SemestreEstTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SemestreEstTxtMousePressed
-        if (SemestreEstTxt.getText().equals("Numero de Identificacion")) {
-            SemestreEstTxt.setText("");
-            SemestreEstTxt.setForeground(Color.black);
+    private void ModificarTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModificarTxtMouseClicked
+        if (validarEntrada()) {
+            actualizarInformacionEstudiante();
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe llenar todos los campos de información correctamente", "Error", JOptionPane.ERROR_MESSAGE);
         }
+    }//GEN-LAST:event_ModificarTxtMouseClicked
 
-        restaurarTextoPredeterminado();
-    }//GEN-LAST:event_SemestreEstTxtMousePressed
-
-    private void SemestreEstTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SemestreEstTxtActionPerformed
+    private void ModificarTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModificarTxtMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_SemestreEstTxtActionPerformed
+    }//GEN-LAST:event_ModificarTxtMouseEntered
 
-    private void ActualizarTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActualizarTxtMouseClicked
-        
-       botonactualizar();
-    }//GEN-LAST:event_ActualizarTxtMouseClicked
-
-    private void ActualizarTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActualizarTxtMouseEntered
+    private void ModificarTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModificarTxtMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_ActualizarTxtMouseEntered
+    }//GEN-LAST:event_ModificarTxtMouseExited
 
-    private void ActualizarTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActualizarTxtMouseExited
+    private void jComboBoxCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCarreraActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ActualizarTxtMouseExited
-
-    private void SignUpTxt2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignUpTxt2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SignUpTxt2MouseClicked
-
-    private void SignUpTxt2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignUpTxt2MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SignUpTxt2MouseEntered
-
-    private void SignUpTxt2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignUpTxt2MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SignUpTxt2MouseExited
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_jComboBoxCarreraActionPerformed
 
     private void configurarDateChooser() {
         jDateChooserEst.setDateFormatString("d/MM/yyyy");
@@ -676,15 +598,7 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
             }
         });
 
-        SemestreEstTxt.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                char caracter = e.getKeyChar();
-                if (!Character.isDigit(caracter)) {
-                    e.consume();
-                }
-            }
-        });
+        
 
         TextosPredeterminado(nombreEstTxt, "Ingrese su(s) Nombre(s)");
         TextosPredeterminado(apellidoEstTxt, "Ingrese su(s) Apellido(s)");
@@ -692,8 +606,7 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
         TextosPredeterminado(nuevaContraseñaEstTxt, "•••••••••••••••");
         TextosPredeterminado(confirmarContraseñaEstTxt, "•••••••••••••••");
         TextosPredeterminado(IDEstTxt, "Numero de Identificacion");
-        TextosPredeterminado(TelefonoEstTxt, "Ingrese se numero de Telefono");
-        TextosPredeterminado(SemestreEstTxt, "Ingrese el Semestre");
+        TextosPredeterminado(TelefonoEstTxt, "Ingrese Numero de Telefono");
 
         agregarFocusListener(nombreEstTxt, "Ingrese su(s) Nombre(s)");
         agregarFocusListener(apellidoEstTxt, "Ingrese su(s) Apellido(s)");
@@ -701,8 +614,7 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
         agregarFocusListener(nuevaContraseñaEstTxt, "•••••••••••••••");
         agregarFocusListener(confirmarContraseñaEstTxt, "•••••••••••••••");
         agregarFocusListener(IDEstTxt, "Numero de Identificacion");
-        agregarFocusListener(TelefonoEstTxt, "Ingrese se numero de Telefono");
-        agregarFocusListener(SemestreEstTxt, "Ingrese el Semestre");
+        agregarFocusListener(TelefonoEstTxt, "Ingrese Numero de Telefono");
     }
 
     private void TextosPredeterminado(javax.swing.JTextField campo, String texto) {
@@ -737,8 +649,7 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
         TextosPredeterminado(nuevaContraseñaEstTxt, "•••••••••••••••");
         TextosPredeterminado(confirmarContraseñaEstTxt, "•••••••••••••••");
         TextosPredeterminado(IDEstTxt, "Numero de Identificacion");
-        TextosPredeterminado(TelefonoEstTxt, "Ingrese se numero de Telefono");
-        TextosPredeterminado(SemestreEstTxt, "Ingrese el Semestre");
+        TextosPredeterminado(TelefonoEstTxt, "Ingrese Numero de Telefono");
         botonesGenero.clearSelection();
 
         if (jDateChooserEst != null) {
@@ -769,11 +680,9 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
             TextosPredeterminado(IDEstTxt, "Numero de Identificacion");
         }
         if (TelefonoEstTxt.getText().isEmpty()) {
-            TextosPredeterminado(TelefonoEstTxt, "Ingrese se numero de Telefono");
+            TextosPredeterminado(TelefonoEstTxt, "Ingrese Numero de Telefono");
         }
-        if (SemestreEstTxt.getText().isEmpty()) {
-            TextosPredeterminado(SemestreEstTxt, "Ingrese el Semestre");
-        }
+        
 
         if (jDateChooserEst.getDate() == null) {
             JTextFieldDateEditor editor = (JTextFieldDateEditor) jDateChooserEst.getDateEditor();
@@ -873,8 +782,7 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
                 || String.valueOf(nuevaContraseñaEstTxt.getPassword()).equals("•••••••••••••••")
                 || String.valueOf(confirmarContraseñaEstTxt.getPassword()).equals("•••••••••••••••")
                 || IDEstTxt.getText().equals("Numero de Identificacion")
-                || TelefonoEstTxt.getText().equals("Ingrese se numero de Telefono")
-                || SemestreEstTxt.getText().equals("Ingrese el Semestre")) {
+                || TelefonoEstTxt.getText().equals("Ingrese Numero de Telefono")) {
 
             javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe llenar todos los campos de informacion", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
 
@@ -889,37 +797,89 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
         return true;
     }
 
-    private boolean botonactualizar() {
+    private void cargarInformacionEstudiante() {
         try {
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/plataforma", "root", "");
-            PreparedStatement pst = cn.prepareStatement("select * from estudiantes where  Codigo_Estudiante=?");
-            pst.setString(1, CodigoEstTxt.getText().trim());
+            PreparedStatement pst = cn.prepareStatement("SELECT * FROM estudiantes WHERE Codigo_Estudiante=?");
+            pst.setString(1, UsuarioActual.codigoEstudiante);
+
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
                 nombreEstTxt.setText(rs.getString("Nombre"));
-                apellidoEstTxt.setText(rs.getString("Apellido"));
+                apellidoEstTxt.setText(rs.getString("Apellidos"));
                 jDateChooserEst.setDate(rs.getDate("Nacimiento"));
-                CodigoEstTxt.setText(rs.getString("Contraseña"));
-                jComboBox1.setSelectedItem(rs.getString("Grupo"));
+                correoEstTxt.setText(rs.getString("Email"));
+                if ("Hombre".equals(rs.getString("Genero"))) {
+                    gHombre.setSelected(true);
+                } else if ("Mujer".equals(rs.getString("Genero"))) {
+                    gMujer.setSelected(true);
+                }
+                IDEstTxt.setText(rs.getString("Identificacion"));
+                TelefonoEstTxt.setText(rs.getString("Telefono"));
+                jComboBoxSemestre.setSelectedItem(rs.getString("Semestre"));
+                jComboBoxCarrera.setSelectedItem(rs.getString("Grupo"));
 
+                // El código del estudiante no debe ser editable
+                CodigoEstTxt.setText(rs.getString("Codigo_Estudiante"));
+                CodigoEstTxt.setEditable(false);
             } else {
-                javax.swing.JOptionPane.showMessageDialog(jPanel1, "Alumno no escontrado", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Alumno no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        return false;
-
     }
 
+    private void actualizarInformacionEstudiante() {
+        try {
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/plataforma", "root", "");
+            PreparedStatement pst = cn.prepareStatement(
+                    "UPDATE estudiantes SET Nombre=?, Apellidos=?, Nacimiento=?, Email=?, Genero=?, Contraseña=?, Identificacion=?, Telefono=?, Semestre=?, Grupo=? WHERE Codigo_Estudiante=?"
+            );
+
+            pst.setString(1, nombreEstTxt.getText().trim());
+            pst.setString(2, apellidoEstTxt.getText().trim());
+            pst.setDate(3, new java.sql.Date(jDateChooserEst.getDate().getTime()));
+            pst.setString(4, correoEstTxt.getText().trim());
+            pst.setString(5, gHombre.isSelected() ? "Hombre" : "Mujer");
+            pst.setString(6, String.valueOf(nuevaContraseñaEstTxt.getPassword()).trim());
+            pst.setString(7, IDEstTxt.getText().trim());
+            pst.setString(8, TelefonoEstTxt.getText().trim());
+            
+            pst.setString(9, jComboBoxSemestre.getSelectedItem().toString());
+            Object selectedItem2 = jComboBoxSemestre.getSelectedItem();
+            if (selectedItem2 != null) {
+                pst.setString(9, selectedItem2.toString());
+            } else {
+                // Maneja el caso en el que el item seleccionado es null
+            }
+            
+            pst.setString(10, jComboBoxCarrera.getSelectedItem().toString());
+            pst.setString(11, UsuarioActual.codigoEstudiante);
+
+            Object selectedItem = jComboBoxCarrera.getSelectedItem();
+            if (selectedItem != null) {
+                pst.setString(10, selectedItem.toString());
+            } else {
+                // Maneja el caso en el que el item seleccionado es null
+            }
+
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Información actualizada correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al actualizar la información", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel ActualizarTxt;
     private javax.swing.JTextField CodigoEstTxt;
     private javax.swing.JTextField IDEstTxt;
-    private javax.swing.JTextField SemestreEstTxt;
-    private javax.swing.JPanel SignUpBoton;
-    private javax.swing.JPanel SignUpBoton1;
+    private javax.swing.JPanel ModificarBoton;
+    private javax.swing.JLabel ModificarTxt;
     private javax.swing.JLabel SignUpTxt;
-    private javax.swing.JLabel SignUpTxt2;
     private javax.swing.JTextField TelefonoEstTxt;
     private javax.swing.JTextField apellidoEstTxt;
     private javax.swing.ButtonGroup botonesGenero;
@@ -927,9 +887,9 @@ public class PanelInfoEstudiante extends javax.swing.JPanel {
     private javax.swing.JTextField correoEstTxt;
     private javax.swing.JRadioButton gHombre;
     private javax.swing.JRadioButton gMujer;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBoxCarrera;
+    private javax.swing.JComboBox<String> jComboBoxSemestre;
     private com.toedter.calendar.JDateChooser jDateChooserEst;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelApellido;
     private javax.swing.JLabel jLabelCodigoEstudiante;
     private javax.swing.JLabel jLabelConfirmarContraseña;

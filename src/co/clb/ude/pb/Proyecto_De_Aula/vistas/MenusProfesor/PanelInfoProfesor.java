@@ -4,6 +4,7 @@
  */
 package co.clb.ude.pb.Proyecto_De_Aula.vistas.MenusProfesor;
 
+import co.clb.ude.pb.Proyecto_De_Aula.entidades.UsuarioActual;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JTextFieldDateEditor;
 import java.awt.Color;
@@ -35,6 +36,7 @@ public class PanelInfoProfesor extends javax.swing.JPanel {
         configurarCamposTexto();
         grupoGenero();
         configurarDateChooser();
+        cargarInformacionProfesor();
     }
 
     /**
@@ -49,44 +51,41 @@ public class PanelInfoProfesor extends javax.swing.JPanel {
         botonesGenero = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabelNombre = new javax.swing.JLabel();
-        nombreEstPoTxt = new javax.swing.JTextField();
+        nombrePoTxt = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        correoEstPoTxt = new javax.swing.JTextField();
+        correoPoTxt = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         jLabelCorrreo = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jLabelContraseña = new javax.swing.JLabel();
-        nuevaContraseñaEstPoTxt = new javax.swing.JPasswordField();
-        ActualizarBoton = new javax.swing.JPanel();
-        ActualizarTxt = new javax.swing.JLabel();
+        nuevaContraseñaPoTxt = new javax.swing.JPasswordField();
         jLabelApellido = new javax.swing.JLabel();
-        apellidoEstPoTxt = new javax.swing.JTextField();
+        apellidoPoTxt = new javax.swing.JTextField();
         jLabelGenero = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
         jLabelConfirmarContraseña = new javax.swing.JLabel();
-        confirmarContraseñaEstPoTxt = new javax.swing.JPasswordField();
+        confirmarContraseñaPoTxt = new javax.swing.JPasswordField();
         jLabelID = new javax.swing.JLabel();
-        IDEstPoTxt = new javax.swing.JTextField();
+        IDPoTxt = new javax.swing.JTextField();
         jSeparator7 = new javax.swing.JSeparator();
         gMujer = new javax.swing.JRadioButton();
         gHombre = new javax.swing.JRadioButton();
         jLabelFechaNacimiento = new javax.swing.JLabel();
         jSeparator8 = new javax.swing.JSeparator();
         jSeparator9 = new javax.swing.JSeparator();
-        jDateChooserEst = new com.toedter.calendar.JDateChooser();
+        jDateChooserPo = new com.toedter.calendar.JDateChooser();
         jLabelTelefono = new javax.swing.JLabel();
-        TelefonoEstPoTxt = new javax.swing.JTextField();
+        TelefonoPoTxt = new javax.swing.JTextField();
         jSeparator10 = new javax.swing.JSeparator();
         jLabelCargo = new javax.swing.JLabel();
-        CargoPoTxt = new javax.swing.JTextField();
         jSeparator12 = new javax.swing.JSeparator();
         jLabelAsignatura = new javax.swing.JLabel();
         jSeparator13 = new javax.swing.JSeparator();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBoxAsignatura = new javax.swing.JComboBox<>();
         ModificarBoton = new javax.swing.JPanel();
         ModificarTxt = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jComboBoxCargo = new javax.swing.JComboBox<>();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -98,41 +97,41 @@ public class PanelInfoProfesor extends javax.swing.JPanel {
         jLabelNombre.setText("Nombre(s)");
         jPanel1.add(jLabelNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 130, 30));
 
-        nombreEstPoTxt.setForeground(new java.awt.Color(204, 204, 204));
-        nombreEstPoTxt.setText("Ingrese su(s) Nombre(s)");
-        nombreEstPoTxt.setBorder(null);
-        nombreEstPoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+        nombrePoTxt.setForeground(new java.awt.Color(204, 204, 204));
+        nombrePoTxt.setText("Ingrese su(s) Nombre(s)");
+        nombrePoTxt.setBorder(null);
+        nombrePoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                nombreEstPoTxtMousePressed(evt);
+                nombrePoTxtMousePressed(evt);
             }
         });
-        nombreEstPoTxt.addActionListener(new java.awt.event.ActionListener() {
+        nombrePoTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreEstPoTxtActionPerformed(evt);
+                nombrePoTxtActionPerformed(evt);
             }
         });
-        jPanel1.add(nombreEstPoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 170, 30));
+        jPanel1.add(nombrePoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 170, 30));
 
         jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 170, -1));
 
-        correoEstPoTxt.setForeground(new java.awt.Color(204, 204, 204));
-        correoEstPoTxt.setText("Ingrese su correo");
-        correoEstPoTxt.setBorder(null);
-        correoEstPoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+        correoPoTxt.setForeground(new java.awt.Color(204, 204, 204));
+        correoPoTxt.setText("Ingrese su correo");
+        correoPoTxt.setBorder(null);
+        correoPoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                correoEstPoTxtMousePressed(evt);
+                correoPoTxtMousePressed(evt);
             }
         });
-        correoEstPoTxt.addActionListener(new java.awt.event.ActionListener() {
+        correoPoTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                correoEstPoTxtActionPerformed(evt);
+                correoPoTxtActionPerformed(evt);
             }
         });
-        jPanel1.add(correoEstPoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 160, 30));
+        jPanel1.add(correoPoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 170, 30));
 
         jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 160, -1));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 170, -1));
 
         jLabelCorrreo.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         jLabelCorrreo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -140,92 +139,47 @@ public class PanelInfoProfesor extends javax.swing.JPanel {
         jPanel1.add(jLabelCorrreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 100, 30));
 
         jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 160, -1));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 247, 170, -1));
 
         jLabelContraseña.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         jLabelContraseña.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelContraseña.setText("Nueva Contraseña");
         jPanel1.add(jLabelContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 100, 30));
 
-        nuevaContraseñaEstPoTxt.setForeground(new java.awt.Color(204, 204, 204));
-        nuevaContraseñaEstPoTxt.setText("jPasswordField1");
-        nuevaContraseñaEstPoTxt.setBorder(null);
-        nuevaContraseñaEstPoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+        nuevaContraseñaPoTxt.setForeground(new java.awt.Color(204, 204, 204));
+        nuevaContraseñaPoTxt.setText("jPasswordField1");
+        nuevaContraseñaPoTxt.setBorder(null);
+        nuevaContraseñaPoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                nuevaContraseñaEstPoTxtMousePressed(evt);
+                nuevaContraseñaPoTxtMousePressed(evt);
             }
         });
-        nuevaContraseñaEstPoTxt.addActionListener(new java.awt.event.ActionListener() {
+        nuevaContraseñaPoTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nuevaContraseñaEstPoTxtActionPerformed(evt);
+                nuevaContraseñaPoTxtActionPerformed(evt);
             }
         });
-        jPanel1.add(nuevaContraseñaEstPoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 160, 30));
-
-        ActualizarBoton.setBackground(new java.awt.Color(1, 174, 250));
-        ActualizarBoton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ActualizarBotonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                ActualizarBotonMouseExited(evt);
-            }
-        });
-
-        ActualizarTxt.setFont(new java.awt.Font("Eras Bold ITC", 0, 14)); // NOI18N
-        ActualizarTxt.setForeground(new java.awt.Color(255, 255, 255));
-        ActualizarTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ActualizarTxt.setText("Actualizar");
-        ActualizarTxt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
-        ActualizarTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ActualizarTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ActualizarTxtMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ActualizarTxtMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                ActualizarTxtMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout ActualizarBotonLayout = new javax.swing.GroupLayout(ActualizarBoton);
-        ActualizarBoton.setLayout(ActualizarBotonLayout);
-        ActualizarBotonLayout.setHorizontalGroup(
-            ActualizarBotonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ActualizarBotonLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(ActualizarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        ActualizarBotonLayout.setVerticalGroup(
-            ActualizarBotonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ActualizarBotonLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(ActualizarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jPanel1.add(ActualizarBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 300, -1, -1));
+        jPanel1.add(nuevaContraseñaPoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 170, 30));
 
         jLabelApellido.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         jLabelApellido.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelApellido.setText("Apellido(s)");
         jPanel1.add(jLabelApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 130, 30));
 
-        apellidoEstPoTxt.setForeground(new java.awt.Color(204, 204, 204));
-        apellidoEstPoTxt.setText("Ingrese su(s) Apellido(s)");
-        apellidoEstPoTxt.setBorder(null);
-        apellidoEstPoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+        apellidoPoTxt.setForeground(new java.awt.Color(204, 204, 204));
+        apellidoPoTxt.setText("Ingrese su(s) Apellido(s)");
+        apellidoPoTxt.setBorder(null);
+        apellidoPoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                apellidoEstPoTxtMousePressed(evt);
+                apellidoPoTxtMousePressed(evt);
             }
         });
-        apellidoEstPoTxt.addActionListener(new java.awt.event.ActionListener() {
+        apellidoPoTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                apellidoEstPoTxtActionPerformed(evt);
+                apellidoPoTxtActionPerformed(evt);
             }
         });
-        jPanel1.add(apellidoEstPoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 170, 30));
+        jPanel1.add(apellidoPoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 170, 30));
 
         jLabelGenero.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         jLabelGenero.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -243,40 +197,40 @@ public class PanelInfoProfesor extends javax.swing.JPanel {
         jLabelConfirmarContraseña.setText("Confirmar Contraseña");
         jPanel1.add(jLabelConfirmarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 120, 30));
 
-        confirmarContraseñaEstPoTxt.setForeground(new java.awt.Color(204, 204, 204));
-        confirmarContraseñaEstPoTxt.setText("jPasswordField1");
-        confirmarContraseñaEstPoTxt.setBorder(null);
-        confirmarContraseñaEstPoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+        confirmarContraseñaPoTxt.setForeground(new java.awt.Color(204, 204, 204));
+        confirmarContraseñaPoTxt.setText("jPasswordField1");
+        confirmarContraseñaPoTxt.setBorder(null);
+        confirmarContraseñaPoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                confirmarContraseñaEstPoTxtMousePressed(evt);
+                confirmarContraseñaPoTxtMousePressed(evt);
             }
         });
-        confirmarContraseñaEstPoTxt.addActionListener(new java.awt.event.ActionListener() {
+        confirmarContraseñaPoTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                confirmarContraseñaEstPoTxtActionPerformed(evt);
+                confirmarContraseñaPoTxtActionPerformed(evt);
             }
         });
-        jPanel1.add(confirmarContraseñaEstPoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 170, 30));
+        jPanel1.add(confirmarContraseñaPoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 170, 30));
 
         jLabelID.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         jLabelID.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelID.setText("ID");
         jPanel1.add(jLabelID, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 170, 130, 30));
 
-        IDEstPoTxt.setForeground(new java.awt.Color(204, 204, 204));
-        IDEstPoTxt.setText("Numero de Identificacion");
-        IDEstPoTxt.setBorder(null);
-        IDEstPoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+        IDPoTxt.setForeground(new java.awt.Color(204, 204, 204));
+        IDPoTxt.setText("Numero de Identificacion");
+        IDPoTxt.setBorder(null);
+        IDPoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                IDEstPoTxtMousePressed(evt);
+                IDPoTxtMousePressed(evt);
             }
         });
-        IDEstPoTxt.addActionListener(new java.awt.event.ActionListener() {
+        IDPoTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IDEstPoTxtActionPerformed(evt);
+                IDPoTxtActionPerformed(evt);
             }
         });
-        jPanel1.add(IDEstPoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, 170, 30));
+        jPanel1.add(IDPoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, 170, 30));
 
         jSeparator7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 250, 170, -1));
@@ -307,27 +261,27 @@ public class PanelInfoProfesor extends javax.swing.JPanel {
 
         jSeparator9.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, 170, 10));
-        jPanel1.add(jDateChooserEst, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 170, 30));
+        jPanel1.add(jDateChooserPo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 170, 30));
 
         jLabelTelefono.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         jLabelTelefono.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelTelefono.setText("Telefono");
         jPanel1.add(jLabelTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 130, 30));
 
-        TelefonoEstPoTxt.setForeground(new java.awt.Color(204, 204, 204));
-        TelefonoEstPoTxt.setText("Ingrese se numero de Telefono");
-        TelefonoEstPoTxt.setBorder(null);
-        TelefonoEstPoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+        TelefonoPoTxt.setForeground(new java.awt.Color(204, 204, 204));
+        TelefonoPoTxt.setText("Ingrese se numero de Telefono");
+        TelefonoPoTxt.setBorder(null);
+        TelefonoPoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                TelefonoEstPoTxtMousePressed(evt);
+                TelefonoPoTxtMousePressed(evt);
             }
         });
-        TelefonoEstPoTxt.addActionListener(new java.awt.event.ActionListener() {
+        TelefonoPoTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TelefonoEstPoTxtActionPerformed(evt);
+                TelefonoPoTxtActionPerformed(evt);
             }
         });
-        jPanel1.add(TelefonoEstPoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 170, 30));
+        jPanel1.add(TelefonoPoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 170, 30));
 
         jSeparator10.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, 170, -1));
@@ -336,21 +290,6 @@ public class PanelInfoProfesor extends javax.swing.JPanel {
         jLabelCargo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelCargo.setText("Cargo");
         jPanel1.add(jLabelCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 130, 30));
-
-        CargoPoTxt.setForeground(new java.awt.Color(204, 204, 204));
-        CargoPoTxt.setText("Ingrese el Nombre del Cargo");
-        CargoPoTxt.setBorder(null);
-        CargoPoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                CargoPoTxtMousePressed(evt);
-            }
-        });
-        CargoPoTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CargoPoTxtActionPerformed(evt);
-            }
-        });
-        jPanel1.add(CargoPoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 170, 30));
 
         jSeparator12.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 170, 10));
@@ -363,8 +302,8 @@ public class PanelInfoProfesor extends javax.swing.JPanel {
         jSeparator13.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 80, 170, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cálculo I", "Inglés", "Filosofía", "Administración de Empresas", "Ingeniería Ambiental", "Ingeniería Industrial", "Comunicación Social", "Psicología" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, 180, 30));
+        jComboBoxAsignatura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Matemáticas Básicas", "Cálculo Diferencial", "Cálculo Integral", "Álgebra Lineal", "Estadística", "Física Mecánica", "Física Eléctrica", "Química General", "Biología General", "Introducción a la Programación", "Programación Orientada a Objetos", "Estructuras de Datos", "Bases de Datos", "Sistemas Operativos", "Redes de Computadores", "Inteligencia Artificial", "Métodos Numéricos", "Economía", "Contabilidad General", "Finanzas", "Marketing", "Gestión de Proyectos", "Ética Profesional", "Derecho Empresarial", "Psicología General", "Sociología", "Historia de Colombia", "Literatura", "Filosofía", "Inglés Técnico", "Español y Comunicación", "Diseño Gráfico", "Arquitectura de Software", "Ingeniería de Software", "Electrónica Básica", "Electromagnetismo", "Termodinámica", "Dinámica de Fluidos", "Ciencias de los Materiales", "Bioquímica", "Genética", "Microbiología", "Anatomía Humana", "Fisiología", "Salud Pública", "Enfermería Básica", "Medicina Interna", "Cirugía General", "Pediatría", "Ginecología y Obstetricia", "Física Moderna", "Química Orgánica", "Biología Molecular", "Ecología", "Zoología", "Botánica", "Antropología", "Historia del Arte", "Teoría de la Comunicación", "Periodismo", "Publicidad", "Relaciones Públicas", "Diseño de Interiores", "Urbanismo", "Derecho Constitucional", "Derecho Penal", "Derecho Civil", "Derecho Internacional", "Derecho Laboral", "Psicología del Desarrollo", "Psicología Clínica", "Psicología Educativa", "Psicología Organizacional", "Nutrición", "Farmacología", "Medicina Preventiva", "Odontología General", "Ortodoncia", "Ingeniería Civil", "Ingeniería Eléctrica", "Ingeniería Mecánica", "Ingeniería Electrónica", "Ingeniería de Telecomunicaciones", "Ingeniería Química", "Ingeniería Industrial", "Ingeniería Ambiental", "Agronomía", "Zootecnia", "Ciencias Políticas", "Relaciones Internacionales", "Administración de Empresas", "Administración Pública", "Turismo", "Gastronomía", "Hotelería", "Educación Infantil", "Pedagogía", "Música", "Artes Escénicas", "Cine y Televisión", "Fotografía", "Danza", "Historia Universal", "Geografía", "Filosofía de la Ciencia", "Ética Profesional", "Lógica", "Epistemología", "Teología", "Investigación de Operaciones", "Ciencia de Materiales", "Bioinformática", "Robótica", "Seguridad Informática", "Criptografía", "Desarrollo Web", "Desarrollo de Aplicaciones Móviles", "Big Data", "Ciencia de Datos", "Machine Learning", "Minería de Datos", "Análisis de Algoritmos", "Compiladores", "Redes Neuronales", "Sistemas Embebidos", "Realidad Virtual", "Blockchain", "Cloud Computing", "DevOps", "Gestión de la Innovación" }));
+        jPanel1.add(jComboBoxAsignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, 180, 30));
 
         ModificarBoton.setBackground(new java.awt.Color(1, 174, 250));
         ModificarBoton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -411,102 +350,89 @@ public class PanelInfoProfesor extends javax.swing.JPanel {
 
         jPanel1.add(ModificarBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, -1, -1));
 
-        jLabel1.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel1.setText("Solo con el ID puesto");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 256, 130, 30));
+        jComboBoxCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Profesor de Ingeniería", "Profesor de Matemáticas", "Profesor de Física", "Profesor de Química", "Profesor de Biología", "Profesor de Lenguas", "Profesor de Cálculo", "Profesor de Álgebra", "Profesor de Estadística", "Profesor de Programación", "Profesor de Bases de Datos", "Profesor de Redes de Computadores", "Profesor de Inteligencia Artificial", "Profesor de Economía", "Profesor de Contabilidad", "Profesor de Finanzas", "Profesor de Marketing", "Profesor de Gestión de Proyectos", "Profesor de Ética", "Profesor de Derecho", "Profesor de Psicología", "Profesor de Sociología", "Profesor de Historia", "Profesor de Literatura", "Profesor de Filosofía", "Profesor de Inglés", "Profesor de Español", "Profesor de Diseño Gráfico", "Profesor de Arquitectura de Software", "Profesor de Electrónica", "Profesor de Electromagnetismo", "Profesor de Termodinámica", "Profesor de Ciencias de los Materiales", "Profesor de Genética", "Profesor de Microbiología", "Profesor de Anatomía", "Profesor de Fisiología", "Profesor de Salud Pública", "Profesor de Medicina Interna", "Profesor de Cirugía", "Profesor de Pediatría", "Profesor de Ginecología y Obstetricia", "Profesor de Bioquímica", "Profesor de Ecología", "Profesor de Zoología", "Profesor de Botánica", "Profesor de Antropología", "Profesor de Historia del Arte", "Profesor de Comunicación", "Profesor de Periodismo", "Profesor de Publicidad", "Profesor de Relaciones Públicas", "Profesor de Diseño de Interiores", "Profesor de Urbanismo", "Profesor de Derecho Constitucional", "Profesor de Derecho Penal", "Profesor de Derecho Civil", "Profesor de Derecho Internacional", "Profesor de Derecho Laboral", "Profesor de Psicología del Desarrollo", "Profesor de Psicología Clínica", "Profesor de Psicología Educativa", "Profesor de Psicología Organizacional", "Profesor de Nutrición", "Profesor de Farmacología", "Profesor de Medicina Preventiva", "Profesor de Odontología", "Profesor de Ortodoncia", "Profesor de Ingeniería Civil", "Profesor de Ingeniería Eléctrica", "Profesor de Ingeniería Mecánica", "Profesor de Ingeniería Electrónica", "Profesor de Ingeniería de Telecomunicaciones", "Profesor de Ingeniería Química", "Profesor de Ingeniería Industrial", "Profesor de Ingeniería Ambiental", "Profesor de Agronomía", "Profesor de Zootecnia", "Profesor de Ciencias Políticas", "Profesor de Relaciones Internacionales", "Profesor de Administración de Empresas", "Profesor de Administración Pública", "Profesor de Turismo", "Profesor de Gastronomía", "Profesor de Hotelería", "Profesor de Educación Infantil", "Profesor de Pedagogía", "Profesor de Música", "Profesor de Artes Escénicas", "Profesor de Cine y Televisión", "Profesor de Fotografía", "Profesor de Danza", "Profesor de Historia Universal", "Profesor de Geografía", "Profesor de Filosofía de la Ciencia", "Profesor de Lógica", "Profesor de Epistemología", "Profesor de Teología", "Profesor de Investigación de Operaciones", "Profesor de Ciencia de Materiales", "Profesor de Bioinformática", "Profesor de Robótica", "Profesor de Seguridad Informática", "Profesor de Criptografía", "Profesor de Desarrollo Web", "Profesor de Desarrollo de Aplicaciones Móviles", "Profesor de Big Data", "Profesor de Ciencia de Datos", "Profesor de Machine Learning", "Profesor de Minería de Datos", "Profesor de Análisis de Algoritmos", "Profesor de Compiladores", "Profesor de Redes Neuronales", "Profesor de Sistemas Embebidos", "Profesor de Realidad Virtual", "Profesor de Blockchain", "Profesor de Cloud Computing", "Profesor de DevOps", "Profesor de Gestión de la Innovación" }));
+        jPanel1.add(jComboBoxCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 170, 30));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 420));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nombreEstPoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreEstPoTxtMousePressed
-        if (nombreEstPoTxt.getText().equals("Ingrese su(s) Nombre(s)")) {
-            nombreEstPoTxt.setText("");
-            nombreEstPoTxt.setForeground(Color.black);
+    private void nombrePoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombrePoTxtMousePressed
+        if (nombrePoTxt.getText().equals("Ingrese su(s) Nombre(s)")) {
+            nombrePoTxt.setText("");
+            nombrePoTxt.setForeground(Color.black);
         }
 
         restaurarTextoPredeterminado();
-    }//GEN-LAST:event_nombreEstPoTxtMousePressed
+    }//GEN-LAST:event_nombrePoTxtMousePressed
 
-    private void nombreEstPoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreEstPoTxtActionPerformed
+    private void nombrePoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombrePoTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombreEstPoTxtActionPerformed
+    }//GEN-LAST:event_nombrePoTxtActionPerformed
 
-    private void correoEstPoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_correoEstPoTxtMousePressed
-        if (correoEstPoTxt.getText().equals("Ingrese su correo")) {
-            correoEstPoTxt.setText("");
-            correoEstPoTxt.setForeground(Color.black);
+    private void correoPoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_correoPoTxtMousePressed
+        if (correoPoTxt.getText().equals("Ingrese su correo")) {
+            correoPoTxt.setText("");
+            correoPoTxt.setForeground(Color.black);
         }
 
         restaurarTextoPredeterminado();
-    }//GEN-LAST:event_correoEstPoTxtMousePressed
+    }//GEN-LAST:event_correoPoTxtMousePressed
 
-    private void correoEstPoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoEstPoTxtActionPerformed
+    private void correoPoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoPoTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_correoEstPoTxtActionPerformed
+    }//GEN-LAST:event_correoPoTxtActionPerformed
 
-    private void nuevaContraseñaEstPoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nuevaContraseñaEstPoTxtMousePressed
-        if (String.valueOf(nuevaContraseñaEstPoTxt.getPassword()).equals("•••••••••••••••")) {
-            nuevaContraseñaEstPoTxt.setText("");
-            nuevaContraseñaEstPoTxt.setForeground(Color.black);
+    private void nuevaContraseñaPoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nuevaContraseñaPoTxtMousePressed
+        if (String.valueOf(nuevaContraseñaPoTxt.getPassword()).equals("•••••••••••••••")) {
+            nuevaContraseñaPoTxt.setText("");
+            nuevaContraseñaPoTxt.setForeground(Color.black);
         }
 
         restaurarTextoPredeterminado();
-    }//GEN-LAST:event_nuevaContraseñaEstPoTxtMousePressed
+    }//GEN-LAST:event_nuevaContraseñaPoTxtMousePressed
 
-    private void nuevaContraseñaEstPoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevaContraseñaEstPoTxtActionPerformed
+    private void nuevaContraseñaPoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevaContraseñaPoTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nuevaContraseñaEstPoTxtActionPerformed
+    }//GEN-LAST:event_nuevaContraseñaPoTxtActionPerformed
 
-    private void ActualizarTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActualizarTxtMouseClicked
-        JOptionPane.showMessageDialog(null, "Información actualizada correctamente");
-    }//GEN-LAST:event_ActualizarTxtMouseClicked
-
-    private void ActualizarTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActualizarTxtMouseEntered
-        ActualizarBoton.setBackground(new Color(1, 105, 150));
-    }//GEN-LAST:event_ActualizarTxtMouseEntered
-
-    private void ActualizarTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActualizarTxtMouseExited
-        ActualizarBoton.setBackground(new Color(1, 174, 250));
-    }//GEN-LAST:event_ActualizarTxtMouseExited
-
-    private void apellidoEstPoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_apellidoEstPoTxtMousePressed
-        if (apellidoEstPoTxt.getText().equals("Ingrese su(s) Apellido(s)")) {
-            apellidoEstPoTxt.setText("");
-            apellidoEstPoTxt.setForeground(Color.black);
+    private void apellidoPoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_apellidoPoTxtMousePressed
+        if (apellidoPoTxt.getText().equals("Ingrese su(s) Apellido(s)")) {
+            apellidoPoTxt.setText("");
+            apellidoPoTxt.setForeground(Color.black);
         }
 
         restaurarTextoPredeterminado();
-    }//GEN-LAST:event_apellidoEstPoTxtMousePressed
+    }//GEN-LAST:event_apellidoPoTxtMousePressed
 
-    private void apellidoEstPoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoEstPoTxtActionPerformed
+    private void apellidoPoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoPoTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_apellidoEstPoTxtActionPerformed
+    }//GEN-LAST:event_apellidoPoTxtActionPerformed
 
-    private void confirmarContraseñaEstPoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmarContraseñaEstPoTxtMousePressed
-        if (String.valueOf(confirmarContraseñaEstPoTxt.getPassword()).equals("•••••••••••••••")) {
-            confirmarContraseñaEstPoTxt.setText("");
-            confirmarContraseñaEstPoTxt.setForeground(Color.black);
+    private void confirmarContraseñaPoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmarContraseñaPoTxtMousePressed
+        if (String.valueOf(confirmarContraseñaPoTxt.getPassword()).equals("•••••••••••••••")) {
+            confirmarContraseñaPoTxt.setText("");
+            confirmarContraseñaPoTxt.setForeground(Color.black);
         }
 
         restaurarTextoPredeterminado();
-    }//GEN-LAST:event_confirmarContraseñaEstPoTxtMousePressed
+    }//GEN-LAST:event_confirmarContraseñaPoTxtMousePressed
 
-    private void confirmarContraseñaEstPoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarContraseñaEstPoTxtActionPerformed
+    private void confirmarContraseñaPoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarContraseñaPoTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_confirmarContraseñaEstPoTxtActionPerformed
+    }//GEN-LAST:event_confirmarContraseñaPoTxtActionPerformed
 
-    private void IDEstPoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IDEstPoTxtMousePressed
-        if (IDEstPoTxt.getText().equals("Numero de Identificacion")) {
-            IDEstPoTxt.setText("");
-            IDEstPoTxt.setForeground(Color.black);
+    private void IDPoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IDPoTxtMousePressed
+        if (IDPoTxt.getText().equals("Numero de Identificacion")) {
+            IDPoTxt.setText("");
+            IDPoTxt.setForeground(Color.black);
         }
 
         restaurarTextoPredeterminado();
-    }//GEN-LAST:event_IDEstPoTxtMousePressed
+    }//GEN-LAST:event_IDPoTxtMousePressed
 
-    private void IDEstPoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDEstPoTxtActionPerformed
+    private void IDPoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDPoTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_IDEstPoTxtActionPerformed
+    }//GEN-LAST:event_IDPoTxtActionPerformed
 
     private void gMujerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gMujerActionPerformed
         // TODO add your handling code here:
@@ -516,34 +442,25 @@ public class PanelInfoProfesor extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_gHombreActionPerformed
 
-    private void TelefonoEstPoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TelefonoEstPoTxtMousePressed
-        if (TelefonoEstPoTxt.getText().equals("Numero de Identificacion")) {
-            TelefonoEstPoTxt.setText("");
-            TelefonoEstPoTxt.setForeground(Color.black);
+    private void TelefonoPoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TelefonoPoTxtMousePressed
+        if (TelefonoPoTxt.getText().equals("Numero de Identificacion")) {
+            TelefonoPoTxt.setText("");
+            TelefonoPoTxt.setForeground(Color.black);
         }
 
         restaurarTextoPredeterminado();
-    }//GEN-LAST:event_TelefonoEstPoTxtMousePressed
+    }//GEN-LAST:event_TelefonoPoTxtMousePressed
 
-    private void TelefonoEstPoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TelefonoEstPoTxtActionPerformed
+    private void TelefonoPoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TelefonoPoTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TelefonoEstPoTxtActionPerformed
-
-    private void CargoPoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CargoPoTxtMousePressed
-        if (CargoPoTxt.getText().equals("Numero de Identificacion")) {
-            CargoPoTxt.setText("");
-            CargoPoTxt.setForeground(Color.black);
-        }
-
-        restaurarTextoPredeterminado();
-    }//GEN-LAST:event_CargoPoTxtMousePressed
-
-    private void CargoPoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargoPoTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CargoPoTxtActionPerformed
+    }//GEN-LAST:event_TelefonoPoTxtActionPerformed
 
     private void ModificarTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModificarTxtMouseClicked
-        // TODO add your handling code here:
+        if (validarEntrada()) {
+            actualizarInformacionProfesor();
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe llenar todos los campos de información correctamente", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_ModificarTxtMouseClicked
 
     private void ModificarTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModificarTxtMouseEntered
@@ -555,25 +472,17 @@ public class PanelInfoProfesor extends javax.swing.JPanel {
     }//GEN-LAST:event_ModificarTxtMouseExited
 
     private void ModificarBotonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModificarBotonMouseEntered
-        
+
     }//GEN-LAST:event_ModificarBotonMouseEntered
 
     private void ModificarBotonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModificarBotonMouseExited
-        
+
     }//GEN-LAST:event_ModificarBotonMouseExited
 
-    private void ActualizarBotonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActualizarBotonMouseEntered
-        
-    }//GEN-LAST:event_ActualizarBotonMouseEntered
-
-    private void ActualizarBotonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActualizarBotonMouseExited
-        
-    }//GEN-LAST:event_ActualizarBotonMouseExited
-
     private void configurarDateChooser() {
-        jDateChooserEst.setDateFormatString("d/MM/yyyy");
-        jDateChooserEst.getDateEditor().setEnabled(false);
-        jDateChooserEst.setSelectableDateRange(new java.util.Date(0), new java.util.Date()); // permite seleccionar fechas hasta la fecha actual
+        jDateChooserPo.setDateFormatString("d/MM/yyyy");
+        jDateChooserPo.getDateEditor().setEnabled(false);
+        jDateChooserPo.setSelectableDateRange(new java.util.Date(0), new java.util.Date()); // permite seleccionar fechas hasta la fecha actual
     }
 
     private void grupoGenero() {
@@ -583,7 +492,7 @@ public class PanelInfoProfesor extends javax.swing.JPanel {
     }
 
     private void configurarCamposTexto() {
-        IDEstPoTxt.addKeyListener(new KeyAdapter() {
+        IDPoTxt.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
                 char caracter = e.getKeyChar();
@@ -593,7 +502,7 @@ public class PanelInfoProfesor extends javax.swing.JPanel {
             }
         });
 
-        nombreEstPoTxt.addKeyListener(new KeyAdapter() {
+        nombrePoTxt.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
                 char caracter = e.getKeyChar();
@@ -603,7 +512,7 @@ public class PanelInfoProfesor extends javax.swing.JPanel {
             }
         });
 
-        apellidoEstPoTxt.addKeyListener(new KeyAdapter() {
+        apellidoPoTxt.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
                 char caracter = e.getKeyChar();
@@ -613,17 +522,9 @@ public class PanelInfoProfesor extends javax.swing.JPanel {
             }
         });
 
-        CargoPoTxt.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                char caracter = e.getKeyChar();
-                if (!Character.isLetter(caracter) && !Character.isWhitespace(caracter)) {
-                    e.consume();
-                }
-            }
-        });
+        
 
-        TelefonoEstPoTxt.addKeyListener(new KeyAdapter() {
+        TelefonoPoTxt.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
                 char caracter = e.getKeyChar();
@@ -633,23 +534,21 @@ public class PanelInfoProfesor extends javax.swing.JPanel {
             }
         });
 
-        TextosPredeterminado(nombreEstPoTxt, "Ingrese su(s) Nombre(s)");
-        TextosPredeterminado(apellidoEstPoTxt, "Ingrese su(s) Apellido(s)");
-        TextosPredeterminado(correoEstPoTxt, "Ingrese su correo");
-        TextosPredeterminado(nuevaContraseñaEstPoTxt, "•••••••••••••••");
-        TextosPredeterminado(confirmarContraseñaEstPoTxt, "•••••••••••••••");
-        TextosPredeterminado(IDEstPoTxt, "Numero de Identificacion");
-        TextosPredeterminado(CargoPoTxt, "Ingrese el Nombre de la Carrera");
-        TextosPredeterminado(TelefonoEstPoTxt, "Ingrese se numero de Telefono");
+        TextosPredeterminado(nombrePoTxt, "Ingrese su(s) Nombre(s)");
+        TextosPredeterminado(apellidoPoTxt, "Ingrese su(s) Apellido(s)");
+        TextosPredeterminado(correoPoTxt, "Ingrese su correo");
+        TextosPredeterminado(nuevaContraseñaPoTxt, "•••••••••••••••");
+        TextosPredeterminado(confirmarContraseñaPoTxt, "•••••••••••••••");
+        TextosPredeterminado(IDPoTxt, "Numero de Identificacion");
+        TextosPredeterminado(TelefonoPoTxt, "Ingrese se numero de Telefono");
 
-        agregarFocusListener(nombreEstPoTxt, "Ingrese su(s) Nombre(s)");
-        agregarFocusListener(apellidoEstPoTxt, "Ingrese su(s) Apellido(s)");
-        agregarFocusListener(correoEstPoTxt, "Ingrese su correo");
-        agregarFocusListener(nuevaContraseñaEstPoTxt, "•••••••••••••••");
-        agregarFocusListener(confirmarContraseñaEstPoTxt, "•••••••••••••••");
-        agregarFocusListener(IDEstPoTxt, "Numero de Identificacion");
-        agregarFocusListener(CargoPoTxt, "Ingrese el Nombre de la Carrera");
-        agregarFocusListener(TelefonoEstPoTxt, "Ingrese se numero de Telefono");
+        agregarFocusListener(nombrePoTxt, "Ingrese su(s) Nombre(s)");
+        agregarFocusListener(apellidoPoTxt, "Ingrese su(s) Apellido(s)");
+        agregarFocusListener(correoPoTxt, "Ingrese su correo");
+        agregarFocusListener(nuevaContraseñaPoTxt, "•••••••••••••••");
+        agregarFocusListener(confirmarContraseñaPoTxt, "•••••••••••••••");
+        agregarFocusListener(IDPoTxt, "Numero de Identificacion");
+        agregarFocusListener(TelefonoPoTxt, "Ingrese se numero de Telefono");
     }
 
     private void TextosPredeterminado(javax.swing.JTextField campo, String texto) {
@@ -678,51 +577,48 @@ public class PanelInfoProfesor extends javax.swing.JPanel {
     }
 
     private void limpiarCampos() {
-        TextosPredeterminado(nombreEstPoTxt, "Ingrese su(s) Nombre(s)");
-        TextosPredeterminado(apellidoEstPoTxt, "Ingrese su(s) Apellido(s)");
-        TextosPredeterminado(correoEstPoTxt, "Ingrese su correo");
-        TextosPredeterminado(nuevaContraseñaEstPoTxt, "•••••••••••••••");
-        TextosPredeterminado(confirmarContraseñaEstPoTxt, "•••••••••••••••");
-        TextosPredeterminado(IDEstPoTxt, "Numero de Identificacion");
-        TextosPredeterminado(CargoPoTxt, "Ingrese el Nombre de la Carrera");
-        TextosPredeterminado(TelefonoEstPoTxt, "Ingrese se numero de Telefono");
+        TextosPredeterminado(nombrePoTxt, "Ingrese su(s) Nombre(s)");
+        TextosPredeterminado(apellidoPoTxt, "Ingrese su(s) Apellido(s)");
+        TextosPredeterminado(correoPoTxt, "Ingrese su correo");
+        TextosPredeterminado(nuevaContraseñaPoTxt, "•••••••••••••••");
+        TextosPredeterminado(confirmarContraseñaPoTxt, "•••••••••••••••");
+        TextosPredeterminado(IDPoTxt, "Numero de Identificacion");
+        TextosPredeterminado(TelefonoPoTxt, "Ingrese se numero de Telefono");
         botonesGenero.clearSelection();
 
-        if (jDateChooserEst != null) {
-            JTextFieldDateEditor editor = (JTextFieldDateEditor) jDateChooserEst.getDateEditor();
+        if (jDateChooserPo != null) {
+            JTextFieldDateEditor editor = (JTextFieldDateEditor) jDateChooserPo.getDateEditor();
             editor.setText("dd/mm/yyyy");
             editor.setForeground(Color.gray);
-            jDateChooserEst.setDate(null);
+            jDateChooserPo.setDate(null);
         }
     }
 
     private void restaurarTextoPredeterminado() {
-        if (nombreEstPoTxt.getText().isEmpty()) {
-            TextosPredeterminado(nombreEstPoTxt, "Ingrese su(s) Nombre(s)");
+        if (nombrePoTxt.getText().isEmpty()) {
+            TextosPredeterminado(nombrePoTxt, "Ingrese su(s) Nombre(s)");
         }
-        if (apellidoEstPoTxt.getText().isEmpty()) {
-            TextosPredeterminado(apellidoEstPoTxt, "Ingrese su(s) Apellido(s)");
+        if (apellidoPoTxt.getText().isEmpty()) {
+            TextosPredeterminado(apellidoPoTxt, "Ingrese su(s) Apellido(s)");
         }
-        if (correoEstPoTxt.getText().isEmpty()) {
-            TextosPredeterminado(correoEstPoTxt, "Ingrese su correo");
+        if (correoPoTxt.getText().isEmpty()) {
+            TextosPredeterminado(correoPoTxt, "Ingrese su correo");
         }
-        if (String.valueOf(nuevaContraseñaEstPoTxt.getPassword()).isEmpty()) {
-            TextosPredeterminado(nuevaContraseñaEstPoTxt, "•••••••••••••••");
+        if (String.valueOf(nuevaContraseñaPoTxt.getPassword()).isEmpty()) {
+            TextosPredeterminado(nuevaContraseñaPoTxt, "•••••••••••••••");
         }
-        if (String.valueOf(confirmarContraseñaEstPoTxt.getPassword()).isEmpty()) {
-            TextosPredeterminado(confirmarContraseñaEstPoTxt, "•••••••••••••••");
+        if (String.valueOf(confirmarContraseñaPoTxt.getPassword()).isEmpty()) {
+            TextosPredeterminado(confirmarContraseñaPoTxt, "•••••••••••••••");
         }
-        if (IDEstPoTxt.getText().isEmpty()) {
-            TextosPredeterminado(IDEstPoTxt, "Numero de Identificacion");
+        if (IDPoTxt.getText().isEmpty()) {
+            TextosPredeterminado(IDPoTxt, "Numero de Identificacion");
         }
-        if (CargoPoTxt.getText().isEmpty()) {
-            TextosPredeterminado(CargoPoTxt, "Ingrese el Nombre de la Carrera");
+        
+        if (TelefonoPoTxt.getText().isEmpty()) {
+            TextosPredeterminado(TelefonoPoTxt, "Ingrese se numero de Telefono");
         }
-        if (TelefonoEstPoTxt.getText().isEmpty()) {
-            TextosPredeterminado(TelefonoEstPoTxt, "Ingrese se numero de Telefono");
-        }
-        if (jDateChooserEst.getDate() == null) {
-            JTextFieldDateEditor editor = (JTextFieldDateEditor) jDateChooserEst.getDateEditor();
+        if (jDateChooserPo.getDate() == null) {
+            JTextFieldDateEditor editor = (JTextFieldDateEditor) jDateChooserPo.getDateEditor();
             editor.setText("dd/mm/yyyy");
             editor.setForeground(Color.gray);
         }
@@ -778,7 +674,7 @@ public class PanelInfoProfesor extends javax.swing.JPanel {
     }
 
     private boolean validarEntrada() {
-        if (!ValidadorJDateChooser.esFechaValida(jDateChooserEst)) {
+        if (!ValidadorJDateChooser.esFechaValida(jDateChooserPo)) {
             javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe seleccionar una fecha valida", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
             return false;
         }
@@ -789,38 +685,41 @@ public class PanelInfoProfesor extends javax.swing.JPanel {
         }
 
         // Validar que el ID sea de 10 dígitos
-        if (IDEstPoTxt.getText().trim().length() != 8 && IDEstPoTxt.getText().trim().length() != 10 && IDEstPoTxt.getText().trim().length() != 11) {
+        if (IDPoTxt.getText().trim().length() != 8 && IDPoTxt.getText().trim().length() != 10 && IDPoTxt.getText().trim().length() != 11) {
             javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe ingresar un numero de Identificacion valido", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
             return false;
         }
 
         // Validar que la contraseña tenga al menos 6 caracteres
-        if (String.valueOf(nuevaContraseñaEstPoTxt.getPassword()).trim().length() < 6) {
+        if (String.valueOf(nuevaContraseñaPoTxt.getPassword()).trim().length() < 6) {
             javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe ingresar una contraseña más larga (al menos 6 caracteres)", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
             return false;
         }
 
-        if (!esCorreoValido(correoEstPoTxt.getText())) {
+        if (!esCorreoValido(correoPoTxt.getText())) {
             javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe Ingresar un correo electrónico válido.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
             return false;
         }
 
-        String contraseña = String.valueOf(nuevaContraseñaEstPoTxt.getPassword());
-        String confirmarContraseña = String.valueOf(confirmarContraseñaEstPoTxt.getPassword());
+        String contraseña = String.valueOf(nuevaContraseñaPoTxt.getPassword());
+        String confirmarContraseña = String.valueOf(confirmarContraseñaPoTxt.getPassword());
 
         if (!ValidacionContrseña.contraseñasCoinciden(contraseña, confirmarContraseña)) {
             javax.swing.JOptionPane.showMessageDialog(jPanel1, "Las contraseñas no coinciden", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
             return false;
         }
 
-        if (nombreEstPoTxt.getText().equals("Ingrese su(s) Nombre(s)")
-                || apellidoEstPoTxt.getText().equals("Ingrese su(s) Apellido(s)")
-                || correoEstPoTxt.getText().equals("Ingrese su correo")
-                || String.valueOf(nuevaContraseñaEstPoTxt.getPassword()).equals("•••••••••••••••")
-                || String.valueOf(confirmarContraseñaEstPoTxt.getPassword()).equals("•••••••••••••••")
-                || IDEstPoTxt.getText().equals("Numero de Identificacion")
-                || CargoPoTxt.getText().equals("Ingrese el Nombre de la Carrera")
-                || TelefonoEstPoTxt.getText().equals("Ingrese se numero de Telefono")) {
+        if (nombrePoTxt.getText().equals("Ingrese su(s) Nombre(s)")
+                || apellidoPoTxt.getText().equals("Ingrese su(s) Apellido(s)")
+                || correoPoTxt.getText().equals("Ingrese su correo")
+                || String.valueOf(nuevaContraseñaPoTxt.getPassword()).equals("•••••••••••••••")
+                || String.valueOf(confirmarContraseñaPoTxt.getPassword()).equals("•••••••••••••••")
+                || IDPoTxt.getText().equals("Numero de Identificacion")
+                || jComboBoxCargo.getSelectedItem().equals("")
+                || jComboBoxCargo.getSelectedItem().equals(null)
+                || jComboBoxAsignatura.getSelectedItem().equals("")
+                || jComboBoxAsignatura.getSelectedItem().equals(null)
+                || TelefonoPoTxt.getText().equals("Ingrese se numero de Telefono")) {
 
             javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe llenar todos los campos de informacion", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
 
@@ -834,23 +733,91 @@ public class PanelInfoProfesor extends javax.swing.JPanel {
 
         return true;
     }
+
+    private void cargarInformacionProfesor() {
+        try {
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/plataforma", "root", "");
+            PreparedStatement pst = cn.prepareStatement("SELECT * FROM profesores WHERE Identificacion=?");
+            pst.setString(1, UsuarioActual.id);
+
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                nombrePoTxt.setText(rs.getString("Nombre"));
+                apellidoPoTxt.setText(rs.getString("Apellidos"));
+                jDateChooserPo.setDate(rs.getDate("Nacimiento"));
+                correoPoTxt.setText(rs.getString("Email"));
+                jComboBoxCargo.setSelectedItem(rs.getString("Cargo"));
+                if ("Hombre".equals(rs.getString("Genero"))) {
+                    gHombre.setSelected(true);
+                } else if ("Mujer".equals(rs.getString("Genero"))) {
+                    gMujer.setSelected(true);
+                }
+                IDPoTxt.setText(rs.getString("Identificacion"));
+                TelefonoPoTxt.setText(rs.getString("Telefono"));
+                jComboBoxAsignatura.setSelectedItem(rs.getString("Asignatura"));
+            } else {
+                JOptionPane.showMessageDialog(this, "Profesor no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void actualizarInformacionProfesor() {
+        try {
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/plataforma", "root", "");
+            PreparedStatement pst = cn.prepareStatement(
+                    "UPDATE profesores SET Nombre=?, Apellidos=?, Nacimiento=?, Email=?, Genero=?, Contraseña=?, Asignatura=?, Telefono=?, Cargo=? WHERE Identificacion=?"
+            );
+
+            pst.setString(1, nombrePoTxt.getText().trim());
+            pst.setString(2, apellidoPoTxt.getText().trim());
+            pst.setDate(3, new java.sql.Date(jDateChooserPo.getDate().getTime()));
+            pst.setString(4, correoPoTxt.getText().trim());
+            pst.setString(5, gHombre.isSelected() ? "Hombre" : "Mujer");
+            pst.setString(6, String.valueOf(nuevaContraseñaPoTxt.getPassword()).trim());
+            
+            pst.setString(7, jComboBoxAsignatura.getSelectedItem().toString());
+            Object selectedItem2 = jComboBoxAsignatura.getSelectedItem();
+            if (selectedItem2 != null) {
+                pst.setString(7, selectedItem2.toString());
+            } else {
+                // Maneja el caso en el que el item seleccionado es null
+            }
+            
+            pst.setString(8, TelefonoPoTxt.getText().trim());
+            
+            pst.setString(9, jComboBoxCargo.getSelectedItem().toString());
+            Object selectedItem = jComboBoxCargo.getSelectedItem();
+            if (selectedItem != null) {
+                pst.setString(9, selectedItem.toString());
+            } else {
+                // Maneja el caso en el que el item seleccionado es null
+            }
+            pst.setString(10, UsuarioActual.id);
+
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Información actualizada correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al actualizar la información", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel ActualizarBoton;
-    private javax.swing.JLabel ActualizarTxt;
-    private javax.swing.JTextField CargoPoTxt;
-    private javax.swing.JTextField IDEstPoTxt;
+    private javax.swing.JTextField IDPoTxt;
     private javax.swing.JPanel ModificarBoton;
     private javax.swing.JLabel ModificarTxt;
-    private javax.swing.JTextField TelefonoEstPoTxt;
-    private javax.swing.JTextField apellidoEstPoTxt;
+    private javax.swing.JTextField TelefonoPoTxt;
+    private javax.swing.JTextField apellidoPoTxt;
     private javax.swing.ButtonGroup botonesGenero;
-    private javax.swing.JPasswordField confirmarContraseñaEstPoTxt;
-    private javax.swing.JTextField correoEstPoTxt;
+    private javax.swing.JPasswordField confirmarContraseñaPoTxt;
+    private javax.swing.JTextField correoPoTxt;
     private javax.swing.JRadioButton gHombre;
     private javax.swing.JRadioButton gMujer;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooserEst;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JComboBox<String> jComboBoxAsignatura;
+    private javax.swing.JComboBox<String> jComboBoxCargo;
+    private com.toedter.calendar.JDateChooser jDateChooserPo;
     private javax.swing.JLabel jLabelApellido;
     private javax.swing.JLabel jLabelAsignatura;
     private javax.swing.JLabel jLabelCargo;
@@ -874,7 +841,7 @@ public class PanelInfoProfesor extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTextField nombreEstPoTxt;
-    private javax.swing.JPasswordField nuevaContraseñaEstPoTxt;
+    private javax.swing.JTextField nombrePoTxt;
+    private javax.swing.JPasswordField nuevaContraseñaPoTxt;
     // End of variables declaration//GEN-END:variables
 }
