@@ -94,6 +94,8 @@ public class PanelEditarEstudiante extends javax.swing.JPanel {
         text_buscar = new javax.swing.JTextField();
         button_buscar = new javax.swing.JButton();
         jSeparator14 = new javax.swing.JSeparator();
+        botonNuevo = new javax.swing.JPanel();
+        botonNuevoTxt = new javax.swing.JLabel();
 
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(660, 420));
@@ -423,6 +425,44 @@ public class PanelEditarEstudiante extends javax.swing.JPanel {
         jSeparator14.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, 180, 10));
 
+        botonNuevo.setBackground(new java.awt.Color(1, 174, 250));
+
+        botonNuevoTxt.setFont(new java.awt.Font("Eras Bold ITC", 0, 14)); // NOI18N
+        botonNuevoTxt.setForeground(new java.awt.Color(255, 255, 255));
+        botonNuevoTxt.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        botonNuevoTxt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/clb/ude/pb/Proyecto_De_Aula/vistas/iconos/boton-agregar.png"))); // NOI18N
+        botonNuevoTxt.setText("Nuevo");
+        botonNuevoTxt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        botonNuevoTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonNuevoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonNuevoTxtMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                botonNuevoTxtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonNuevoTxtMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout botonNuevoLayout = new javax.swing.GroupLayout(botonNuevo);
+        botonNuevo.setLayout(botonNuevoLayout);
+        botonNuevoLayout.setHorizontalGroup(
+            botonNuevoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, botonNuevoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(botonNuevoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        botonNuevoLayout.setVerticalGroup(
+            botonNuevoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, botonNuevoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(botonNuevoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel1.add(botonNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, -1, 30));
+
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 420));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -576,6 +616,26 @@ public class PanelEditarEstudiante extends javax.swing.JPanel {
     private void button_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_buscarMouseClicked
         botonBuscar();
     }//GEN-LAST:event_button_buscarMouseClicked
+
+    private void botonNuevoTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonNuevoTxtMouseClicked
+        if (!validarEntrada()) {
+            return;
+        }
+
+        if (!insertarEstudianteEnBD()) {
+            // javax.swing.JOptionPane.showMessageDialog(jPanel1, "No se pudo registrar el estudiante en la base de datos", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(jPanel1, "Registrado Correctamente");
+        }
+    }//GEN-LAST:event_botonNuevoTxtMouseClicked
+
+    private void botonNuevoTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonNuevoTxtMouseEntered
+        botonNuevo.setBackground(new Color(1, 105, 150));
+    }//GEN-LAST:event_botonNuevoTxtMouseEntered
+
+    private void botonNuevoTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonNuevoTxtMouseExited
+        botonNuevo.setBackground(new Color(1, 174, 250));
+    }//GEN-LAST:event_botonNuevoTxtMouseExited
 
     private void configurarDateChooser() {
         jDateChooserEst.setDateFormatString("d/MM/yyyy");
@@ -889,14 +949,14 @@ public class PanelEditarEstudiante extends javax.swing.JPanel {
             }
 
             pst.setString(10, jComboBoxCarrera.getSelectedItem().toString());
-            pst.setString(11, text_buscar.getText().trim());
-
             Object selectedItem = jComboBoxCarrera.getSelectedItem();
             if (selectedItem != null) {
                 pst.setString(10, selectedItem.toString());
             } else {
                 // Maneja el caso en el que el item seleccionado es null
             }
+            
+            pst.setString(11, text_buscar.getText().trim());
 
             pst.executeUpdate();
             JOptionPane.showMessageDialog(this, "Información actualizada correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
@@ -904,7 +964,122 @@ public class PanelEditarEstudiante extends javax.swing.JPanel {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error al actualizar la información", "Error", JOptionPane.ERROR_MESSAGE);
         }
+    }
+    
+    //Metodo para agregar nuevo estudiante en bd
+    
+    private void mostrarCodigoEstudiante(ResultSet rs) throws SQLException {
+        if (rs.next()) {
+            int codigoEstudiante = rs.getInt(1);
+            javax.swing.JOptionPane.showMessageDialog(jPanel1, "Su código de estudiante es: " + codigoEstudiante + ". \nADVERTENCIA: Guarde el código antes de presionar el botón 'OK'.", "Warning", javax.swing.JOptionPane.WARNING_MESSAGE);
+        }
+    }
 
+    private boolean usuarioExisteBd(String cedula, String correo, String nombre, String apellidos) {
+        Connection cn = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
+        try {
+            // Establecer conexión con la base de datos
+            cn = DriverManager.getConnection("jdbc:mysql://localhost/plataforma", "root", "");
+
+            // Consultar si existe un usuario con la misma cédula, correo, nombre y apellidos
+            String query = "SELECT * FROM estudiantes WHERE Identificacion = ? OR Email = ? OR (Nombre = ? AND Apellidos = ?)";
+            pst = cn.prepareStatement(query);
+            pst.setString(1, cedula);
+            pst.setString(2, correo);
+            pst.setString(3, nombre);
+            pst.setString(4, apellidos);
+            rs = pst.executeQuery();
+
+            // Si hay resultados, significa que el usuario ya existe
+            if (rs.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            javax.swing.JOptionPane.showMessageDialog(jPanel1, "Error al verificar el usuario: " + e.getMessage());
+            return true; // En caso de error, asumimos que el usuario existe para evitar problemas
+        } finally {
+            // Cerrar la conexión y liberar recursos
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (pst != null) {
+                    pst.close();
+                }
+                if (cn != null) {
+                    cn.close();
+                }
+            } catch (SQLException e) {
+                javax.swing.JOptionPane.showMessageDialog(jPanel1, "Error al cerrar la conexión: " + e.getMessage());
+            }
+        }
+    }
+
+    private boolean insertarEstudianteEnBD() {
+        // Valida si el usuario ya existe en la base de datos
+        if (usuarioExisteBd(IDEstTxt.getText(), correoEstTxt.getText(), nombreEstTxt.getText(), apellidoEstTxt.getText())) {
+            javax.swing.JOptionPane.showMessageDialog(jPanel1, "El usuario que intenta ingresar, ya existe", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return false; // No se agrega el usuario
+        }
+
+        Connection cn = null;
+        PreparedStatement pst = null;
+
+        try {
+            cn = DriverManager.getConnection("jdbc:mysql://localhost/plataforma", "root", "");
+            pst = cn.prepareStatement("INSERT INTO estudiantes (Nombre, Apellidos, Email, Contraseña, Identificacion, Nacimiento, Genero, Tipo_Usuario, Telefono, Semestre, Grupo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+
+            pst.setString(1, nombreEstTxt.getText());
+            pst.setString(2, apellidoEstTxt.getText());
+            pst.setString(3, correoEstTxt.getText());
+            pst.setString(4, new String(nuevaContraseñaEstTxt.getPassword()));
+
+            pst.setString(5, IDEstTxt.getText());
+
+            pst.setDate(6, new java.sql.Date(jDateChooserEst.getDate().getTime()));
+
+            String genero = gHombre.isSelected() ? "Hombre" : "Mujer";
+            pst.setString(7, genero);
+
+            pst.setString(8, "Estudiante");
+            
+            pst.setString(9, TelefonoEstTxt.getText().trim());
+
+            pst.setString(10, jComboBoxSemestre.getSelectedItem().toString());
+            Object selectedItem2 = jComboBoxSemestre.getSelectedItem();
+            if (selectedItem2 != null) {
+                pst.setString(10, selectedItem2.toString());
+            } else {
+                //Caso en el que el item seleccionado es null
+            }
+
+            pst.setString(11, jComboBoxCarrera.getSelectedItem().toString());
+            Object selectedItem = jComboBoxCarrera.getSelectedItem();
+            if (selectedItem != null) {
+                pst.setString(11, selectedItem.toString());
+            } else {
+                //Caso en el que el item seleccionado es null
+            }
+
+            pst.executeUpdate();
+
+            // Obtener el código de estudiante
+            ResultSet rs = pst.getGeneratedKeys();
+            limpiarCampos();
+            mostrarCodigoEstudiante(rs);
+
+            return true; //Agregado exitoso
+        } catch (SQLException e) {
+            javax.swing.JOptionPane.showMessageDialog(jPanel1, "Error al registrar el estudiante: " + e.getMessage());
+            return false; //Agregado fallido
+        } finally {
+            //Cerrar la conexion
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -914,6 +1089,8 @@ public class PanelEditarEstudiante extends javax.swing.JPanel {
     private javax.swing.JLabel ModificarTxt;
     private javax.swing.JTextField TelefonoEstTxt;
     private javax.swing.JTextField apellidoEstTxt;
+    private javax.swing.JPanel botonNuevo;
+    private javax.swing.JLabel botonNuevoTxt;
     private javax.swing.ButtonGroup botonesGenero;
     private javax.swing.JLabel buscar;
     private javax.swing.JButton button_buscar;
