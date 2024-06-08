@@ -363,7 +363,7 @@ public class LogInProfesor extends javax.swing.JPanel {
                 || String.valueOf(contraseñaTxt.getPassword()).isEmpty()
                 || String.valueOf(contraseñaTxt.getPassword()).equals("•••••••••••••••")) {
 
-            javax.swing.JOptionPane.showMessageDialog(jPanel1, "IDENTIFICATE \nIdentificate en esta Mnda quien eres prro Hp \nQUE NO TE TENGO ANOTADO AQUI EN MI CELULAR, Mlparido cabeza e vrg \ntrple cabeza de mda IDENTIFICATE", "Error", JOptionPane.ERROR_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe llenar todos los campos de informacion para continuar", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
 

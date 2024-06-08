@@ -364,7 +364,7 @@ public class LogInEstudiante extends javax.swing.JPanel {
                 || String.valueOf(contraseñaEstTxt.getPassword()).isEmpty()
                 || String.valueOf(contraseñaEstTxt.getPassword()).equals("•••••••••••••••")) {
 
-            javax.swing.JOptionPane.showMessageDialog(jPanel1, "IDENTIFICATE \nIdentificate en esta Mnda quien eres prro Hp \nQUE NO TE TENGO ANOTADO AQUI EN MI CELULAR, Mlparido cabeza e vrg \ntrple cabeza de mda IDENTIFICATE", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(jPanel1, "Debe llenar todos los campos de informacion para continuar", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
             return false;
         }
 
